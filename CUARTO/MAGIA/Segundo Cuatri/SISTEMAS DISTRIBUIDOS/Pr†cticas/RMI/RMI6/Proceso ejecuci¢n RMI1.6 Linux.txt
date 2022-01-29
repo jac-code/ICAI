@@ -1,0 +1,52 @@
+En la unidad C:\Datos. Cuelgan las carpetas "servidor", "cliente1" y "cliente2"
+
+
+Iniciar rmiregistry en el servidor:
+-----------------------------------
+labcom@labcomlinux:~/RMI/servidor$ rmiregistry 1234
+
+
+Arrancar el Servidor:
+  Indicamos que la clase a descargar dinamicamente (TitulaMenor.class) 
+se encuentra en el directorio: /home/labcom/RMI/cliente1/
+---------------------
+
+
+labcom@labcomlinux:~/RMI/servidor$ java -Djava.rmi.server.codebase=file:///home/labcom/RMI/cliente1/ -Djava.security.policy=servidor.permisos ServidorBanco 1234
+
+
+
+ 
+Ejecutando cliente1 (titular menor) :
+----------------------------------------- 
+
+
+labcom@labcomlinux:~/RMI/cliente1$ java  -Djava.security.policy=cliente.permisos ClienteBanco localhost 1234 Luisito 001 JUAN
+
+Luisito | 001 | LUIS: 25.0
+
+
+
+(Este cliente1, solo crea "Titulares menores")
+
+
+
+
+
+Ejecutando cliente2 ( titular ):
+----------------------------------------
+
+labcom@labcomlinux:~/RMI/cliente2$ java  -Djava.rmi.server.codebase=file:///home/labcom/RMI/cliente1/ -Djava.security.policy=cliente.permisos ClienteBanco localhost 1234 PEPE 05
+
+
+PEPE | 05: 30.0
+Luisito | 001 | JUAN: 30.0
+
+
+
+
+
+(este cliente solo puede crear "Titulares", pero puede mostrar "Titulares menores". Si intenta crear un "TitularMenor" obtendremos un error )
+
+c:\Datos\cliente2> java  -Djava.rmi.server.codebase=file:/c:/Datos/cliente1/  -Djava.security.policy=cliente.permisos ClienteBanco localhost 1234 Pedrito 08 PEDRO
+Uso: ClienteBanco hostregistro numPuertoRegistro nombreTitular IDTitular

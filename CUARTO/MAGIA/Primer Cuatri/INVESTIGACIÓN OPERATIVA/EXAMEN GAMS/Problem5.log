@@ -1,0 +1,32 @@
+--- Job Problem5.gms Start 10/30/20 16:25:31 32.2.0 rc62c018 DEX-DEG x86 64bit/Mac OS X
+--- Applying:
+    /Library/Frameworks/GAMS.framework/Versions/32/Resources/gmsprmun.txt
+    /Users/guillermoaldreypastor/Library/Preferences/GAMS/gamsconfig.yaml
+--- GAMS Parameters defined
+    Input "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem5.gms"
+    PageSize 0
+    ScrDir "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/225a/"
+    SysDir /Library/Frameworks/GAMS.framework/Versions/32/Resources/
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+GAMS 32.2.0   Copyright (C) 1987-2020 GAMS Development. All rights reserved
+Licensee: GAMS Demo license for GUILLERMO ALDREY         G200923|0002CO-GEN
+          Universidad Pontificia Comillas, Spain                   DL017849
+          /Users/guillermoaldreypastor/Library/Application Support/GAMS/gamslice.txt
+          guillermoaldrey@gmail.com, GUILLERMO ALDREY                      
+          Demo license for demonstration and instructional purposes only
+--- Starting compilation
+--- Problem5.gms(57) 3 Mb 2 Errors
+*** Error  66 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem5.gms
+    The symbol shown has not been defined or assigned
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+*** Error 256 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem5.gms
+    Error(s) in analyzing solve statement. More detail appears
+    Below the solve statement above
+--- Problem5.gms(57) 3 Mb 2 Errors
+*** Status: Compilation error(s)
+--- Job Problem5.gms Stop 10/30/20 16:25:31 elapsed 0:00:00.013

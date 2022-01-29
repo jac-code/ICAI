@@ -1,0 +1,45 @@
+--- Job Problem5.gms Start 10/30/20 16:23:04 32.2.0 rc62c018 DEX-DEG x86 64bit/Mac OS X
+--- Applying:
+    /Library/Frameworks/GAMS.framework/Versions/32/Resources/gmsprmun.txt
+    /Users/guillermoaldreypastor/Library/Preferences/GAMS/gamsconfig.yaml
+--- GAMS Parameters defined
+    Input "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem5.gms"
+    PageSize 0
+    ScrDir "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/225a/"
+    SysDir /Library/Frameworks/GAMS.framework/Versions/32/Resources/
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+GAMS 32.2.0   Copyright (C) 1987-2020 GAMS Development. All rights reserved
+Licensee: GAMS Demo license for GUILLERMO ALDREY         G200923|0002CO-GEN
+          Universidad Pontificia Comillas, Spain                   DL017849
+          /Users/guillermoaldreypastor/Library/Application Support/GAMS/gamslice.txt
+          guillermoaldrey@gmail.com, GUILLERMO ALDREY                      
+          Demo license for demonstration and instructional purposes only
+--- Starting compilation
+--- Problem5.gms(12) 3 Mb 1 Error
+*** Error 194 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem5.gms
+    Symbol redefined - a second data statement for the same symbol
+       or a data statement after an assignment
+       Hint: You could use $onMulti to merge the data from different
+             data statements or $onMultiR to replace existing data
+             with data from a later data statement
+--- Problem5.gms(28) 3 Mb 2 Errors
+*** Error 195 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem5.gms
+    Symbol redefined with a different type
+--- Problem5.gms(53) 3 Mb 5 Errors
+*** Error 148 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem5.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 149 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem5.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem5.gms
+    Uncontrolled set entered as constant
+--- Problem5.gms(59) 3 Mb 6 Errors
+*** Error 257 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem5.gms
+    Solve statement not checked because of previous errors
+--- Problem5.gms(59) 3 Mb 6 Errors
+*** Status: Compilation error(s)
+--- Job Problem5.gms Stop 10/30/20 16:23:04 elapsed 0:00:00.022

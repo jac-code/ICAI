@@ -1,0 +1,40 @@
+
+
+label {
+  display: block;
+  margin: .5em 0 0 0;
+}
+
+.btn {
+  margin: 1em 0;
+  background-color: #4682B4;
+  color: white;
+
+}
+.volver {
+	float: right;
+	background-color: #EBF5FB;
+  	color: black;
+  	border-radius: 10px;
+  	margin-right: 20px;
+  	margin-top: 20px;
+  	font-size: 14px;
+}
+
+div {
+  margin: .4em 0;
+}
+div label {
+  width: 40%;
+  float: left;
+}
+
+fieldset {
+    width: 60%;
+    height: 655px;
+    margin-left: 12.5%;
+}
+
+img {
+
+}

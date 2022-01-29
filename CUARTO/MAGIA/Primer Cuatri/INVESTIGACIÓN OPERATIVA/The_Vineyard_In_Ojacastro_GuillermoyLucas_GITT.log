@@ -1,0 +1,124 @@
+--- Job The_Vineyard_In_Ojacastro_GuillermoyLucas_GITT.gms Start 10/30/20 22:37:45 32.2.0 rc62c018 DEX-DEG x86 64bit/Mac OS X
+--- Applying:
+    /Library/Frameworks/GAMS.framework/Versions/32/Resources/gmsprmun.txt
+    /Users/guillermoaldreypastor/Library/Preferences/GAMS/gamsconfig.yaml
+--- GAMS Parameters defined
+    Input "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/The_Vineyard_In_Ojacastro_GuillermoyLucas_GITT.gms"
+    PageSize 0
+    ScrDir "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/225a/"
+    SysDir /Library/Frameworks/GAMS.framework/Versions/32/Resources/
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+GAMS 32.2.0   Copyright (C) 1987-2020 GAMS Development. All rights reserved
+Licensee: GAMS Demo license for GUILLERMO ALDREY         G200923|0002CO-GEN
+          Universidad Pontificia Comillas, Spain                   DL017849
+          /Users/guillermoaldreypastor/Library/Application Support/GAMS/gamslice.txt
+          guillermoaldrey@gmail.com, GUILLERMO ALDREY                      
+          Demo license for demonstration and instructional purposes only
+--- Starting compilation
+--- The_Vineyard_In_Ojacastro_GuillermoyLucas_GITT.gms(85) 3 Mb
+--- Starting execution: elapsed 0:00:00.025
+--- The_Vineyard_In_Ojacastro_GuillermoyLucas_GITT.gms(3) 4 Mb
+--- Generating MIP model vineyard
+--- The_Vineyard_In_Ojacastro_GuillermoyLucas_GITT.gms(82) 4 Mb
+---   51 rows  19 columns  355 non-zeroes
+---   18 discrete-columns
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:00.050
+IBM ILOG CPLEX   32.2.0 rc62c018 Released Aug 26, 2020 DEG x86 64bit/Mac OS X 
+*** This solver runs with a demo license. No commercial use.
+Cplex 12.10.0.0
+Reading data...
+Starting Cplex...
+Space for names approximately 0.00 Mb
+Use option 'names no' to turn use of names off
+Version identifier: 12.10.0.0 | 2019-11-26 | 843d4de
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_Parallel                                1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+CPXPARAM_WorkDir                                 "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIO%cc%81N OPERATIVA/225a/"
+Tried aggregator 2 times.
+MIP Presolve eliminated 29 rows and 6 columns.
+MIP Presolve modified 118 coefficients.
+Aggregator did 1 substitutions.
+Reduced MIP has 21 rows, 12 columns, and 100 nonzeros.
+Reduced MIP has 12 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.01 sec. (0.35 ticks)
+Found incumbent of value 44700.000000 after 0.01 sec. (0.43 ticks)
+Probing fixed 2 vars, tightened 0 bounds.
+Probing time = 0.00 sec. (0.02 ticks)
+Cover probing fixed 0 vars, tightened 1 bounds.
+Tried aggregator 1 time.
+MIP Presolve eliminated 5 rows and 2 columns.
+MIP Presolve modified 5 coefficients.
+Reduced MIP has 16 rows, 10 columns, and 78 nonzeros.
+Reduced MIP has 10 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.05 ticks)
+Probing time = 0.00 sec. (0.01 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 16 rows, 10 columns, and 78 nonzeros.
+Reduced MIP has 10 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.04 ticks)
+Probing time = 0.00 sec. (0.01 ticks)
+Clique table members: 9.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Tried aggregator 1 time.
+No LP presolve or aggregator reductions.
+Presolve time = 0.00 sec. (0.01 ticks)
+Iteration log . . .
+Iteration:     1   Dual objective     =         57580.000000
+Root relaxation solution time = 0.00 sec. (0.02 ticks)
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+*     0+    0                        44700.0000   184850.0000           313.53%
+Found incumbent of value 44700.000000 after 0.02 sec. (0.62 ticks)
+      0     0    57260.0000     2    44700.0000    57260.0000        2   28.10%
+*     0+    0                        51900.0000    57260.0000            10.33%
+Found incumbent of value 51900.000000 after 0.02 sec. (0.64 ticks)
+      0     0        cutoff          51900.0000                      5     --- 
+Elapsed time = 0.02 sec. (0.69 ticks, tree = 0.01 MB, solutions = 2)
+Clique cuts applied:  1
+Cover cuts applied:  1
+Implied bound cuts applied:  2
+Zero-half cuts applied:  1
+Root node processing (before b&c):
+  Real time             =    0.02 sec. (0.69 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    0.02 sec. (0.69 ticks)
+MIP status(101): integer optimal solution
+Cplex Time: 0.02sec (det. 0.69 ticks)
+Fixing integer variables, and solving final LP...
+Version identifier: 12.10.0.0 | 2019-11-26 | 843d4de
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_Parallel                                1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+CPXPARAM_MIP_Tolerances_MIPGap                   0
+CPXPARAM_WorkDir                                 "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIO%cc%81N OPERATIVA/225a/"
+Tried aggregator 1 time.
+LP Presolve eliminated 51 rows and 19 columns.
+All rows and columns eliminated.
+Presolve time = 0.00 sec. (0.03 ticks)
+Fixed MIP status(1): optimal
+Cplex Time: 0.00sec (det. 0.05 ticks)
+Proven optimal solution.
+MIP Solution:        51900.000000    (5 iterations, 0 nodes)
+Final Solve:         51900.000000    (0 iterations)
+Best possible:       51900.000000
+Absolute gap:            0.000000
+Relative gap:            0.000000
+--- Reading solution for model vineyard
+--- Executing after solve: elapsed 0:00:00.185
+--- The_Vineyard_In_Ojacastro_GuillermoyLucas_GITT.gms(84) 4 Mb
+*** Status: Normal completion
+--- Job The_Vineyard_In_Ojacastro_GuillermoyLucas_GITT.gms Stop 10/30/20 22:37:45 elapsed 0:00:00.186

@@ -1,0 +1,56 @@
+En la unidad C:\Datos. Cuelgan las carpetas "servidor", "cliente1" y "cliente2"
+
+
+Iniciar rmiregistry en el servidor:
+-----------------------------------
+C:\Datos\servidor>rmiregistry 1234
+
+
+Arrancar el Servidor: (-Djava.rmi.server.codebase=file:/c:/Datos/cliente1/)  Indicamos que la clase a descargar dinamicamente (TitulaMenor.class) se encuentra en ese directorio
+---------------------
+C:\Datos\servidor> java -Djava.rmi.server.codebase=file:/c:/Datos/cliente1/ -Djava.security.policy=servidor.permisos ServidorBanco
+ 1234
+
+ 
+
+ 
+Ejecutando cliente1 (titular menor) :
+----------------------------------------- 
+c:\Datos\cliente1> java -Djava.rmi.server.codebase=file:/c:/Datos/cliente1/ -Djava.security.policy=cliente.permisos ClienteBanco localhost 1234 Luisito 001 LUIS
+
+Luisito | 001 | LUIS: 30.0
+
+
+
+(Observar que el cliente1, puede ejecutarse sin la opci?n de "-Djava.rmi.server.codebase=file:/c:/Datos/cliente1/". Ya que el posee la clase "TitularMenor"
+
+c:\Datos\cliente1> java -Djava.security.policy=cliente.permisos ClienteBanco localhost 1234 Luisito 001 LUIS
+
+Luisito | 001 | LUIS: 30.0
+
+
+
+(Este cliente1, solo crea "Titulares menores")
+c:\Datos\cliente1> java -Djava.rmi.server.codebase=file:/c:/Datos/cliente1/ -Djava.security.policy=cliente.permisos ClienteBanco localhost 1234 FLORENCIO 10
+Uso: ClienteBanco hostregistro numPuertoRegistro nombreTitular IDTitular nombreTutor
+
+
+
+
+
+
+Ejecutando cliente2 ( titular ):
+----------------------------------------
+
+c:\Datos\cliente2> java  -Djava.rmi.server.codebase=file:/c:/Datos/cliente1/  -Djava.security.policy=cliente.permisos ClienteBanco localhost 1234 PEDRO 05
+
+Luisito | 001 | LUIS: 30.0
+PEDRO | 05: 30.0
+
+
+
+
+(este cliente solo puede crear "Titulares", pero puede mostrar "Titulares menores". Si intenta crear un "TitularMenor" obtendremos un error )
+
+c:\Datos\cliente2> java  -Djava.rmi.server.codebase=file:/c:/Datos/cliente1/  -Djava.security.policy=cliente.permisos ClienteBanco localhost 1234 Pedrito 08 PEDRO
+Uso: ClienteBanco hostregistro numPuertoRegistro nombreTitular IDTitular

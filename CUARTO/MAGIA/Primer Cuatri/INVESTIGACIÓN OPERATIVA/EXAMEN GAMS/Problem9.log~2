@@ -1,0 +1,49 @@
+--- Job Problem9.gms Start 10/30/20 16:22:19 32.2.0 rc62c018 DEX-DEG x86 64bit/Mac OS X
+--- Applying:
+    /Library/Frameworks/GAMS.framework/Versions/32/Resources/gmsprmun.txt
+    /Users/guillermoaldreypastor/Library/Preferences/GAMS/gamsconfig.yaml
+--- GAMS Parameters defined
+    Input "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.gms"
+    PageSize 0
+    ScrDir "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/225a/"
+    SysDir /Library/Frameworks/GAMS.framework/Versions/32/Resources/
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+GAMS 32.2.0   Copyright (C) 1987-2020 GAMS Development. All rights reserved
+Licensee: GAMS Demo license for GUILLERMO ALDREY         G200923|0002CO-GEN
+          Universidad Pontificia Comillas, Spain                   DL017849
+          /Users/guillermoaldreypastor/Library/Application Support/GAMS/gamslice.txt
+          guillermoaldrey@gmail.com, GUILLERMO ALDREY                      
+          Demo license for demonstration and instructional purposes only
+--- Starting compilation
+--- Problem9.gms(13) 3 Mb 1 Error
+*** Error 610 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.gms
+    At least one embedded value required
+--- Problem9.gms(38) 3 Mb 6 Errors
+*** Error 114 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.gms
+    Closing quote missing in element
+*** Error 170 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.gms
+    Domain violation for element
+*** Error 148 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error   8 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.gms
+    ')' expected
+*** Error  37 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.gms
+    '=l=' or '=e=' or '=g=' operator expected
+--- Problem9.gms(39) 3 Mb 8 Errors
+*** Error  36 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.gms
+    '=' or '..' or ':=' or '$=' operator expected
+    rest of statement ignored
+*** Error 409 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- Problem9.gms(44) 3 Mb 9 Errors
+*** Error 257 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.gms
+    Solve statement not checked because of previous errors
+--- Problem9.gms(45) 3 Mb 9 Errors
+*** Status: Compilation error(s)
+--- Job Problem9.gms Stop 10/30/20 16:22:19 elapsed 0:00:00.016

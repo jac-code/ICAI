@@ -1,0 +1,33 @@
+--- Job Problem7.gms Start 10/30/20 16:29:19 32.2.0 rc62c018 DEX-DEG x86 64bit/Mac OS X
+--- Applying:
+    /Library/Frameworks/GAMS.framework/Versions/32/Resources/gmsprmun.txt
+    /Users/guillermoaldreypastor/Library/Preferences/GAMS/gamsconfig.yaml
+--- GAMS Parameters defined
+    Input "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem7.gms"
+    PageSize 0
+    ScrDir "/Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/225a/"
+    SysDir /Library/Frameworks/GAMS.framework/Versions/32/Resources/
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+GAMS 32.2.0   Copyright (C) 1987-2020 GAMS Development. All rights reserved
+Licensee: GAMS Demo license for GUILLERMO ALDREY         G200923|0002CO-GEN
+          Universidad Pontificia Comillas, Spain                   DL017849
+          /Users/guillermoaldreypastor/Library/Application Support/GAMS/gamslice.txt
+          guillermoaldrey@gmail.com, GUILLERMO ALDREY                      
+          Demo license for demonstration and instructional purposes only
+--- Starting compilation
+--- Problem7.gms(61) 3 Mb 3 Errors
+*** Error  65 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem7.gms
+    Discrete variables can only appear in MIP, RMIP, MINLP
+      RMINLP MIQCP or RMIQCP MPEC RMPEC problems.
+*** Error 256 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem7.gms
+    Error(s) in analyzing solve statement. More detail appears
+    Below the solve statement above
+*** Error 299 in /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem7.gms
+    Unexpected end of file
+--- Problem7.gms(61) 3 Mb 3 Errors
+*** Status: Compilation error(s)
+--- Job Problem7.gms Stop 10/30/20 16:29:19 elapsed 0:00:00.026

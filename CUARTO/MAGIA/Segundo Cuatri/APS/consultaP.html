@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./css/consultaP.css">
+    <script type="text/javascript" src="./js/consulta.js"></script>
+    <meta charset="UTF-8">
+    <title>FORMULARIO APS</title>
+  </head>
+  
+
+  <body>
+    <form action="registro.php" method="post" onsubmit="return validar()">
+      <div><fieldset>
+        <legend>Alta en el servicio</legend>
+
+        <div>
+          <img src="./images/logo.png">
+          <button class="volver" type="button" onclick="history.go(-1)">Volver</button>
+        </div>
+
+        <p><b>A continuación se muestran los datos relativos al paciente ...</b></p>
+
+        <div>
+          <label for="fecha">Fecha de fractura: </label>
+          <textarea id="fecha" rows="1" cols="60"></textarea>
+        </div>
+
+        <div>
+          <label for="edad">Edad en la fecha de ingreso: </label>
+          <textarea id="edad" rows="1" cols="60"></textarea>
+        </div>
+
+        <div>
+          <label for="genero">Genero:</label>
+          <textarea id="genero" rows="1" cols="60"></textarea>
+        </div>
+        
+        <div>
+          <label for="residencia">Lugar de residencia: </label>
+          <textarea id="residencia" rows="1" cols="60"></textarea>
+        </div>
+        
+        <div>
+          <label for="movilidad">Movilidad previa a la fractura: </label>
+          <textarea id="movilidad" rows="1" cols="60"></textarea>
+        </div>
+        
+        <div>
+          <label for="pfeiffer">Test de Pfeiffer: </label>
+          <textarea id="pfeiffer" rows="1" cols="60"></textarea>
+        </div>
+
+        <div>
+          <label for="asa">Estadio ASA: </label>
+          <textarea id="asa" rows="1" cols="60"></textarea>
+        </div>
+
+        <div>
+          <label for="causa">Causa de la fractura: </label>
+          <textarea id="causa" rows="1" cols="60"></textarea>
+        </div>
+
+        <div>
+          <label for="lado">Lado afectado por la fractura: </label>
+          <textarea id="lado" rows="1" cols="60"></textarea>
+        </div>
+
+        <div>
+          <label for="patologia">Fracturas Patológicas: </label>
+          <textarea id="patologia" rows="1" cols="60"></textarea>
+        </div>
+
+        <div>
+          <label for="rnfc">Tipo de Fractura (RNFC) : </label>
+          <textarea id="rnfc" rows="1" cols="60"></textarea>
+        </div>
+
+        <div>
+          <label for="sjd">Tipo de Fractura (SJD) : </label>
+          <textarea id="sjd" rows="1" cols="60"></textarea>
+        </div>
+
+        <div>
+          <label for="mosea">Medicación protector ósea previa a la fractura: </label>
+          <textarea id="mosea" rows="1" cols="60"></textarea>
+        </div>
+
+        <div>
+          <label for="mprevia">Medicación previa a la fractura: </label>
+          <textarea id="mprevia" rows="1" cols="60"></textarea>
+        </div>
+
+        <div>
+          <label for="info">Información pre-intervención quirúrgica: </label>
+          <textarea id="info" rows="1" cols="60"></textarea>
+        </div>
+
+      </fieldset></div>
+    </form>
+  </body>
+
+</html>

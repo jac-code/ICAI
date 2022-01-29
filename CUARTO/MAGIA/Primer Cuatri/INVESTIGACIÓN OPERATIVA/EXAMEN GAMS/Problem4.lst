@@ -1,0 +1,107 @@
+GAMS 32.2.0  rc62c018 Released Aug 26, 2020 DEX-DEG x86 64bit/Mac OS X - 10/30/20 16:20:55 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  OPTION OPTCR=0
+   2   
+   3  SETS
+   4  i Gender /M,F/
+   5  j Days /day1*day7/
+   6  k Bus Driver number /B1*B25/
+   7  n Shifts order /0,1,2/
+   8   
+   9  SCALARS
+  10  fc Admin cost /20/
+  11  e Equality of work /1.1/
+  12  wc Weekend cost /15/
+  13  sc Strike Cost/1000/
+  14   
+  15  PARAMETERS
+  16  d(j) Demand of bus drivers of day j
+  17  /day1 43
+  18  day2 42
+  19  day3 45
+  20  day4 40
+  21  day5 38
+  22  day6 35
+  23  day7 20/
+  24   
+  25  TABLE c(i,j) Cost of Bus Driver of gender i in day j (Women cost 5% less than men)
+  26    day1 day2 day3 day4 day5  day6 day7
+  27  M 55    45    40   48    53   60   65
+  28  F 52.25 42.75 38   45.6 50.35 57   61.75
+****              $224,226  $224  $224,226
+**** 224  Overlapping entry ignored
+**** 226  Multiple entry ignored
+  29   
+  30  VARIABLES
+  31  VFO1 Value of the OF1
+  32  VFO2 Value of the OF2
+  33   
+  34  BINARY VARIABLES
+  35  X(i,j,k) Bus Driver k of gender i in day j availability
+  36  Y(i,j,k) Bus Driver k of gender i in day j hired
+  37  Z More than 16 women work more than 5 days
+  38   
+  39  EQUATIONS
+  40  FO1 Minimizing the costs of the Bus Drivers
+  41  FO2 Minimizing the costs of the Bus Drivers (New constraint strike)
+  42  HIRE(i,j,k) If a driver is hired then the next two days is available
+  43  AVAI(i,j,k) If a driver is not hired in the two latter days then is
+  44  not available that day
+****    $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  45  EQUALITY(j) Equality j
+  46  DEMAND(j) Demand j
+  47  STRIKE Strike constraint;
+  48   
+  49  FO1 .. VFO1 = SUM[(i,j,k), c(i,j)*X(i,j,k)]+SUM[(i,j,k),
+  50  fc*Y(i,j,k)]+SUM[(i,k), wc*(Y(i,"day5",k)+Y(i,"day6",k))];
+****                                                           $37
+****  37  '=l=' or '=e=' or '=g=' operator expected
+  51  EQUALITY(j)..SUM[k,X("F",j,k)] =L=SUM[k, X("M",j,k)]*e;
+****         $140
+**** 140  Unknown symbol
+  52  HIRE(i,j,k)..SUM[n,X(i,j++(ord(n)-1),k)]=G=3*Y(i,j,k);
+  53  AVAI(i,j,k)..X(i,j,k)=L=SUM[n, Y(i,j--(ord(n)-1),k)] ;
+  54  DEMAND(j).. SUM[(i,k), X(i,j,k)] =G= d(j);
+****       $140
+**** 140  Unknown symbol
+  55   
+  56  FO2 .. VFO2 =E= SUM[(i,j,k), c(i,j)*X(i,j,k)]+SUM[(i,j,k),
+  57  fc*Y(i,j,k)]+SUM[(i,k), wc*(Y(i,"day5",k)+Y(i,"day6",k))]+sc*Z;
+  58  STRIKE..SUM[(j,k),Y("F",j,k)]=L=31+44*Z;
+****       $140
+**** 140  Unknown symbol
+  59   
+  60  MODEL BusDrivers1 /FO1,HIRE,AVAI,EQUALITY,DEMAND/
+  61  MODEL BusDrivers2 /FO2,HIRE,AVAI,EQUALITY,DEMAND,STRIKE/
+  62  SOLVE BusDrivers2 using MIP minimizing VFO2
+  63  Display X.l,Y.l
+****        $257$141$141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+**** 257  Solve statement not checked because of previous errors
+  64   
+
+**** 13 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.016 SECONDS      3 MB  32.2.0 rc62c018 DEX-DEG
+
+
+USER: GAMS Demo license for GUILLERMO ALDREY         G200923|0002CO-GEN
+      Universidad Pontificia Comillas, Spain                   DL017849
+
+
+**** FILE SUMMARY
+
+Input      /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem4.gms
+Output     /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem4.lst
+
+**** USER ERROR(S) ENCOUNTERED

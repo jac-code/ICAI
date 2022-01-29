@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./css/formulario.css">
+    <script type="text/javascript" src="./js/formulario.js"></script>
+    <meta charset="UTF-8">
+    <title>FORMULARIO APS</title>
+  </head>
+  
+
+  <body>
+    <form action="registro.php" method="post" onsubmit="return validar()">
+      <div class="fieldset"><fieldset>
+        <legend>Alta en el servicio</legend>
+
+        <div>
+          <img src="./images/logo.png">
+          <button class="volver" type="button" onclick="history.go(-1)">Volver</button>
+        </div>
+
+        <p><b>Por favor introduzca los siguientes datos para dar de alta a un paciente.  Recuerde que debe completar todos los campos</b></p>
+
+        <div>
+          <label for="fecha">Fecha de fractura: </label>
+          <input type="date" id="fecha" name="fecha" size="11" />
+        </div>
+
+        <div>
+          <label for="edad">Edad en la fecha de ingreso: </label>
+          <input type="text" id="edad" name="edad" size="5" />
+        </div>
+
+        <div>
+          <label for="genero">Genero:</label>
+          Hombre<input type="radio" id="genero" name="genero" value="Hombre"/>
+          Mujer<input type="radio" id="genero" name="genero" value="Mujer"/>
+        </div>
+        
+        <div>
+          <label for="residencia">Lugar de residencia: </label>
+          <input type="text" id="residencia" name="residencia" size="35" />
+        </div>
+        
+        <div>
+          <label for="movilidad">Movilidad previa a la fractura: </label>
+          <select name="movilidad" id="movilidad">
+            <option value="Marcha nula o con ayuda física de 2 personas">Marcha nula o con ayuda física de 2 personas</option>
+            <option value="Marcha con gran ayuda física de una persona">Marcha con gran ayuda física de una persona</option>
+            <option value="Marcha con un ligero contacto físico con una persona">Marcha con un ligero contacto físico con una persona</option>
+            <option value="Marcha solo, pero necesita supervisión de una persona">Marcha solo, pero necesita supervisión de una persona</option>
+            <option value="Marcha independiente en terreno llano, pero no en escalera">Marcha independiente en terreno llano, pero no en escalera</option>
+            <option value="Marcha en terrenos regulares">Marcha en terrenos regulares</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="pfeiffer">Test de Pfeiffer: </label>
+          <input type="text" id="pfeiffer" name="pfeiffer" size="10" />
+        </div>
+
+        <div>
+          <label for="asa">Estadio ASA: </label>
+          <select name="asa" id="asa">
+            <option value="normal sano">normal sano</option>
+            <option value="con enfermedad sistemática leve sin limitaciones funcionales">con enfermedad sistemática leve sin limitaciones funcionales</option>
+            <option value="con enfermedad sistemática moderada y limitación funcional">con enfermedad sistemática moderada y limitación funcional</option>
+            <option value="con enfermedad sistemática severa que amenza de forma constante la vida">con enfermedad sistemática severa que amenza de forma constante la vida</option>
+            <option value="paciente moribundo que no se espera que sobreviva 24horas con  sin cirugía">paciente moribundo que no se espera que sobreviva 24horas con  sin cirugía</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="causa">Causa de la fractura: </label>
+          <select name="causa" id="causa">
+            <option value="baja energía">baja energía</option>
+            <option value="traumatismo alta energía">traumatismo alta energía</option>
+            <option value="otros">otros</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="lado">Lado afectado por la fractura: </label>
+          <select name="lado" id="lado">
+            <option value="izquierdo">izquierdo</option>
+            <option value="derecho">derecho</option>
+            <option value="ambos">ambos</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="patologia">Fracturas Patológicas: </label>
+          Malignidad<input type="radio" id="patologia" name="patologia" value="izq"/>
+          Atípica<input type="radio" id="patologia" name="patologia" value="der"/>
+        </div>
+
+        <div>
+          <label for="rnfc">Tipo de Fractura (RNFC) : </label>
+          <select name="rnfc" id="rnfc">
+            <option value="Intracapsular">Intracapsular</option>
+            <option value="Intertrocantérica">Intertrocantérica</option>
+            <option value="Subtrocantérica">Subtrocantérica</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="sjd">Tipo de Fractura (SJD) : </label>
+          <select name="sjd" id="sjd">
+            <option value="Intracapsular no desplazada">Intracapsular no desplazada</option>
+            <option value="Intracapsular desplazada">Intracapsular desplazada</option>
+            <option value="Pertrocantérea">Pertrocantérea</option>
+            <option value="Subtrocantérea">Subtrocantérea</option>
+            <option value="Patológica">Patológica</option>
+            <option value="Perrimplante">Perrimplante</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="mosea">Medicación protector ósea previa a la fractura: </label>
+          <select name="mosea" id="mosea">
+            <option value="ningún tratamiento protector óseo">ningún tratamiento protector óseo</option>
+            <option value="antiresortivos">antiresortivos</option>
+            <option value="antiresortivos + calcio y vitamina D">antiresortivos + calcio y vitamina D</option>
+            <option value="osteoformadores">osteoformadores</option>
+            <option value="osteoformadores + calcio y vitamina D">osteoformadores + calcio y vitamina D</option>
+            <option value="otra medicación protectora. no se incluye toma previa de calcio y vitamina D">otra medicación protectora. no se incluye toma previa de calcio y vitamina D</option>
+            <option value="calcio y vitamina D aislados">calcio y vitamina D aislados</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="mprevia">Medicación previa a la fractura: </label>
+          <select name="mprevia" id="mprevia">
+            <option value="antiagregantes">antiagregantes</option>
+            <option value="anticoagulantes">anticoagulantes</option>
+            <option value="antidiabéticos orales">antidiabéticos orales</option>
+            <option value="insulina">insulina</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="info">Información pre-intervención quirúrgica: </label>
+          <textarea id="informacion" name="informacion" placeholder="Inserte la información relevante.." rows="6" cols="60"></textarea>
+        </div>
+
+        <div class="botones">
+          <input class="btn" type="submit" value="Dar de alta" />
+          <input class="btn" type="reset" value="Borrar Todo" />
+        </div>
+        
+      </fieldset></div>
+    </form>
+  </body>
+
+</html>

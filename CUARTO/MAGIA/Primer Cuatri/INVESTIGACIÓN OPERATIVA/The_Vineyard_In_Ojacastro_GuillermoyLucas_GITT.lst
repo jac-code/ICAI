@@ -1,0 +1,444 @@
+GAMS 32.2.0  rc62c018 Released Aug 26, 2020 DEX-DEG x86 64bit/Mac OS X - 10/30/20 22:37:45 Page 1
+TheVineyardInOjacastro
+C o m p i l a t i o n
+
+
+   2   
+   3  option optcr = 0 ;
+   4   
+   5  sets
+   6  i       'Portions' /X,Y,Z/
+   7  j       'Systems' /a,b,c,d,e,f/;
+   8   
+   9  scalar  ta 'Total amortization (3000 €)' /6000/;
+  10   
+  11  table   ip(i,j)  'Average increase in production in tonnes in portion i installing system j'
+  12   
+  13          a   b   c   d   e   f
+  14  X       30  40  25  28  35  26
+  15  Y       26  21  27  40  35  40
+  16  Z       25  18  20  25  30  25;
+  17   
+  18  table   a(i,j)  'Anual amortization in € of water system j in portion i'
+  19   
+  20          a     b     c     d     e     f
+  21  X       3000  4000  2500  2300  3200  3300
+  22  Y       3200  2700  4000  5000  2000  4500
+  23  Z       2800  2000  2000  2800  3000  2200;
+  24   
+  25  table   mc(i,j)  'Maintenance cost of system j in portion i'
+  26   
+  27          a     b     c     d     e     f
+  28  X       1000  1200  900   1100  1200  1300
+  29  Y       1200  800   1400  1500  1200  1500
+  30  Z       1200  700   800   1000  1100  900;
+  31   
+  32   
+  33  parameter
+  34  p   'Grapes price [€ per kg]' /0.85/;
+  35   
+  36  parameter
+  37  M1 'upper bound' /2/;
+  38   
+  39  parameter
+  40  m 'lower bound' /1/;
+  41   
+  42  variables
+  43  OFV     'Objective function value. Global profit of the vineyard'
+  44  X(i,j)  'Indicator if system j is installed in the portion i'
+  45   
+  46  binary variable X;
+  47   
+  48  equations
+  49  EQ_OF           'objective function'
+  50  NSYS2           'Number of systems installed'
+  51  NSYS3
+  52  AMOR            'Limitation of total amortization'
+  53  MCOST           'Total maintenance cost should be lower than one fifth of the total expected income.'
+  54  EQ_CON1(i,j)    'The portions where the system is installed should be contiguous (horizontal,vertical or diagonal)'
+  55  EQ_CON2(i,j)
+  56  EQ_YA           'If we select the portion (Y, a) then we need to select (X, a) and (X, b)'
+  57  EQ_ACOLUMN(i)   'If the selected portion is in the column “a” the rest of portions should be selected in the same row'
+  58  EQ_XROW(j)      'If there is a selected portion in the row X”, if there are any other portions selected, they should belong to the same column';
+  59   
+  60  EQ_OF..         OFV =E= sum((i,j), X(i,j)*(ip(i,j)*1000*p - a(i,j) - mc(i,j)));
+  61   
+  62  NSYS2..         2 =L= sum[(i,j), X(i,j)];
+  63   
+  64  NSYS3..         3 =G= sum[(i,j), X(i,j)];
+  65   
+  66  AMOR..          sum[(i,j), X(i,j)*a(i,j)] =L= ta;
+  67   
+  68  MCOST..         sum[(i,j), X(i,j)*mc(i,j)] =L= 1/5*OFV;
+  69   
+  70  EQ_CON1(i,j)..  M1+(1-X(i,j)) =G= X(i+1,j) + X(i-1, j)+ X(i, j+1)+ X(i, j-1)+ X(i+1, j+1)+ X(i+1, j-1)+ X(i-1, j+1)+ X(i-1, j-1);
+  71   
+  72  EQ_CON2(i,j)..  m*X(i,j) =L= X(i+1,j) + X(i-1, j)+ X(i, j+1)+ X(i, j-1)+ X(i+1, j+1)+ X(i+1, j-1)+ X(i-1, j+1)+ X(i-1, j-1);
+  73   
+  74  EQ_YA..         X("X","a") + X("X","b") =G= 2*X("Y","a");
+  75   
+  76  EQ_ACOLUMN(i).. m*X(i,"a") =L= sum(j,X(i,j+1));
+  77   
+  78  EQ_XROW(j)..    m*X("X",j) =L= sum(i,X(i+1,j));
+  79   
+  80  model vineyard /ALL/;
+  81   
+  82  solve vineyard using mip maximizing OFV;
+  83   
+  84  display X.L, OFV.L;
+  85   
+
+
+COMPILATION TIME     =        0.008 SECONDS      3 MB  32.2.0 rc62c018 DEX-DEG
+GAMS 32.2.0  rc62c018 Released Aug 26, 2020 DEX-DEG x86 64bit/Mac OS X - 10/30/20 22:37:45 Page 2
+TheVineyardInOjacastro
+Equation Listing    SOLVE vineyard Using MIP From line 82
+
+
+---- EQ_OF  =E=  objective function
+
+EQ_OF..  OFV - 21500*X(X,a) - 28800*X(X,b) - 17850*X(X,c) - 20400*X(X,d) - 25350*X(X,e) - 17500*X(X,f) - 17700*X(Y,a) - 14350*X(Y,b) - 17550*X(Y,c) - 27500*X(Y,d) - 26550*X(Y,e) - 28000*X(Y,f) - 17250*X(Z,a) - 12600*X(Z,b) - 14200*X(Z,c) - 17450*X(Z,d) - 21400*X(Z,e) - 18150*X(Z,f) =E= 0 ; (LHS = 0)
+     
+
+---- NSYS2  =L=  Number of systems installed
+
+NSYS2..  - X(X,a) - X(X,b) - X(X,c) - X(X,d) - X(X,e) - X(X,f) - X(Y,a) - X(Y,b) - X(Y,c) - X(Y,d) - X(Y,e) - X(Y,f) - X(Z,a) - X(Z,b) - X(Z,c) - X(Z,d) - X(Z,e) - X(Z,f) =L= -2 ; (LHS = 0, INFES = 2 ****)
+     
+
+---- NSYS3  =G=  
+
+NSYS3..  - X(X,a) - X(X,b) - X(X,c) - X(X,d) - X(X,e) - X(X,f) - X(Y,a) - X(Y,b) - X(Y,c) - X(Y,d) - X(Y,e) - X(Y,f) - X(Z,a) - X(Z,b) - X(Z,c) - X(Z,d) - X(Z,e) - X(Z,f) =G= -3 ; (LHS = 0)
+     
+
+---- AMOR  =L=  Limitation of total amortization
+
+AMOR..  3000*X(X,a) + 4000*X(X,b) + 2500*X(X,c) + 2300*X(X,d) + 3200*X(X,e) + 3300*X(X,f) + 3200*X(Y,a) + 2700*X(Y,b) + 4000*X(Y,c) + 5000*X(Y,d) + 2000*X(Y,e) + 4500*X(Y,f) + 2800*X(Z,a) + 2000*X(Z,b) + 2000*X(Z,c) + 2800*X(Z,d) + 3000*X(Z,e) + 2200*X(Z,f) =L= 6000 ; (LHS = 0)
+     
+
+---- MCOST  =L=  Total maintenance cost should be lower than one fifth of the total expected income.
+
+MCOST..  - 0.2*OFV + 1000*X(X,a) + 1200*X(X,b) + 900*X(X,c) + 1100*X(X,d) + 1200*X(X,e) + 1300*X(X,f) + 1200*X(Y,a) + 800*X(Y,b) + 1400*X(Y,c) + 1500*X(Y,d) + 1200*X(Y,e) + 1500*X(Y,f) + 1200*X(Z,a) + 700*X(Z,b) + 800*X(Z,c) + 1000*X(Z,d) + 1100*X(Z,e) + 900*X(Z,f) =L= 0 ; (LHS = 0)
+     
+
+---- EQ_CON1  =G=  The portions where the system is installed should be contiguous (horizontal,vertical or diagonal)
+
+EQ_CON1(X,a)..  - X(X,a) - X(X,b) - X(Y,a) - X(Y,b) =G= -3 ; (LHS = 0)
+     
+EQ_CON1(X,b)..  - X(X,a) - X(X,b) - X(X,c) - X(Y,a) - X(Y,b) - X(Y,c) =G= -3 ; (LHS = 0)
+     
+EQ_CON1(X,c)..  - X(X,b) - X(X,c) - X(X,d) - X(Y,b) - X(Y,c) - X(Y,d) =G= -3 ; (LHS = 0)
+     
+REMAINING 15 ENTRIES SKIPPED
+
+
+---- EQ_CON2  =L=  
+
+EQ_CON2(X,a)..  X(X,a) - X(X,b) - X(Y,a) - X(Y,b) =L= 0 ; (LHS = 0)
+     
+EQ_CON2(X,b)..  - X(X,a) + X(X,b) - X(X,c) - X(Y,a) - X(Y,b) - X(Y,c) =L= 0 ; (LHS = 0)
+     
+EQ_CON2(X,c)..  - X(X,b) + X(X,c) - X(X,d) - X(Y,b) - X(Y,c) - X(Y,d) =L= 0 ; (LHS = 0)
+     
+REMAINING 15 ENTRIES SKIPPED
+
+
+---- EQ_YA  =G=  If we select the portion (Y, a) then we need to select (X, a) and (X, b)
+
+EQ_YA..  X(X,a) + X(X,b) - 2*X(Y,a) =G= 0 ; (LHS = 0)
+     
+
+---- EQ_ACOLUMN  =L=  If the selected portion is in the column “a” the rest of portions should be selected in the same row
+
+EQ_ACOLUMN(X)..  X(X,a) - X(X,b) - X(X,c) - X(X,d) - X(X,e) - X(X,f) =L= 0 ; (LHS = 0)
+     
+EQ_ACOLUMN(Y)..  X(Y,a) - X(Y,b) - X(Y,c) - X(Y,d) - X(Y,e) - X(Y,f) =L= 0 ; (LHS = 0)
+     
+EQ_ACOLUMN(Z)..  X(Z,a) - X(Z,b) - X(Z,c) - X(Z,d) - X(Z,e) - X(Z,f) =L= 0 ; (LHS = 0)
+     
+
+---- EQ_XROW  =L=  If there is a selected portion in the row X”, if there are any other portions selected, they should belong to the same column
+
+EQ_XROW(a)..  X(X,a) - X(Y,a) - X(Z,a) =L= 0 ; (LHS = 0)
+     
+EQ_XROW(b)..  X(X,b) - X(Y,b) - X(Z,b) =L= 0 ; (LHS = 0)
+     
+EQ_XROW(c)..  X(X,c) - X(Y,c) - X(Z,c) =L= 0 ; (LHS = 0)
+     
+REMAINING 3 ENTRIES SKIPPED
+
+GAMS 32.2.0  rc62c018 Released Aug 26, 2020 DEX-DEG x86 64bit/Mac OS X - 10/30/20 22:37:45 Page 3
+TheVineyardInOjacastro
+Column Listing      SOLVE vineyard Using MIP From line 82
+
+
+---- OFV  Objective function value. Global profit of the vineyard
+
+OFV
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       EQ_OF
+       -0.2     MCOST
+
+
+---- X  Indicator if system j is installed in the portion i
+
+X(X,a)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+   -21500       EQ_OF
+       -1       NSYS2
+       -1       NSYS3
+     3000       AMOR
+     1000       MCOST
+       -1       EQ_CON1(X,a)
+       -1       EQ_CON1(X,b)
+       -1       EQ_CON1(Y,a)
+       -1       EQ_CON1(Y,b)
+        1       EQ_CON2(X,a)
+       -1       EQ_CON2(X,b)
+       -1       EQ_CON2(Y,a)
+       -1       EQ_CON2(Y,b)
+        1       EQ_YA
+        1       EQ_ACOLUMN(X)
+        1       EQ_XROW(a)
+
+X(X,b)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+   -28800       EQ_OF
+       -1       NSYS2
+       -1       NSYS3
+     4000       AMOR
+     1200       MCOST
+       -1       EQ_CON1(X,a)
+       -1       EQ_CON1(X,b)
+       -1       EQ_CON1(X,c)
+       -1       EQ_CON1(Y,a)
+       -1       EQ_CON1(Y,b)
+       -1       EQ_CON1(Y,c)
+       -1       EQ_CON2(X,a)
+        1       EQ_CON2(X,b)
+       -1       EQ_CON2(X,c)
+       -1       EQ_CON2(Y,a)
+       -1       EQ_CON2(Y,b)
+       -1       EQ_CON2(Y,c)
+        1       EQ_YA
+       -1       EQ_ACOLUMN(X)
+        1       EQ_XROW(b)
+
+X(X,c)
+                (.LO, .L, .UP, .M = 0, 0, 1, 0)
+   -17850       EQ_OF
+       -1       NSYS2
+       -1       NSYS3
+     2500       AMOR
+      900       MCOST
+       -1       EQ_CON1(X,b)
+       -1       EQ_CON1(X,c)
+       -1       EQ_CON1(X,d)
+       -1       EQ_CON1(Y,b)
+       -1       EQ_CON1(Y,c)
+       -1       EQ_CON1(Y,d)
+       -1       EQ_CON2(X,b)
+        1       EQ_CON2(X,c)
+       -1       EQ_CON2(X,d)
+       -1       EQ_CON2(Y,b)
+       -1       EQ_CON2(Y,c)
+       -1       EQ_CON2(Y,d)
+       -1       EQ_ACOLUMN(X)
+        1       EQ_XROW(c)
+
+REMAINING 15 ENTRIES SKIPPED
+GAMS 32.2.0  rc62c018 Released Aug 26, 2020 DEX-DEG x86 64bit/Mac OS X - 10/30/20 22:37:45 Page 4
+TheVineyardInOjacastro
+Model Statistics    SOLVE vineyard Using MIP From line 82
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS          10     SINGLE EQUATIONS           51
+BLOCKS OF VARIABLES           2     SINGLE VARIABLES           19
+NON ZERO ELEMENTS           355     DISCRETE VARIABLES         18
+
+
+GENERATION TIME      =        0.023 SECONDS      4 MB  32.2.0 rc62c018 DEX-DEG
+GAMS 32.2.0  rc62c018 Released Aug 26, 2020 DEX-DEG x86 64bit/Mac OS X - 10/30/20 22:37:45 Page 5
+TheVineyardInOjacastro
+Solution Report     SOLVE vineyard Using MIP From line 82
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   vineyard            OBJECTIVE  OFV
+     TYPE    MIP                 DIRECTION  MAXIMIZE
+     SOLVER  CPLEX               FROM LINE  82
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+**** OBJECTIVE VALUE            51900.0000
+
+ RESOURCE USAGE, LIMIT          0.044 10000000000.000
+ ITERATION COUNT, LIMIT         5    2147483647
+
+IBM ILOG CPLEX   32.2.0 rc62c018 Released Aug 26, 2020 DEG x86 64bit/Mac OS X 
+*** This solver runs with a demo license. No commercial use.
+Cplex 12.10.0.0
+
+Space for names approximately 0.00 Mb
+Use option 'names no' to turn use of names off
+MIP status(101): integer optimal solution
+Cplex Time: 0.02sec (det. 0.69 ticks)
+Fixing integer variables, and solving final LP...
+Fixed MIP status(1): optimal
+Cplex Time: 0.00sec (det. 0.05 ticks)
+Proven optimal solution.
+
+MIP Solution:        51900.000000    (5 iterations, 0 nodes)
+Final Solve:         51900.000000    (0 iterations)
+
+Best possible:       51900.000000
+Absolute gap:            0.000000
+Relative gap:            0.000000
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU EQ_OF               .              .              .             1.0000      
+---- EQU NSYS2             -INF           -2.0000        -2.0000          .          
+---- EQU NSYS3             -3.0000        -2.0000        +INF             .          
+---- EQU AMOR              -INF         5200.0000      6000.0000          .          
+---- EQU MCOST             -INF        -7980.0000          .              .          
+
+  EQ_OF  objective function
+  NSYS2  Number of systems installed
+  AMOR  Limitation of total amortization
+  MCOST  Total maintenance cost should be lower than one fifth of the total expected income.
+
+---- EQU EQ_CON1  The portions where the system is installed should be contiguous (horizontal,vertical or diagonal)
+
+           LOWER          LEVEL          UPPER         MARGINAL
+
+X.a        -3.0000          .            +INF             .          
+X.b        -3.0000          .            +INF             .          
+X.c        -3.0000          .            +INF             .          
+X.d        -3.0000        -2.0000        +INF             .          
+X.e        -3.0000        -2.0000        +INF             .          
+X.f        -3.0000        -2.0000        +INF             .          
+Y.a        -3.0000          .            +INF             .          
+Y.b        -3.0000          .            +INF             .          
+Y.c        -3.0000          .            +INF             .          
+Y.d        -3.0000        -2.0000        +INF             .          
+Y.e        -3.0000        -2.0000        +INF             .          
+Y.f        -3.0000        -2.0000        +INF             .          
+Z.a        -3.0000          .            +INF             .          
+Z.b        -3.0000          .            +INF             .          
+Z.c        -3.0000          .            +INF             .          
+Z.d        -3.0000        -1.0000        +INF             .          
+Z.e        -3.0000        -1.0000        +INF             .          
+Z.f        -3.0000        -1.0000        +INF             .          
+
+---- EQU EQ_CON2  
+
+           LOWER          LEVEL          UPPER         MARGINAL
+
+X.a        -INF             .              .              .          
+X.b        -INF             .              .              .          
+X.c        -INF             .              .              .          
+X.d        -INF           -2.0000          .              .          
+X.e        -INF             .              .              .          
+X.f        -INF           -2.0000          .              .          
+Y.a        -INF             .              .              .          
+Y.b        -INF             .              .              .          
+Y.c        -INF             .              .              .          
+Y.d        -INF           -2.0000          .              .          
+Y.e        -INF             .              .              .          
+Y.f        -INF           -2.0000          .              .          
+Z.a        -INF             .              .              .          
+Z.b        -INF             .              .              .          
+Z.c        -INF             .              .              .          
+Z.d        -INF           -1.0000          .              .          
+Z.e        -INF           -1.0000          .              .          
+Z.f        -INF           -1.0000          .              .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU EQ_YA               .              .            +INF             .          
+
+  EQ_YA  If we select the portion (Y, a) then we need to select (X, a) and (X, b)
+
+---- EQU EQ_ACOLUMN  If the selected portion is in the column “a” the rest of portions should be selected in the same row
+
+         LOWER          LEVEL          UPPER         MARGINAL
+
+X        -INF           -1.0000          .              .          
+Y        -INF           -1.0000          .              .          
+Z        -INF             .              .              .          
+
+---- EQU EQ_XROW  If there is a selected portion in the row X”, if there are any other portions selected, they should belong to the same column
+
+         LOWER          LEVEL          UPPER         MARGINAL
+
+a        -INF             .              .              .          
+b        -INF             .              .              .          
+c        -INF             .              .              .          
+d        -INF             .              .              .          
+e        -INF             .              .              .          
+f        -INF             .              .              .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR OFV               -INF        51900.0000        +INF             .          
+
+  OFV  Objective function value. Global profit of the vineyard
+
+---- VAR X  Indicator if system j is installed in the portion i
+
+           LOWER          LEVEL          UPPER         MARGINAL
+
+X.a          .              .             1.0000     21500.0000      
+X.b          .              .             1.0000     28800.0000      
+X.c          .              .             1.0000     17850.0000      
+X.d          .              .             1.0000     20400.0000      
+X.e          .             1.0000         1.0000     25350.0000      
+X.f          .              .             1.0000     17500.0000      
+Y.a          .              .             1.0000     17700.0000      
+Y.b          .              .             1.0000     14350.0000      
+Y.c          .              .             1.0000     17550.0000      
+Y.d          .              .             1.0000     27500.0000      
+Y.e          .             1.0000         1.0000     26550.0000      
+Y.f          .              .             1.0000     28000.0000      
+Z.a          .              .             1.0000     17250.0000      
+Z.b          .              .             1.0000     12600.0000      
+Z.c          .              .             1.0000     14200.0000      
+Z.d          .              .             1.0000     17450.0000      
+Z.e          .              .             1.0000     21400.0000      
+Z.f          .              .             1.0000     18150.0000      
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS 32.2.0  rc62c018 Released Aug 26, 2020 DEX-DEG x86 64bit/Mac OS X - 10/30/20 22:37:45 Page 6
+TheVineyardInOjacastro
+E x e c u t i o n
+
+
+----     84 VARIABLE X.L  Indicator if system j is installed in the portion i
+
+            e
+
+X       1.000
+Y       1.000
+
+
+----     84 VARIABLE OFV.L                 =    51900.000  Objective function value. Global profit of the vineyard
+
+
+EXECUTION TIME       =        0.162 SECONDS      4 MB  32.2.0 rc62c018 DEX-DEG
+
+
+USER: GAMS Demo license for GUILLERMO ALDREY         G200923|0002CO-GEN
+      Universidad Pontificia Comillas, Spain                   DL017849
+
+
+**** FILE SUMMARY
+
+Input      /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/The_Vineyard_In_Ojacastro_GuillermoyLucas_GITT.gms
+Output     /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/The_Vineyard_In_Ojacastro_GuillermoyLucas_GITT.lst

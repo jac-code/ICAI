@@ -1,0 +1,292 @@
+%% PRACTICA 4. SERVICIOS TELEMATICOS MULTIMEDIA
+
+% Guillermo Aldrey Pastor
+
+% Fecha de Entrega: 13/11/2020
+
+% En este archivo "practica4.m" se procede a la resolucion de la practica.
+% Se comentara brevemente los pasos a seguir, ya que la explicacion de cada
+% apartado se explica en detalle en el pdf que se adjunta junto con este archivo.
+
+%% PARTE A - ANALISIS MPEG1 AUDIO EN NIVEL I
+
+% El nivel 1 de MPEG ofrece una calidad muy buena comparada con la alta
+% velocidad de transmision que facilita. Es el mas simple y esta pensado
+% para bitrates superiores a 128kbps
+
+% a) Elegir un fichero de audio (no voz) en formato .wav. Indicar que tipo
+% de audio se ha elegido y el tamanio del mismo.
+
+clc;clear;close all
+    
+[x , Fs] = audioread('Jazz.wav');
+sound(x,Fs)
+
+plot(x)
+axis ([0 length(x) -1 1])
+title('Señal de audio')
+
+x_1 = x(10000:13840);
+x_2 = x(20000:23840);
+sound(x_1,Fs)
+sound(x_2,Fs)
+
+figure
+subplot(2,1,1)
+plot(x_1, 'r')
+axis ([0 length(x_1) -1 1])
+title('Primer Fragmento')
+subplot(2,1,2)
+plot(x_2, 'g')
+axis ([0 length(x_2) -1 1])
+title('Segundo Fragmento')
+
+
+% b) Usar el codigo de MPEG1 de nivel 1 para tratar el fichero de audio.
+% Encontrar las componentes tonales y no tonales en un pequenio fragmento
+% del fichero de audio.
+
+    [TH, map, LTq] = Table_absolute_threshold(1, Fs, 128);
+    CB = Table_critical_band_boundaries(1,Fs);
+    C = Table_analysis_window;
+
+    % Obtengo las subbandas. Cada frame de audio consta de 12 muestras por
+    % subbanda ya que estamos en el nivel I. El algoritmo divide la senial de
+    % entrada en 32 sub-bandas de frecuencia con el banco de filtros.
+    s1=[];
+    s2=[]; 
+    OFFSET=1;
+       for i = 0:11 %Son 12 valores por que es mpeg1
+          s1 = [s1; Analysis_subband_filter(x_1, OFFSET + 32 * i, C)];
+          s2 = [s2; Analysis_subband_filter(x_2, OFFSET + 32 * i, C)];
+
+       end
+
+       scf_1 = Scale_factors(s1);
+       scf_2 = Scale_factors(s2);
+
+       X = FFT_Analysis(x, OFFSET);
+       X_1 = FFT_Analysis(x_1, OFFSET);
+       X_2 = FFT_Analysis(x_2, OFFSET);
+
+       Lsb_1 = Sound_pressure_level(X_1, scf_1); 
+       Lsb_2 = Sound_pressure_level(X_2, scf_2); 
+       
+    % Sacamos las componentes tonales y no tonales
+    
+    [Flags_1, Tonal_list_1, Non_tonal_list_1] = Find_tonal_components(X_1, TH, map, CB)
+    [Flags_2, Tonal_list_2, Non_tonal_list_2] = Find_tonal_components(X_2, TH, map, CB)
+    
+    % Optimizamos los coeficientes a traves de la funcion "decimation"
+    
+    [Flags_1, Tonal_list_1, Non_tonal_list_1] = Decimation(X_1, Tonal_list_1, Non_tonal_list_1, Flags_1, TH, map)
+    [Flags_2, Tonal_list_2, Non_tonal_list_2] = Decimation(X_2, Tonal_list_2, Non_tonal_list_2, Flags_2, TH, map)
+    
+% c) Representar las componentes de enmascaramiento y sus umbrales para dos
+% pequenios fragmentos del fichero de audio.
+
+[LTt_1, LTn_1] =    Individual_masking_thresholds(X_1, Tonal_list_1, Non_tonal_list_1, TH, map);
+[LTt_2, LTn_2] =    Individual_masking_thresholds(X_2, Tonal_list_2, Non_tonal_list_2, TH, map);
+
+LTg_1 = Global_masking_threshold(LTq, LTt_1, LTn_1);
+LTg_2 = Global_masking_threshold(LTq, LTt_2, LTn_2);
+
+DRAW=true;
+   if (DRAW)
+      disp('Global masking threshold');
+      hold on;
+      plot(TH(:, 1), LTg_1, 'k--');
+      hold off;
+      title('Masking components and masking thresholds for fragment #1.');
+      grid;
+   end
+   
+DRAW=true;
+   if (DRAW)
+      disp('Global masking threshold');
+      hold on;
+      plot(TH(:, 1), LTg_2, 'k--');
+      hold off;
+      title('Masking components and masking thresholds for fragment #2.');
+      grid;
+   end
+
+
+
+% d) Representar el umbral de enmascaramiento minimo en cada sub-banda para
+% dos pequenios fragmentos del fichero de audio.
+
+LTmin_1 = Minimum_masking_threshold(LTg_1, map);
+LTmin_2 = Minimum_masking_threshold(LTg_2, map);
+
+figure
+subplot(2,1,1)
+plot(LTmin_1, 'r')
+title('Umbral mínimo del fragmento 1')
+xlabel('Índice sub-banda')
+ylabel('Valor Umbral (db)')
+subplot(2,1,2)
+plot(LTmin_2, 'g')
+title('Umbral mínimo del fragmento 2')
+xlabel('Índice sub-banda')
+ylabel('Valor Umbral (db)')
+
+
+% e) Calcular la ratio senial / mascara para dos pequenios fragmentos del
+% fichero de audio.
+
+SMRsb_1 = Lsb_1 - LTmin_1;
+SMRsb_2 = Lsb_2 - LTmin_2;
+
+figure
+subplot(2,1,1)
+plot(SMRsb_1, 'r')
+title('Signal-to-mask ratio para el fragmento 1')
+subplot(2,1,2)
+plot(SMRsb_2, 'g')
+title('Signal-to-mask ratio para el fragmento 2')
+
+figure;
+plot(SMRsb_1);
+hold on;
+plot(SMRsb_2,'red');
+grid;
+title('SMR Ambos fragmentos');
+legend('Fragmento 1','Fragmento 2');
+
+
+
+%% PARTE B - ANALISIS MPEG1 AUDIO EN NIVEL III (MP3)
+
+clc;clear;close all
+
+% El nivel 3 (MP3) es más complejo y originalmente tuvo como objetivo la
+% transmision de audio sobre líneas ISDN (Integrated Services Digital Network).
+% Pensado para bitrates cercanos a 64 Kbps por canal
+
+% a) Usar el fichero de audio anterior y el código para convertir el fichero 
+% wav a mp3 usando al menos dos velocidades (tasas de bits diferentes)
+
+    % He usado el fichero "Jazz.wav" y el codigo del archivo Wav2mp3 para
+    % convertir mi fichero wav a mp3, usando tres velocidades distintas
+    % (96, 160 y 256).
+    
+    [x , Fs] = audioread('Jazz.wav');
+    [x1 , Fs1] = audioread('Jazz96.mp3');
+    [x2 , Fs2] = audioread('Jazz160.mp3');
+    [x3 , Fs3] = audioread('Jazz256.mp3');
+    sound(x, Fs)
+    sound(x1, Fs1)
+    sound(x2, Fs2)
+    sound(x3, Fs3)
+    
+    figure;
+    hold on;
+    plot(x3,'y')
+    plot(x2,'g')
+    plot(x1,'r')
+    plot(x,'b')
+    title('Comparacion ficheros')
+    legend('Señal codificada a 256 bps','Señal codificada a 160 bps','Señal codificada a 96 bps','Señal Original')
+    hold off;
+    
+    figure;
+    subplot(4,1,1)
+    plot(x,'b')
+    title('Señal Original')
+    subplot(4,1,2)
+    plot(x1,'r')
+    title('Señal codificada a 96 bps')
+    subplot(4,1,3)
+    plot(x2,'g')
+    title('Señal codificada a 160 bps')
+    subplot(4,1,4)
+    plot(x3,'y')
+    title('Señal codificada a 256 bps')
+    
+    
+% b) Indicar el tiempo transcurrido en el proceso de paso a mp3 en ambas
+% ocasiones
+
+    % V=96bps --> t = 14.456788 seconds
+    % V=160 bps --> t = 18.865840 seconds
+    % V=256 bps --> t = 26.083397 seconds 
+    
+% c) Comparar tamaños de fichero wav y los dos obtenidos al pasarlos por el
+% compresor (ratios de compresion)
+
+    Tam_wav = 871;
+    Tam_Jazz96 = 118;
+    Tam_Jazz160 = 197;
+    Tam_Jazz256 = 316;
+    
+    Cr96 = Tam_wav / Tam_Jazz96;
+    Cr160 = Tam_wav / Tam_Jazz160;
+    Cr256 = Tam_wav / Tam_Jazz256;
+    
+
+
+% d) Comentar la calidad obtenida en todos los casos. Evaluar diferencia o
+% errores de manera cuantitativa
+    
+    error1 = x(1:length(x1)) - x1; %Error entre original y Jazz96
+    error2 = x(1:length(x2)) - x2; %Error entre original y Jazz160
+    error3 = x(1:length(x3)) - x3; %Error entre original y Jazz256
+    
+    figure;
+    hold on;
+    plot(error3,'r')
+    plot(error2,'g')
+    plot(error1,'y')
+    title('Comparacion errores')
+    legend('Error entre original y Jazz256', 'Error entre original y Jazz160','Error entre original y Jazz96')
+    hold off;
+    
+    figure;
+    subplot(3,1,1)
+    plot(error1,'b')
+    title('Error entre original y Jazz96')
+    subplot(3,1,2)
+    plot(error2,'r')
+    title('Error entre original y Jazz160')
+    subplot(3,1,3)
+    plot(error3,'g')
+    title('Error entre original y Jazz256')
+    
+    figure;
+    subplot(3,1,1)
+    histogram(error1)
+    subplot(3,1,2)
+    histogram(error2)
+    subplot(3,1,3)
+    histogram(error3)
+    
+    mean(error1)
+    mean(error2)
+    mean(error3)
+ 
+    std(error1)
+    std(error2)
+    std(error3)
+
+
+% e) Usar el fichero de audio en formato .wav para cargarlo en 'Audacity' y
+% desde esa aplicacion exportarlo como formato mp3. Evaluar tamaños origen
+% y final y su ratio de compresion. Cargar ambos ficheros en Matlab, tanto
+% el original wav, como el expotado mp3, y analizar sus diferencias o error
+% de manera cuantitativa y de forma gráfica con gráficos e histograma.
+    
+    [xAu , FsAu] = audioread('JazzAudacity.mp3');
+    errorAu = x(1:length(x1)) - x1;
+    
+
+% f ) Comentar la calidad obtenida respecto a los casos analizados antes.
+% Evaluar las diferencias encontradas en ambos metodos de paso a mp3.
+
+
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+GAMS 32.2.0  rc62c018 Released Aug 26, 2020 DEX-DEG x86 64bit/Mac OS X - 10/30/20 16:22:39 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  sets
+   2  i numero de semana / s1, s2, s3 /
+   3  j puesto de trabajo / p1, p2, p3 /
+   4   
+   5  parameters
+   6  b (i) demanda de bombones de la semana i/ s1 43, s2 33, s3 0/
+   7  c (j) coste unitario de produccion por puesto j/ p1 2, p2 1, p3 0.8 /
+   8  k (j) coste unitario de alamacenaje por semana en puesto j
+   9           / p1 0.02, p2 0.03, p3 0.005 /
+  10  m (j) stock maximo en puesto j/  p1 30, p2 30, p3 35/
+  11  n (j) m�nimo stock en puesto j/ p1 10, p2 10, p3 10/
+  12  p (j) producci�n m�xima semanal en puesto j/ p1 20, p2 10, p3 8/
+  13  z (j) stock inicial y final en puesto j/ p1 17, p2 20, p3 20/
+  14   
+  15  variables
+  16  S (i, j) cantidad de producto al inicio de la semana i en puesto j.
+  17  X (i, j) producci�n durante la semana i en el puesto j.
+  18  Y(i,j)  demanda decada caja j la semana i.
+  19  CT coste total de produccion .
+  20   
+  21  POSITIVE VARIABLE X, S, Y;
+  22   
+  23  EQUATIONS
+  24  COSTE coste total de produccion [euros]
+  25  CAPACIDADMAX (i,j) capacidad maxima de produccion semanal de cada puesto j [bombones]
+  26  STOCKMIN (i,j) Stock minimo de cada puesto j [bombones]
+  27  STOCKMAX (i,j) Stock maximo de cada puesto j [bombones]
+  28  STOCKIN (j)  Stock inicial de cada puesto j [bombones]
+  29  STOCKFIN (j)  Stock final de cada puesto j [bombones]
+  30  DEMANDAPUESTO (i,j) satisfaccion demanda de cada caja j en la semana i [bombones]
+  31  DEMANDATOTAL (i) demanda total de la semana i;
+  32   
+  33  COSTE .. CT =E= SUM((i,j), c(j) * X(i,j)) + SUM((i,j),(S(i,j)+S(i+1, j))/2*k(j))-SUM((j),S('s3',j)/2*k(j));
+  34  CAPACIDADMAX (i,j) ..  X(i,j) =L= p(j) ;
+  35  STOCKMIN (i, j) .. S(i,j) =G= n(j) ;
+  36  STOCKMAX (i, j) .. S(i,j) =L= m(j) ;
+  37  STOCKIN (j) .. S('s1', j) =E= z (j);
+  38  STOCKFIN (j) .. S('s3', j) =E= z (j);
+  39  DEMANDAPUESTO (i,j) $ (ORD(i) ne CARD(i))) ..  S(i, j) + X(i,j)- S(i+1,j)=E= +Y(i,j);
+****                                           $36$409
+****  36  '=' or '..' or ':=' or '$=' operator expected
+****      rest of statement ignored
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  40  DEMANDATOTAL (i) .. SUM ((j), Y(i,j))=E= b(i);
+  41   
+  42   
+  43  model produccion /all/;
+  44  solve produccion using LP minimizing CT;
+****                                         $257
+**** 257  Solve statement not checked because of previous errors
+  45   
+
+**** 3 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.004 SECONDS      3 MB  32.2.0 rc62c018 DEX-DEG
+
+
+USER: GAMS Demo license for GUILLERMO ALDREY         G200923|0002CO-GEN
+      Universidad Pontificia Comillas, Spain                   DL017849
+
+
+**** FILE SUMMARY
+
+Input      /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.gms
+Output     /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem9.lst
+
+**** USER ERROR(S) ENCOUNTERED

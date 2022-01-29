@@ -1,0 +1,32 @@
+B 3 C o m p i l a t i o n
+B 95 Equation Listing    SOLVE vineyard Using MIP From line 82
+D 98 EQ_OF
+D 103 NSYS2
+D 108 NSYS3
+D 113 AMOR
+D 118 MCOST
+D 123 EQ_CON1
+D 134 EQ_CON2
+D 145 EQ_YA
+D 150 EQ_ACOLUMN
+D 159 EQ_XROW
+B 171 Column Listing      SOLVE vineyard Using MIP From line 82
+E 174 OFV
+E 182 X
+B 251 Model Statistics    SOLVE vineyard Using MIP From line 82
+B 264 Solution Report     SOLVE vineyard Using MIP From line 82
+F 303 EQ_OF
+F 304 NSYS2
+F 305 NSYS3
+F 306 AMOR
+F 307 MCOST
+F 314 EQ_CON1
+F 337 EQ_CON2
+F 362 EQ_YA
+F 366 EQ_ACOLUMN
+F 374 EQ_XROW
+G 387 OFV
+G 391 X
+B 420 E x e c u t i o n
+I 420 X
+I 430 OFV

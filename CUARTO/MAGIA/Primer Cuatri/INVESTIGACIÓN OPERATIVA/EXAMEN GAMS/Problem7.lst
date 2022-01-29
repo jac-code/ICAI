@@ -1,0 +1,84 @@
+GAMS 32.2.0  rc62c018 Released Aug 26, 2020 DEX-DEG x86 64bit/Mac OS X - 10/30/20 16:29:19 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  OPTION OPTCR=0.0;
+   2  SETS
+   3  i available cities /A,B,C,D,E,F,G,H/
+   4  ALIAS(i,j)
+   5  PARAMETERS f(i) food obtained in city i
+   6  /A 15000,B 12000,C 9000,D 10000,E 13000,F 8000,G 11000,H 17000/
+   7  fc(i) fixed cost of using airport in city i
+   8  /A 2000,B 1500,C 1400,D 1600,E 2100,F 2000,G 1800,H 1000/
+   9  cp(i) cost of using a plane in city i
+  10  /A 18000,B 17500,C 17500,D 17000,E 16000,F 17000,G 16500,H 15000/
+  11  ckmkg additional cost per kg and km for ground transporting
+  12  /0.004/
+  13  cap maximum capacity of the planes
+  14  /20000/
+  15  maxp maximum number of planes we can use in every city
+  16  /3/
+  17  maxc maximum number of cities from where to ship the food in planes
+  18  /4/
+  19   
+  20  TABLE d(i,j) distance between city i and city j expressed in km
+  21      A   B   C   D   E   F   G   H
+  22  A     350 280 470 750 420 520 1050
+  23  B 350     320 240 400 480 510 680
+  24  C 280 320     420 650 170 260 820
+  25  D 470 240 420     270 550 300 450
+  26  E 750 400 650 270     800 530 540
+  27  F 420 480 170 550 800     340 940
+  28  G 520 510 260 300 530 340     600
+  29  H 1050 680 820 450 540 940 600
+  30   
+  31  VARIABLES
+  32  VFO Value of the Objective Function expressed as the total cost in � of the operation
+  33  BINARY VARIABLE X
+  34  X(i) Variable that shows if we are using city i as a city where planes take off
+  35  INTEGER VARIABLE
+  36  N(i) Number of planes used in the city i
+  37  POSITIVE VARIABLE
+  38  C(i,j) Amount of food ground transported from city i to city j expressed in kg
+  39   
+  40  EQUATIONS
+  41  FO Total cost of the operation expressed in �
+  42  PLANELIMITATION(i) Limitation on the number of planes that can take off from city i
+  43  CITYLIMITATION Indicates that you can not fly from more than a certain amount of cities
+  44  FLOWGROUND(i) Amount of food ground transported from city i expressed in kg
+  45  FOODLIMITATION(i) The amount of food ground transported form i to j can`t be bigger than
+  46  the total amount initially existing
+  47  CITYIMPLICATION(i) This implies that if a city airport is used at least one plane must take off
+  48  from that city
+  49  FLOWFOOD(i) Food is sent from the cities which the airport is being used
+  50  ;
+  51  FO .. VFO =E= SUM[(i), N(i)*cp(i) + X(i)*fc(i)] + SUM[(i,j), ckmkg*d(i,j)*C(i,j)];
+  52  PLANELIMITATION(i) .. N(i) =L= maxp*X(i);
+  53  CITYLIMITATION .. SUM(i, X(i)) =L= maxc;
+  54  FLOWGROUND(i) .. SUM[(j), C(i,j)] =E= f(i)*[1-X(i)];
+  55  FOODLIMITATION(i) .. SUM[(j), C(i,j)] =L= f(i)*[1-X(i)];
+  56  CITYIMPLICATION(i) .. X(i) =L= N(i);
+  57  FLOWFOOD(i) .. N(i)*cap =G= f(i)*X(i) + SUM(j, C(j,i));
+  58   
+  59  MODEL SECTIONA
+  60  /FO,FLOWGROUND,FOODLIMITATION,PLANELIMITATION,CITYLIMITATION,CITYIMPLICATION,FLOWFOOD/;
+  61  SOLVE SECTIONA USING LP MINIMIZING VFO
+****  $65,256,299  UNEXPECTED END OF FILE (1)
+
+**** 3 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.012 SECONDS      3 MB  32.2.0 rc62c018 DEX-DEG
+
+
+USER: GAMS Demo license for GUILLERMO ALDREY         G200923|0002CO-GEN
+      Universidad Pontificia Comillas, Spain                   DL017849
+
+
+**** FILE SUMMARY
+
+Input      /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem7.gms
+Output     /Users/guillermoaldreypastor/Desktop/CUARTO/INVESTIGACIÓN OPERATIVA/EXAMEN GAMS/Problem7.lst
+
+**** USER ERROR(S) ENCOUNTERED

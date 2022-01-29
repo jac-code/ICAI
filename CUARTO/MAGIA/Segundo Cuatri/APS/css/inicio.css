@@ -1,0 +1,52 @@
+
+
+.botones {
+	margin-top: 5%;
+	position: relative;
+	left: 25%;
+}
+
+.cerrar {
+	float: right;
+	background-color: #EBF5FB;
+  color: black;
+  border-radius: 10px;
+  margin-right: 50px;
+  margin-top: 50px;
+  font-size: 14px;
+}
+.volver {
+  float: right;
+  background-color: #EBF5FB;
+    color: black;
+    border-radius: 10px;
+    margin-right: 20px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.btn {
+  margin: 1em 0;
+  background-color: #EBF5FB;
+  color: black;
+  font-size: 20px;
+  height: 80px;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.img {
+	margin-top: 7%;
+	width: 25%;
+	height: 25%;
+}
+
+fieldset {
+    width: 75%;
+    height: 700px;
+    margin-left: 12.5%;
+}
+img {
+	padding-left: 37%;
+	
+}

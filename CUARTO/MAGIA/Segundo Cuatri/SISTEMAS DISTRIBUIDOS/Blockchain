@@ -1,0 +1,42 @@
+Blockchain
+----------
+
+Manera de guardar info de manera inmutable(nadie modifica, trazabilidad) en la red y de maner distribuida. guardar info sin q nadie pueda modificarla. Primer caso de uso bitcoins.
+
+Sistema descentralizado(NO DEPENDE NI DE BANCOS NI DE GOBIERO), nodos independientes, peer to peer (todos somos iguales). Libro mayor con las transacciones, cada 10 min se certifica q todo sea correcto.
+
+caracteristicas
+	
+		- P2P
+		- Anonimato. personas malas lo usan para hacer transacciones economicas. mafias, guerra...
+		- cadena de bloques
+		- consenso distribuido. Todos los integrantes de la red cada 10 minuto deben tener consenso d lo q ha ocurrido
+		- Criptografia
+
+
+El papel de criptografia fundamental. Se requiere una firma valida para ser incluida en la cadena de bloques
+Confidencialidad, autenticacion, integridad y no repudio.
+Algoritmos
+	simetricos --> una clave para cifrar y descifrar. Solo cubre confidencialidad
+	asimetricos --> publica y privada. Potencia en autenticacion e integridad, con las funciones hash
+
+longitud establecida del hash --> 256
+
+El resumen se crifra con la clave privada del remitente y el resultado(firma digital) se envia al destinatario junto con el mensaje propiamente dicho q puede ir o no, a su vez cifrado
+
+Bitcoin utiliza el esquema de clave publica. Publica para recibir bitcoin y privada ppara firmar transacciones y gastar dichos bitcoins
+
+Blockchain surge como soporte al bitcoin, permitiendo la creacion de una moneda y un sistema de transacción de esa moneda entre varios usuarios sin depender de una entidad centralizada. diapo 23 importante
+
+descentralizado --> ni gobierno ni bancos
+
+
+Clase 2
+-------
+Ethereum
+
+progrma funciones, las subes (EVM) y te cobran por la complejidad del algoritmo, por eso se huye de bucles for, se usa mas hashmpap, por la complejidad
+
+metamask --> monedero mas utilizado en ethereum
+web3 --> libreria javascript. 
+el primero a traves del segundo interactua con la blockchain

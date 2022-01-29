@@ -1,0 +1,99 @@
+CODIFICADOR MP3 EN MATLAB
+-------------------------
+
+Este es un programa que convierte un archivo de sonido WAV de Microsoft, en un 
+archivo de sonido MP3, de acuerdo a las especificaciones dadas en el estándar 
+internacional ISO/IEC 11172-3.
+
+El archivo WAV debe ser monofónico, con frecuencia de muestreo igual a 44100 Hz 
+y en formato PCM.
+
+El archivo resultante es creado con el mismo nombre del archivo WAV original, y 
+está codificado en formato MPEG-1 Capa III, con las siguientes características:
+
+ - Tasas de transferencia = 96...320 Kbps.
+ - Frecuencia de muestreo = 44100 Hz.
+ - Modo = Monofónico.
+
+El proyecto consiste de varios archivos-m relacionados entre sí, pensados para
+funcionar como un todo, y no para su utilización independiente; aunque después
+de entender el código, pueden ser personalizados. Los archivos que se incluyen
+en este proyecto son:
+
+1) Archivo principal:
+   - Wav2mp3.m
+
+2) Filtro híbrido:
+   - Ci.mat
+   - Filtro_subbanda.m
+   - Transf_discreta_coseno.m
+   - Aliasing.m
+
+3) Modelo Psicoacústico I:
+   - Analisis_fft.m
+   - Limites_banda_critica.m
+   - Componentes_tonales.m
+   - Reduccion.m
+   - Umbrales_enmasc_individual.m
+   - Umbral_enmasc_global.m
+
+4) Cuantización/Codificación:
+   - Distorsion_permitida.m
+   - Ciclo_interno.m
+   - Huffman.m
+   - Ciclo_externo.m
+
+5) Formato:
+   - Encabezado.m
+   - Info_secundaria.m
+   - Datos_principales.m
+
+Los archivos son totalmente modificables, de acuerdo con lo que cada usuario 
+desee visualizar del programa. Adicionalmente, se incluyen tres (3) archivos que 
+pueden ser usados por cualquier persona interesada en ampliar el codificador 
+hacia las Capas I y II del formato de audio MPEG-1. Estos archivos extra 
+intentan facilitar la ampliación y mejoramiento del codificador. Los 3 archivos 
+adicionales son (todos pertenecientes al modelo psicoacústico I):
+
+- Factores_escala.m
+- Nivel_presion_sonora.m
+- Umbral_enmasc_minimo.m
+
+El código ha sido probado en MATLAB 5.2 corriendo sobre Windows 98. Para empezar 
+a utilizar el programa, se deben copiar todos los archivos en un directorio del 
+disco duro que esté incluido en el PATH de Matlab y luego, llamar la rutina 
+"Wav2mp3" desde la ventana de comandos.
+
+Este programa está pensado de una manera didáctica, y el objetivo principal no 
+es un desempeño óptimo en cuanto a velocidad o calidad en el sonido, sino mostrar
+lo más detalladamente posible cómo funciona el esquema de codificación MP3.
+
+En cuanto a la velocidad de codificación, lo más recomendable es codificar tiempos
+pequeños, ya que el codificador en Matlab no fue pensado para trabajar en tiempo
+real, además de que la manera en que Matlab está construido, no lo permite.
+
+Este programa está basado en:
+Information Technology -- Coding of moving pictures and associated audio for
+digital storage media at up to about 1,5 Mbit/s -- Part 3: Audio. ISO/IEC. 
+Genève, Switzerland. First Edition. 1993-08-01. ISO/IEC IS 11172-3.
+
+Noticia Legal:
+El estándar ISO/IEC 11172-3 es propiedad de la Organización Internacional  
+para la Estandarización ISO. Todos los derechos reservados.
+
+Autores:
+Alejandro Duque González <aleduq@hotmail.com>
+Erwin Alexander Vargas Restrepo <alexvargas_1999@yahoo.com>
+Universidad Pontificia Bolivariana, Facultad de Ingeniería Electrónica.
+
+Directora del trabajo de grado:
+Gloria Elena Cárdenas Soto. Especialista en Telemática. Universidad de Antioquia.
+
+Agradecimientos a:
+Ricardo García, Magister in Music Engineering, por la idea original de este proyecto y
+por facilitar la consecución del estándar internacional en la biblioteca del MIT.
+
+Gloria Cárdenas, Especialista en Telemática, por su trabajo de revisión y por sus
+sugerencias.
+
+Jorge Londoño, Magister in Computer Science, por la asesoría prestada.

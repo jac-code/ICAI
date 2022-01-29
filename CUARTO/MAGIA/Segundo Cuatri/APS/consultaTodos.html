@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./css/consultaTodos.css">
+    <script type="text/javascript" src="./js/consultaTodos.js"></script>
+    <meta charset="UTF-8">
+    <title>FORMULARIO APS</title>
+  </head>
+  
+
+  <body>
+    <form action="registro.php" method="post" onsubmit="return validar()">
+      <fieldset>
+        <legend>Consulta de Pacientes</legend>
+
+        <div>
+          <img src="./images/logo.png">
+          <button class="volver" type="button" onclick="history.go(-1)">Volver</button>
+        </div>
+
+        <div style="margin-bottom: 10px; margin-left: 10px  ;margin-top: 20px  ;text-align: center; border-style: solid; border-color: black; padding-left: 5px; padding-right: 5px; width:300px; display:inline-block">
+                <u>ID DEL PACIENTE</u>
+        </div>
+        <div style="margin-bottom: 10px; margin-left: 10px  ;margin-top: 20px  ;text-align: center; border-style: solid; border-color: black; padding-left: 5px; padding-right: 5px; width:300px; display:inline-block">
+                <u>FECHA DE REGISTRO</u>
+        </div>
+
+
+        
+      </fieldset>
+    </form>
+  </body>
+
+</html>

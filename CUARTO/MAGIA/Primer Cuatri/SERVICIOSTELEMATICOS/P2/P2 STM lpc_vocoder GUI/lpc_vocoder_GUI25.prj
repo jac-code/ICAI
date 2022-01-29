@@ -1,0 +1,121 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="3092293610" file="C:\MATLAB\DSP\Rabiner\DownloadAll\lpc_vocoder\lpc_vocoder\lpc_vocoder_GUI25.prj" location="C:\MATLAB\DSP\Rabiner\DownloadAll\lpc_vocoder\lpc_vocoder" name="lpc_vocoder_GUI25" target="target.mlapps" target-name="Package App">
+    <param.appname>lpc_vocoder_GUI25</param.appname>
+    <param.authnamewatermark>Speech Processing</param.authnamewatermark>
+    <param.email>speechprocessing2013@gmail.com</param.email>
+    <param.company>Rutgers University/Standford University</param.company>
+    <param.icon>${PROJECT_ROOT}\lpc_vocoder_GUI25_resources\icon_24.png</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}\lpc_vocoder_GUI25_resources\icon_48.png</file>
+      <file>${PROJECT_ROOT}\lpc_vocoder_GUI25_resources\icon_24.png</file>
+      <file>${PROJECT_ROOT}\lpc_vocoder_GUI25_resources\icon_16.png</file>
+    </param.icons>
+    <param.summary>Builds an LPC vocoder, i.e., performs LPC analysis and synthesis on a speech file</param.summary>
+    <param.description>Speech processing designates a team consisting of Prof. Lawrence Rabiner (Rutgers University and University of California, Santa Barbara), Prof. Ronald Schafer (Stanford University), Kirty Vedula and Siva Yedithi (Rutgers University). This exercise is one of a set of speech processing exercises that are intended to supplement the teaching material in the textbook “Theory and Applications of Digital Speech Processing” by L R Rabiner and R W Schafer. 
+This MATLAB exercise builds an LPC vocoder, i.e., performs LPC analysis and synthesis on a speech file, resulting in a synthetic speech approximation to the original speech. The LPC analysis uses a standard autocorrelation analysis to determine the sets of LPC coefficients, on a frame-by-frame basis, along with the frame-based gain, G. An independent analysis method (a cepstral pitch period detector) classifies each frame of speech as being either voiced speech (with period determined by the location of the cepstral peak in a designated range of pitch periods) or unvoiced speech (simulated by a random noise frame) designated as a frame pitch period of 0 samples. The independent analysis provides a two-state excitation function for the LPC synthesis part of the processing, consisting of a series of pitch pulses (during voiced frames) and/or noise sequences (during unvoiced frames).</param.description>
+    <param.screenshot>${PROJECT_ROOT}\LPCVocoder.JPG</param.screenshot>
+    <param.version>1.0</param.version>
+    <param.products.name>
+      <item>MATLAB</item>
+      <item>Signal Processing Toolbox</item>
+    </param.products.name>
+    <param.products.id>
+      <item>'1'</item>
+      <item>'8'</item>
+    </param.products.id>
+    <param.products.version>
+      <item>8.5</item>
+      <item>7.0</item>
+    </param.products.version>
+    <param.platforms />
+    <param.output>${PROJECT_ROOT}\lpc_vocoder_GUI25.mlappinstall</param.output>
+    <param.guid>aac5d009-a8ea-4d64-9c33-f2091884dc27</param.guid>
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.version />
+      <param.platforms />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\lpc_vocoder_GUI25.m</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\autolpc.m</file>
+      <file>${PROJECT_ROOT}\Callbacks_lpc_vocoder_GUI25.m</file>
+      <file>${PROJECT_ROOT}\clear_all_graphics.m</file>
+      <file>${PROJECT_ROOT}\create_excitation_signal.m</file>
+      <file>${PROJECT_ROOT}\gen_pitch.m</file>
+      <file>${PROJECT_ROOT}\highpass_filter.m</file>
+      <file>${PROJECT_ROOT}\lpc_analysis.m</file>
+      <file>${PROJECT_ROOT}\medf.m</file>
+      <file>${PROJECT_ROOT}\normalize_excitation.m</file>
+      <file>${PROJECT_ROOT}\pitch_detect_cepstrum_GUI.m</file>
+      <file>${PROJECT_ROOT}\plot_excitation_signal.m</file>
+      <file>${PROJECT_ROOT}\plot_original_signal.m</file>
+      <file>${PROJECT_ROOT}\plot_pitch_period_contour.m</file>
+      <file>${PROJECT_ROOT}\plot_synthetic_signal.m</file>
+      <file>${PROJECT_ROOT}\save_excitations.m</file>
+      <file>${PROJECT_ROOT}\setup_lpc_vocoder.m</file>
+      <file>${PROJECT_ROOT}\smoothpitch.m</file>
+      <file>${PROJECT_ROOT}\synthesize_speech.m</file>
+      <file>C:\MATLAB\MATLABApps\lpc_frame_GUI25\functions_lrr\savewav.m</file>
+    </fileset.depfun>
+    <fileset.resources>
+      <file>${PROJECT_ROOT}\5.13 LPC Vocoder.pdf</file>
+      <file>${PROJECT_ROOT}\lpc_vocoder_pitch.mat</file>
+      <file>${PROJECT_ROOT}\LPCVocoder.JPG</file>
+      <file>${PROJECT_ROOT}\output_lpc_vocoder.txt</file>
+      <file>${PROJECT_ROOT}\Read_Me.txt</file>
+    </fileset.resources>
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\MATLAB\DSP\Rabiner\DownloadAll\lpc_vocoder\lpc_vocoder" name="lpc_vocoder_GUI25.mlappinstall" optional="false">C:\MATLAB\DSP\Rabiner\DownloadAll\lpc_vocoder\lpc_vocoder\lpc_vocoder_GUI25.mlappinstall</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2015a</root>
+      <toolboxes>
+        <toolbox name="matlabhdlcoder" />
+        <toolbox name="fixedpoint" />
+        <toolbox name="embeddedcoder" />
+        <toolbox name="matlabcoder" />
+      </toolboxes>
+      <toolbox>
+        <matlabhdlcoder>
+          <enabled>true</enabled>
+        </matlabhdlcoder>
+      </toolbox>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <embeddedcoder>
+          <enabled>true</enabled>
+        </embeddedcoder>
+      </toolbox>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>6.1</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
