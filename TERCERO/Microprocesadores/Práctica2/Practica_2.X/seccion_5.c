@@ -4,13 +4,10 @@
 
 int main(void)
 {
-    int puerto = 0x0000;
     int pulsador_ant, pulsador_act;
     
     TRISC = ~0x0F;
     LATC = 0x0F;
-    
-    //todos los pines como entradas
     TRISB |= (1 << BIT_PULSADOR);
     
     //leemos el estado del pulsador
@@ -24,9 +21,7 @@ int main(void)
         
         //si el pulsador == 0 --> está pulsado
         if((pulsador_act != pulsador_ant) && (pulsador_act == 0)){
-            //ponemos todos los campos a 0 --> se encienden los LEDs
-
-            if(contador > 15) {//PARA QUE VUELVA A EMPEZAR
+            if(contador > 15) { // vuelve a empezar
                 contador = 0;
             }
             contador = contador + 1;

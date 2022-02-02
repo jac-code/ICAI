@@ -5,7 +5,6 @@
 #define BIT_LED1 1
 #define BIT_LED2 2
 #define BIT_LED3 3
-#define NUMERO_LEDs 4
 
 int main(void) 
 {
@@ -13,8 +12,6 @@ int main(void)
     
     TRISC = ~0x0F;
     LATC = 0x0F;
-    
-    //todos los pines como entradas
     TRISB |= (1 << BIT_PULSADOR);
     
     //leemos el estado del pulsador
