@@ -1,2 +1,1 @@
-Esto es un fichero de prueba
-este es el final del fichero
+Hola, este es el archivo de texto de prueba.
