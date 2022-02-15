@@ -1,10 +1,3 @@
-/* 
- * File:   Pic32Ini.h
- * Author: daniel
- *
- * Created on January 27, 2018, 6:04 PM
- */
-
 #ifndef PIC32INI_H
 #define	PIC32INI_H
 
