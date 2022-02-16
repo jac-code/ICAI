@@ -1,3 +1,8 @@
+% Funcion con ley de compresion LEY A
+% Entradas --> señal a ser comprimida
+%              parámetro para la Ley A
+% Salida --> señal comprimida
+
 function [res] = Bloque_Compresor(entrada, A)
 
    for j= 1:length(entrada)

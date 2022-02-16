@@ -1,27 +1,31 @@
-%% PR¡CTICA 1
+%% PR¡CTICA 1 - Muestreo y CuantificaciÛn
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jaime Arana Cardel˙s
+% Guillermo Fern·ndez PÈrez
+% 3∫A - GITT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Muestreo
-load ('PDS_P1_3A_LE2_G6.mat');
-
 %% a)
+load ('PDS_P1_3A_LE2_G6.mat');
 Ts = t(4)-t(3); % 6.25 micro seg.
 fs = (1/Ts);    % 160 kHz
 
 %% b)
-X_f = fft(x, length(x)) / length(x);
-X_f = fftshift(X_f);
+Xf = fft(x, length(x)) / length(x);
+Xf = fftshift(Xf);
 
 n = length(t);
 fn = linspace((-fs/2), (fs/2), n);
 
 figure;
-plot(fn, abs(X_f));
+plot(fn, abs(Xf));
 xlabel('frecuencia (Hz)');
-ylabel('|X_f|');
-title('Transformada de Fourier de x(t)');
+ylabel('|Xf|');
+title('TDF x(t)');
 grid on;
 
-bw_x = 23500;
-fs_nyquist = 2 * bw_x;
+BW_x = 23500;
+fs_nyquist = 2 * BW_x;
 
 %% c)
 fs_g = 1.5 * fs_nyquist; 
@@ -30,66 +34,64 @@ fs_h = (2/3) * fs_nyquist;
 ts_g = 1/fs_g;
 ts_h = 1/fs_h;
 
-temp_g = t(1):ts_g:t(end);
-temp_h = t(1):ts_h:t(end);
+vector_g = t(1):ts_g:t(end);
+vector_h = t(1):ts_h:t(end);
 
-g = interp1(t, x, temp_g, 'spline');
-h = interp1(t, x, temp_h, 'spline');
+g_t = interp1(t, x, vector_g, 'spline');
+h_t = interp1(t, x, vector_h, 'spline');
 
 %% d)
-G_f = fft(g, length(g))/(length(g));
-H_f = fft(h, length(h))/(length(h));
+Gf = fft(g_t, length(g_t))/(length(g_t));
+Hf = fft(h_t, length(h_t))/(length(h_t));
 
-G_f=fftshift(G_f);
-H_f=fftshift(H_f);
+Gf = fftshift(Gf);
+Hf = fftshift(Hf);
 
-fn_g=linspace((-fs_g/2), (fs_g/2), length(g));
-fn_h=linspace((-fs_h/2), (fs_h/2), length(h));
+vector_fg = linspace((-fs_g/2), (fs_g/2), length(g_t));
+vector_hf = linspace((-fs_h/2), (fs_h/2), length(h_t));
 
 figure;
 hold on
-plot(fn, abs(X_f), 'b')
-plot(fn_g, abs(G_f), 'g')
-plot(fn_h, abs(H_f), 'r');
+plot(fn, abs(Xf), 'b')
+plot(vector_fg, abs(Gf), 'g')
+plot(vector_hf, abs(Hf), 'r');
 xlabel('Frecuencia (Hz)');
 ylabel('|MÛdulos|');
 title('Transformadas de Fourier');
-legend('TDF x(t): SeÒal original', 'TDF g(t): fs > fs de Nyquist', 'TDF h(t): fs < fs de Nyquist')
+legend('TDF x(t): SeÒal original', 'TDF g(t)', 'TDF h(t)')
 grid on;
 
 %% e)
 figure;
 hold on;
 plot(t, x, 'b')
-plot(temp_g, g , 'g')
-plot(temp_h, h, 'r');
+plot(vector_g, g_t , 'g')
+plot(vector_h, h_t, 'r');
 xlabel('Tiempo (seg)');
 ylabel('Amplitud (V)');
 title('Representacion temporal de las tres seÒales');
 legend('x(t)', 'g(t)', 'h(t)');
 grid on;
 
-%% CuantificaciÛn
+%% CuantificaciÛn Uniforme
+% apartados a) - e) se contestan en el informe
 %% f) 
-
-% 3 bits parte entera y 0 decimal
+% 3 bits parte entera | 0 decimal
 q1 = quantizer('fixed', 'round', 'saturate', [4, 0]);
 y1=num2bin(q1,k);
 ks30=bin2num(q1,y1);
 
-% 1 bit parte entera 2 decimal
+% 1 bit parte entera | 2 decimal
 q2 = quantizer('fixed', 'round', 'saturate', [4, 2]);
 y2=num2bin(q2, k);
 ks12=bin2num(q2, y2);
 
-
-% 3 bits parte entera 2 decimal
+% 3 bits parte entera | 2 decimal
 q = quantizer('fixed', 'round', 'saturate', [6, 2]);
 y3=num2bin(q,k);
 ks32=bin2num(q,y3);
 
-
-% 5 bits parte entera 0 decimal
+% 5 bits parte entera | 0 decimal
 q = quantizer('fixed', 'round', 'saturate', [6, 0]);
 y4=num2bin(q,k);
 ks50=bin2num(q,y4);
@@ -110,44 +112,43 @@ title('CuantificaciÛn comparativa en el tiempo');
 axis([0 0.001 -4 7]);
 grid on;
 
-%% g)
-K_f= fft(k, length(k)) / length(k); 
-K_f=fftshift(K_f); 
+Kf = fft(k, length(k)) / length(k); 
+Kf = fftshift(Kf); 
 
-Ks30_f= fft(ks30, length(k)) / length(k); 
-Ks30_f=fftshift(Ks30_f);
+Ks30f = fft(ks30, length(k)) / length(k); 
+Ks30f = fftshift(Ks30f);
 
-Ks12_f = fft(ks12, length(k)) / length(k);
-Ks12_f = fftshift(Ks12_f);
+Ks12f = fft(ks12, length(k)) / length(k);
+Ks12f = fftshift(Ks12f);
 
-f_k = 1/t_k(2); 
-vector_f= linspace(-f_k/2, f_k/2, length(k)); 
+frecuencia_k = 1 / t_k(2); 
+vector_f = linspace(-frecuencia_k/2, frecuencia_k/2, length(k)); 
 
 figure;
 hold on;
-plot(vector_f, abs(K_f), 'b-*');
-plot(vector_f, abs(Ks30_f), 'r');
-plot(vector_f, abs(Ks12_f), 'g');
+plot(vector_f, abs(Kf), 'b-*');
+plot(vector_f, abs(Ks30f), 'r');
+plot(vector_f, abs(Ks12f), 'g');
 grid on;
 xlabel('Frecuencia(Hz)');
 ylabel('Amplitud(V)');
 title('CuantificaciÛn comparativa en frecuencia');
-legend('K_f', 'Ks30_f', 'Ks12_f');
+legend('Kf', 'Ks30f', 'Ks12f');
 grid on;
 
-%% Apartado h)
-ecm_s30 = 1/length(k)*sum(abs(k-ks30).^2);
-ecm_s12 = 1/length(k)*sum(abs(k-ks12).^2);
-ecm_s32 = 1/length(k)*sum(abs(k-ks32).^2);
-ecm_s50 = 1/length(k)*sum(abs(k-ks50).^2);
+%% h)
+ECMs30 = 1/length(k)*sum(abs(k-ks30).^2);
+ECMs12 = 1/length(k)*sum(abs(k-ks12).^2);
+ECMs32 = 1/length(k)*sum(abs(k-ks32).^2);
+ECMs50 = 1/length(k)*sum(abs(k-ks50).^2);
 
-%% EJERCICIO 3 
+%% SeÒal de audio
 %% a)
-[y, f]= audioread('PDS_P1_3A_LE2_G6.wav'); %Cargamos el archivo de audio
+[y, f]= audioread('PDS_P1_3A_LE2_G6.wav');
 t = 1/f;
 t_y = linspace(0, length(y)*t, length(y));
 
-figure;%Representamos la se√±al original de audio
+figure;
 plot(t_y, y);
 ylabel('Amplitud(V)');
 xlabel('Tiempo [seg]');
@@ -155,53 +156,51 @@ ylim([-1 1]);
 grid on;
 title('SeÒal de audio original');
 
-pos = find(abs(y) > 0.01); % Nos quedamos con los indices de los valores que cumplen ser mayores de 0,01V 
-y_final = y(pos(1):1:pos(end)); %Extraemos los valores mediante los indices
+pos = find(abs(y) > 0.01);
+y_final = y(pos(1):1:pos(end));
 t_y_final = linspace(0, length(y)*t_y, length(y));
 
-%% CuantificaciÛn uniforme de la seÒal de audio
-
-q = quantizer('fixed', 'round', 'saturate', [7, 6]); %escala de cuantificaci√≥n de 7 bits totales de los cuales 6 son para parte decimal y uno para bit de signo
-sa_y = num2bin(q, y_final);  % Obtengo equivalencia en binario aplicando escala
-qu = bin2num(q, sa_y); %Recupero se√±al digital de la equivalencia binaria
-
+%%
+q = quantizer('fixed', 'round', 'saturate', [7, 6]);
+sa_y = num2bin(q, y_final);
+qu = bin2num(q, sa_y);
 
 %% CuantificaciÛn no uniforme 
+% para el apartado a) se han creado las dos funciones
 %% b)
-valores = linspace(-1,1,100); % este es el vactor de valores
+vec_valores = linspace(-1,1,100); % este es el vactor de valores
 A = 87.6;
 
-respuesta_compresor = Compresor(valores,A);
-respuesta_expansor = Expansion(valores,A);
+res_c = Bloque_Compresor(vec_valores, A);
+res_e = Bloque_Expansion(vec_valores, A);
 
 figure;
-plot(valores,respuesta_compresor);
+plot(vec_valores, res_c);
 title('Bloque compresor');
 xlabel('Valores de entrada (-1:1)');
 ylabel('Fa(x)');
 grid on;
 
 figure()
-plot(valores,respuesta_expansor);
+plot(vec_valores, res_e);
 title('Bloque expansor');
 ylabel('Fa^-1(x)');
 xlabel('Valores de entrada (-1:1)');
 grid on;
 
 %% c)
-y_compresor = Compresor(y,A);%Primero comprimimos la se√±al original
-q_binario = num2bin(q,y_compresor);%Realizamos cuantificaci√≥n usando la escala creada en el apartado de cuantificaci√≥n uniforme
-q_decimal = bin2num(q,q_binario);%Pasamos los niveles de amplitud cuantificados en binario a decimal
-qnu = Expansion(q_decimal,A);%Expandimos la se√±al
-qnu = transpose(qnu);%Ponemos como vector columna los valores de salida°
+y_c = Bloque_Compresor(y,A);
+q_b = num2bin(q, y_c);
+q_d = bin2num(q, q_b);
+
+qnu = Bloque_Expansion(q_d, A);
+qnu = transpose(qnu);
 
 %% An·lisis de la cuantificaciÛn
 %% a)
-sound(sa_x,f_aud); %Archivo de voz original
-pause(6);
-sound(qu,f_aud); %Archivo de voz tras la cuantificaci√≥n uniforme
-pause(6);
-sound(qnu,f_aud); %Archivo de voz tras la cuantificaci√≥n no uniforme
+sound(sa_x,f_aud);
+sound(qu,f_aud);
+sound(qnu,f_aud);
 
 %% b)
 figure;
@@ -219,5 +218,5 @@ title('ComparaciÛn temporal');
 legend('Original', 'Cuant-Uniforme', 'Cuant-No-Uniforme');
 
 %% c)
-ecm_qu = 1/length(y)*sum(abs(y-qu).^2);
-ecm_qnu = 1/length(y)*sum(abs(y-qnu).^2);
+ECMqu = 1/length(y)*sum(abs(y-qu).^2);
+ECMqnu = 1/length(y)*sum(abs(y-qnu).^2);

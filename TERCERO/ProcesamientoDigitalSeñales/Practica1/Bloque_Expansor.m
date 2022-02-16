@@ -1,3 +1,8 @@
+% Funcion con ley de expansion LEY A
+% Entrada --> señal a ser expandida
+%             parámetro para la Ley A
+% Salida --> señal expandida
+
 function [res] = Bloque_Expansor(entrada, A)
 
    for j= 1:length(entrada)
