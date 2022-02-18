@@ -76,6 +76,20 @@
       <item path="../../Practica3/Practica_3.X/Pic32Ini.c"
             ex="true"
             overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <C32>
         <property key="additional-warnings" value="false"/>
@@ -211,8 +225,36 @@
         <property key="wpo-lto" value="false"/>
       </C32Global>
       <item path="main_retardo.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="seccion3.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
     </conf>
   </confs>

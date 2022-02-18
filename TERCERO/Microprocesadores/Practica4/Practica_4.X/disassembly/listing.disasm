@@ -1,7 +1,7 @@
 Disassembly Listing for Practica_4
 Generated From:
 C:/Users/jaime/Documents/GitHub/ICAI/TERCERO/Microprocesadores/Practica4/Practica_4.X/dist/default/debug/Practica_4.X.debug.elf
-15-feb-2022 9:50:43
+17-feb-2022 16:57:19
 
 ---  c:/users/jaime/documents/github/icai/tercero/microprocesadores/practica4/practica_4.x/inspeccionar_codigo.c
 1:                   #include <xc.h>
