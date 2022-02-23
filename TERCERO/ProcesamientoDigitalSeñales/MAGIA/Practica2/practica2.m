@@ -16,7 +16,7 @@
 
 %% Apartado a)
 
-[x,fs1]= audioread('PDS_P2_3A_LE1_G2.wav'); %cargamos el archivo de audio
+[x,fs1]= audioread('PDS_P2_3A_LE2_G6.wav'); %cargamos el archivo de audio
 sound(x,fs1); %reproducimos el archivo
 
 %La frecuencia de muestreo es fs1 devuelta por la funcion audioread
@@ -174,15 +174,14 @@ k= Filtro(h, fs2, L, fc_analogica); %La ganancia del filtro deberá ser L por la
 %% Apartado g)
 
 figure;
-subplot(2,1,1)
 plot(tiempos_y,y, 'black o');
 hold on;
 plot(tiempos_h,h, 'r *');
-ylabel('Amplitud[V]');
-xlabel('Tiempo[s]');
+ylabel('Amplitud [V/V]');
+xlabel('Tiempo [seg]');
 axis([1.6275 1.6276 -0.8 1]); %las señales tienes un periodo muy reducido, hacemos zoom para ver bien la diferencia de valores
-title('Comparación señales y(t) y h(t)');
-legend('y(t)','h(t)');
+title('Comparación y(t) y h(t)');
+legend('y(t) - Original','h(t) - Interpolada');
 grid on;
 
 
@@ -195,12 +194,12 @@ grid on;
 %0.0000468 = diferencia temporal 
 % muestras a eliminar= 9 muestras
 
-auxiliar=zeros(1,9);
-auxiliar2=k(10:1:end);
+auxiliar = zeros(1,9);
+auxiliar2 = k(10:1:end);
 
-k=[auxiliar auxiliar2];
+k = [auxiliar auxiliar2];
 
-subplot(2,1,2)
+figure;
 plot(tiempos_h,h, 'black o');
 hold on;
 plot(tiempos_h,k, 'r *');
@@ -208,10 +207,22 @@ ylabel('Amplitud[V]');
 xlabel('Tiempo[s]');
 axis([0.0325 0.03256 -0.01 0.05]); %Ampliamos mucho para poder ver que ocurre
 title('Comparación señales h(t) y k(t)');
-legend('h(t) resultado interpolacion','g(t) despues de filtrado');
+legend('h(t) resultado interpolacion','h(t) despues de filtrado');
 grid on;
 
 
+figure;
+plot(tiempos_h,h, 'black o');
+hold on;
+plot(tiempos_h,k, 'r *');
+hold on;
+plot(tiempos_y, y, 'g +');
+ylabel('Amplitud[V]');
+xlabel('Tiempo[s]');
+axis([0.0325 0.03256 -0.01 0.05]); %Ampliamos mucho para poder ver que ocurre
+title('Comparación señales h(t) y k(t)');
+legend('h(t) - Interpolada','k(t) - Filtrada', 'y(t) - Original');
+grid on;
 
 %% Apartado h)
 
@@ -234,26 +245,26 @@ frecuencias_K= linspace(-fs2/2, fs2/2, length(K));
 figure;
 subplot(3,1,1);
 plot(frecuencias_Y, Y);
-ylabel('|Y(f)|');
+ylabel('|Yf(f)|');
 xlabel('Frecuencia[Hz]');
 axis([-4000 4000 0 inf]);
-title('Espectro de la señal y[n]');
+title('Espectro de y[n]');
 grid on;
 
 subplot(3,1,2);
 plot(frecuencias_H, H);
-ylabel('|H(f)|');
+ylabel('|Hf(f)|');
 xlabel('Frecuencia[Hz]');
 axis([-4000 4000 0 inf]);
-title('Espectro de la señal h[n]');
+title('Espectro de h[n]');
 grid on;
 
 subplot(3,1,3);
 plot(frecuencias_K, K);
-ylabel('|K(f)|');
+ylabel('|Kf(f)|');
 xlabel('Frecuencia[Hz]');
 axis([-4000 4000 0 inf]);
-title('Espectro de la señal k[n]');
+title('Espectro de k[n]');
 grid on;
 
 
@@ -306,8 +317,6 @@ M = 3;
 [g,tiempos_g] = Diezmador(k,tiempos_k,M);%llamamos a nuestra función creada
 
 %% Apartado g) 
-
-
 figure;
 plot(tiempos_y,y, 'b *');
 hold on;
@@ -315,11 +324,11 @@ plot(tiempos_k,k,'black +');
 hold on;
 plot(tiempos_g,g, 'r o');
 grid on;
-legend('y(t)','k(t)','g(t)');
-xlabel('Tiempo (s)');
-axis([0.0325 0.03256 0 0.05]);
-ylabel('Amplitud(V)');
-title('Representacion en t del cambio de fs por factor racional')
+legend('y(t) - Original','k(t) - Filtrada ','g(t) - Diezmada');
+axis([0.0325 0.03256 -0.01 0.05]);
+xlabel('Tiempo [seg]');
+ylabel('Amplitud [V/V]');
+title('Representacion temporal del cambio de fs por un factor racional')
 
 %% Apartado h)
 
@@ -342,17 +351,17 @@ figure;
 subplot(4,1,1);
 plot(frecuencias_Y, Y);
 ylabel('|Y(f)|');
-xlabel('Frecuencia[Hz]');
+xlabel('Frecuencia [Hz]');
 axis([-4000 4000 0 inf]);
-title('Espectro de la señal y[n] ORIGINAL');
+title('Espectro y[n] - ORIGINAL');
 grid on;
 
 subplot(4,1,2);
 plot(frecuencias_H_N, H_N);
 ylabel('|H(f)|');
-xlabel('Frecuencia[Hz]');
+xlabel('Frecuencia [Hz]');
 axis([-4000 4000 0 inf]);
-title('Espectro de la señal h[n] INTERPOLADA');
+title('Espectro h[n] - INTERPOLADA');
 grid on;
 
 subplot(4,1,3)
@@ -360,15 +369,15 @@ plot(frecuencias_K, K);
 ylabel('|K(f)|');
 xlabel('Frecuencia[Hz]');
 axis([-4000 4000 0 inf]);
-title('Espectro de la señal k[n] SALIDA DEL FILTRO');
+title('Espectro k[n] - FILTRADA');
 grid on;
 
 subplot(4,1,4)
 plot(frecuencias_G, G);
 ylabel('|G(f)|');
-xlabel('Frecuencia[Hz]');
+xlabel('Frecuencia [Hz]');
 axis([-4000 4000 0 inf]);
-title('Espectro de la señal g[n] DIEZMADA' );
+title('Espectro g[n] - DIEZMADA' );
 grid on;
 
 

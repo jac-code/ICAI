@@ -5,8 +5,8 @@
  * Created on 20 de febrero de 2022, 11:42
  */
 
-#ifndef TEMPORIZADORSECCION4_H
-#define	TEMPORIZADORSECCION4_H
+#ifndef TEMPORIZADORSECCION4SIMPLE_H
+#define	TEMPORIZADORSECCION4SIMPLE_H
 
 #ifdef	__cplusplus
 extern "C" {
@@ -19,5 +19,5 @@ extern "C" {
 }
 #endif
 
-#endif	/* TEMPORIZADORSECCION4_H */
+#endif	/* TEMPORIZADORSECCION4SIMPLE_H */
 

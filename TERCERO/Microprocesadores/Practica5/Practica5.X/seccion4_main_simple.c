@@ -16,6 +16,8 @@
 #define SUBPRIORIDAD_TIMER2 1
 #define PRESCALER 256
 
+#define RETARDO 4
+
 int main(void) {
     int puls_ant, puls_act;
     
@@ -42,10 +44,12 @@ int main(void) {
             asm(" ei");  // activamos interrupciones
             
             if(num_pulsaciones >= MAX_PULSACIONES) {
+                fin_partida = 1;
                 LATCCLR = (1 << PIN_LED);  // poner a 0 --> encendido
             }
         }
         puls_ant = puls_act;
     }
 }
+
 

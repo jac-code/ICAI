@@ -1,13 +1,6 @@
-/*
- * Entre cada interrupción pulsar x5 veces el pulsador
- * Si se consigue hacer antes de que salte interrupción --> LED1 se queda ENCENDIDO
- * Si no se consigue hacer antes de que salte interrupción --> NADA
- * Cada vez que se produzca la interrupción se reinicia la cuenta de pulsaciones a 0
- */
-
 #include <xc.h>
 #include <stdint.h>
-#include "Temporizador.h"
+#include "TemporizadorSeccion4.h"
 #include "Pic32Ini.h"
 
 #define PIN_PULSADOR 5
@@ -22,6 +15,10 @@
 #define PRIORIDAD_TIMER2 2
 #define SUBPRIORIDAD_TIMER2 1
 #define PRESCALER 256
+
+#define RETARDO 4
+
+extern uint16_t fin_partida;
 
 int main(void) {
     int puls_ant, puls_act;
@@ -44,15 +41,15 @@ int main(void) {
         puls_act = (PORTB >> PIN_PULSADOR) & 1;
         
         if((puls_ant != puls_act) && (puls_act == 0)) { // detectar flanco bajada pulsador
-            asm( "di")  // desactivamos interupciones
+            asm( "di");  // desactivamos interupciones
             num_pulsaciones++;
-            asm(" ei")  // activamos interrupciones
+            asm(" ei");  // activamos interrupciones
             
             if(num_pulsaciones >= MAX_PULSACIONES) {
+                fin_partida = 1;
                 LATCCLR = (1 << PIN_LED);  // poner a 0 --> encendido
             }
         }
-        
         puls_ant = puls_act;
     }
 }
