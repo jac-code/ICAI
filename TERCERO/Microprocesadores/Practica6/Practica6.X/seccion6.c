@@ -36,9 +36,9 @@ int main (void) {
     
 	TRISB |= (1<<13) | (1<<PIN_PULSADOR);   // pulsador como entrada
     TRISC &= ~(1 << PIN_LED0);   // LEDs como salida
-    TRISC &= ~(1 << PIN_LED1)
-    TRISC &= ~(1 << PIN_LED2)
-    TRISC &= ~(1 << PIN_LED3)
+    TRISC &= ~(1 << PIN_LED1);
+    TRISC &= ~(1 << PIN_LED2);
+    TRISC &= ~(1 << PIN_LED3);
     
     LATC = puerto;  // LEDs apagados
 
@@ -50,7 +50,10 @@ int main (void) {
 	U1BRG = BAUDIOS;
 
 	//Por defecto trabaja con el formato 8N1
-
+    U1MODEbits.BRGH = 0;
+    U1MODEbits.PDSEL = 0;
+    U1MODEbits.STSEL = 0;
+    
 	U1STAbits.URXEN = 1; // Se habilita el receptor
 	U1STAbits.UTXEN = 0; // Se inhabilita el transmisor 
 	U1MODE = 0x8000; // Se arranca la UART

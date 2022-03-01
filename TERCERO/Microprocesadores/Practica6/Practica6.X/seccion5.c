@@ -53,7 +53,10 @@ int main (void) {
 	U1BRG = BAUDIOS;
 
 	// Por defecto trabaja con el formato 8N1
-
+    U1MODEbits.BRGH = 0;
+    U1MODEbits.PDSEL = 0;
+    U1MODEbits.STSEL = 0;
+    
 	U1STAbits.URXEN = 1; // Se habilita el receptor
 	U1STAbits.UTXEN = 0; // Se inhabilita el receptor 
 	U1MODE = 0x8000; // Se arranca la UART

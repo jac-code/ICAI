@@ -119,7 +119,9 @@ h_n(1:6)
 fs_hn = L * fs_xn;
 
 %% d)
+% freceucnai de corte del filtro
 fc = (1/L) * fs_xn;
+% filtramos con la función proporcionada
 k_n = Filtro(h_n, fs_hn, L, fc);
 
 %% g)

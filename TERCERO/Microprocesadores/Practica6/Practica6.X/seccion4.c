@@ -19,10 +19,11 @@
 int main (void)
 {
     int pulsador_ant, pulsador_act;
-    char texto [] = "Hola mundo";
+    char texto [] = "Hola mundo\r\n";
     char *punt; // tiene que ser puntero para ser de tamaño variable
     
     ANSELB &= ~(1 << PIN_RB7); // Se configura RB7 como digital
+    TRISB &= ~(1 << PIN_RB7);
     TRISB |= (1 << PIN_PULSADOR);  // pulsador como entrada
     LATB = 0; // 1 = transmisor inhabilitado | 0 = habilitado
 
@@ -33,6 +34,9 @@ int main (void)
 	U1BRG = BAUDIOS;
 
 	// Por defecto trabaja con el formato 8N1
+    U1MODEbits.BRGH = 0;
+    U1MODEbits.PDSEL = 0;
+    U1MODEbits.STSEL = 0;
     
 	U1STAbits.UTXEN = 0; // Se inhabilita el transmisor 
 	U1MODE = 0x8000; // Se arranca la UART

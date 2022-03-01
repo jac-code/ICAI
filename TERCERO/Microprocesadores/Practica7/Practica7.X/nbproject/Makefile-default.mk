@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../../Practica6/Practica6.X/Pic32Ini.c UART1.c seccion2.c seccion3.c
+SOURCEFILES_QUOTED_IF_SPACED=../../Practica6/Practica6.X/Pic32Ini.c UART1.c seccion3.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1185848839/Pic32Ini.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/seccion2.o ${OBJECTDIR}/seccion3.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1185848839/Pic32Ini.o.d ${OBJECTDIR}/UART1.o.d ${OBJECTDIR}/seccion2.o.d ${OBJECTDIR}/seccion3.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1185848839/Pic32Ini.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/seccion3.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1185848839/Pic32Ini.o.d ${OBJECTDIR}/UART1.o.d ${OBJECTDIR}/seccion3.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1185848839/Pic32Ini.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/seccion2.o ${OBJECTDIR}/seccion3.o
+OBJECTFILES=${OBJECTDIR}/_ext/1185848839/Pic32Ini.o ${OBJECTDIR}/UART1.o ${OBJECTDIR}/seccion3.o
 
 # Source Files
-SOURCEFILES=../../Practica6/Practica6.X/Pic32Ini.c UART1.c seccion2.c seccion3.c
+SOURCEFILES=../../Practica6/Practica6.X/Pic32Ini.c UART1.c seccion3.c
 
 
 
@@ -107,50 +107,38 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1185848839/Pic32Ini.o: ../../Practica6/Practica6.X/Pic32Ini.c  .generated_files/3ea57563967819a8f5c6511eaa8b0fbc2e664b84.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/_ext/1185848839/Pic32Ini.o: ../../Practica6/Practica6.X/Pic32Ini.c  .generated_files/263a271780453042b43c37197603e348474c6866.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
 	@${MKDIR} "${OBJECTDIR}/_ext/1185848839" 
 	@${RM} ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/_ext/1185848839/Pic32Ini.o.d" -o ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o ../../Practica6/Practica6.X/Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/_ext/1185848839/Pic32Ini.o.d" -o ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o ../../Practica6/Practica6.X/Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/UART1.o: UART1.c  .generated_files/13f6193b40f8e5faf0f79474529b72d3d6bf8f30.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/UART1.o: UART1.c  .generated_files/fea9b2a1c16dbc5d693e46d93754b7e45a6d6774.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/UART1.o.d 
 	@${RM} ${OBJECTDIR}/UART1.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/UART1.o.d" -o ${OBJECTDIR}/UART1.o UART1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/UART1.o.d" -o ${OBJECTDIR}/UART1.o UART1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/seccion2.o: seccion2.c  .generated_files/5f53baad592b746a934cfdc58831f2a6b393e01e.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion2.o.d 
-	@${RM} ${OBJECTDIR}/seccion2.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion2.o.d" -o ${OBJECTDIR}/seccion2.o seccion2.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/seccion3.o: seccion3.c  .generated_files/5bd9e5930f87d86c1b6e6825dd8014a33df34af3.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/seccion3.o: seccion3.c  .generated_files/41a429ed2d3987156e1bc8da078f9514f80e9160.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/seccion3.o.d 
 	@${RM} ${OBJECTDIR}/seccion3.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion3.o.d" -o ${OBJECTDIR}/seccion3.o seccion3.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion3.o.d" -o ${OBJECTDIR}/seccion3.o seccion3.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/_ext/1185848839/Pic32Ini.o: ../../Practica6/Practica6.X/Pic32Ini.c  .generated_files/c57a8deadb3608903eb511fada5fa321c0abaf42.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/_ext/1185848839/Pic32Ini.o: ../../Practica6/Practica6.X/Pic32Ini.c  .generated_files/6d4cde0f99d64668f66134fe09f4b97e3317e739.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
 	@${MKDIR} "${OBJECTDIR}/_ext/1185848839" 
 	@${RM} ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/_ext/1185848839/Pic32Ini.o.d" -o ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o ../../Practica6/Practica6.X/Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/UART1.o: UART1.c  .generated_files/dd2c59edee15d2980f9e711fd3a5d48db376a5df.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/UART1.o: UART1.c  .generated_files/d57997af6cfd2a4ecd84258a362728d805dfe7be.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/UART1.o.d 
 	@${RM} ${OBJECTDIR}/UART1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/UART1.o.d" -o ${OBJECTDIR}/UART1.o UART1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/seccion2.o: seccion2.c  .generated_files/710938f67865566bf7e7e030e1d5ff25de390448.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion2.o.d 
-	@${RM} ${OBJECTDIR}/seccion2.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion2.o.d" -o ${OBJECTDIR}/seccion2.o seccion2.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/seccion3.o: seccion3.c  .generated_files/7b823e7d284760bc35ad3730b616b97b55b5b0cb.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/seccion3.o: seccion3.c  .generated_files/db3f6922701e4ee4de583e6bc521d62aedc8a9cc.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/seccion3.o.d 
 	@${RM} ${OBJECTDIR}/seccion3.o 
@@ -169,7 +157,7 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/Practica7.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -g   -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Practica7.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)      -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -mdfp="${DFP_DIR}"
+	${MP_CC} $(MP_EXTRA_LD_PRE) -g -mdebugger -D__MPLAB_DEBUGGER_PK3=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Practica7.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)   -mreserve=data@0x0:0x1FC -mreserve=boot@0x1FC00490:0x1FC00BEF  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=__MPLAB_DEBUGGER_PK3=1,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -mdfp="${DFP_DIR}"
 	
 else
 dist/${CND_CONF}/${IMAGE_TYPE}/Practica7.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   

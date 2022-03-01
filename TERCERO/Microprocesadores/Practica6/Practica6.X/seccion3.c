@@ -29,7 +29,8 @@ int main (void) {
     puerto |= (1 << PIN_LED2);
     puerto |= (1 << PIN_LED3);
     
-    ANSELC &= ~puerto;   // LEDs como digitales
+    ANSELC = ~puerto;
+    //ANSELC &= ~puerto;   // LEDs como digitales
     ANSELB &= ~(1 << PIN_RB13); // Se configura RB13 como digital
     
 	TRISB |= (1 << PIN_RB13); // RB13 como entrada
@@ -47,6 +48,10 @@ int main (void) {
 	U1BRG = BAUDIOS;
 
 	// Por defecto trabaja con el formato 8N1
+    U1MODEbits.BRGH = 0;
+    U1MODEbits.PDSEL = 0;
+    U1MODEbits.STSEL = 0;
+    
 	U1STAbits.URXEN = 1; // Se habilita el receptor 
 	U1MODE = 0x8000; // Se arranca la UART
     
