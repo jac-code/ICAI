@@ -107,38 +107,38 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1185848839/Pic32Ini.o: ../../Practica6/Practica6.X/Pic32Ini.c  .generated_files/263a271780453042b43c37197603e348474c6866.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
+${OBJECTDIR}/_ext/1185848839/Pic32Ini.o: ../../Practica6/Practica6.X/Pic32Ini.c  .generated_files/d482dd70e331e8380f41cf0623f0cc176514b516.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}/_ext/1185848839" 
 	@${RM} ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/_ext/1185848839/Pic32Ini.o.d" -o ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o ../../Practica6/Practica6.X/Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/UART1.o: UART1.c  .generated_files/fea9b2a1c16dbc5d693e46d93754b7e45a6d6774.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
+${OBJECTDIR}/UART1.o: UART1.c  .generated_files/4cfcffd3b5810413940e92dafa7501dbef076655.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/UART1.o.d 
 	@${RM} ${OBJECTDIR}/UART1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/UART1.o.d" -o ${OBJECTDIR}/UART1.o UART1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/seccion3.o: seccion3.c  .generated_files/41a429ed2d3987156e1bc8da078f9514f80e9160.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
+${OBJECTDIR}/seccion3.o: seccion3.c  .generated_files/3d562300947e309cf49e8f6dab4f1fad064eccb3.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/seccion3.o.d 
 	@${RM} ${OBJECTDIR}/seccion3.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion3.o.d" -o ${OBJECTDIR}/seccion3.o seccion3.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/_ext/1185848839/Pic32Ini.o: ../../Practica6/Practica6.X/Pic32Ini.c  .generated_files/6d4cde0f99d64668f66134fe09f4b97e3317e739.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
+${OBJECTDIR}/_ext/1185848839/Pic32Ini.o: ../../Practica6/Practica6.X/Pic32Ini.c  .generated_files/c57a8deadb3608903eb511fada5fa321c0abaf42.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}/_ext/1185848839" 
 	@${RM} ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/_ext/1185848839/Pic32Ini.o.d" -o ${OBJECTDIR}/_ext/1185848839/Pic32Ini.o ../../Practica6/Practica6.X/Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/UART1.o: UART1.c  .generated_files/d57997af6cfd2a4ecd84258a362728d805dfe7be.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
+${OBJECTDIR}/UART1.o: UART1.c  .generated_files/dd2c59edee15d2980f9e711fd3a5d48db376a5df.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/UART1.o.d 
 	@${RM} ${OBJECTDIR}/UART1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/UART1.o.d" -o ${OBJECTDIR}/UART1.o UART1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/seccion3.o: seccion3.c  .generated_files/db3f6922701e4ee4de583e6bc521d62aedc8a9cc.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
+${OBJECTDIR}/seccion3.o: seccion3.c  .generated_files/7b823e7d284760bc35ad3730b616b97b55b5b0cb.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/seccion3.o.d 
 	@${RM} ${OBJECTDIR}/seccion3.o 

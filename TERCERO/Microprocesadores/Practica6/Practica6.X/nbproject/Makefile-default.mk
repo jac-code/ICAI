@@ -107,26 +107,26 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/seccion4.o: seccion4.c  .generated_files/4d0d601c55c808cc3aa6b0ce7d7957de8c82e51d.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
+${OBJECTDIR}/seccion4.o: seccion4.c  .generated_files/f77db36c688bb4f0e367d49b3e7a88953625b8b9.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/seccion4.o.d 
 	@${RM} ${OBJECTDIR}/seccion4.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion4.o.d" -o ${OBJECTDIR}/seccion4.o seccion4.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/263a271780453042b43c37197603e348474c6866.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
+${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/d482dd70e331e8380f41cf0623f0cc176514b516.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/seccion4.o: seccion4.c  .generated_files/4e650efa3f3187a95fffd66631718d400f9b6fc2.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
+${OBJECTDIR}/seccion4.o: seccion4.c  .generated_files/18c59b9bb62c743490bd0db084d94aca0225d15.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/seccion4.o.d 
 	@${RM} ${OBJECTDIR}/seccion4.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion4.o.d" -o ${OBJECTDIR}/seccion4.o seccion4.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/6d4cde0f99d64668f66134fe09f4b97e3317e739.flag .generated_files/73e2677e10fb41852dd38dedff52fc31eb90924a.flag
+${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/c57a8deadb3608903eb511fada5fa321c0abaf42.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o 
