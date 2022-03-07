@@ -1,0 +1,26 @@
+/*******************************************************/
+/****************** EJERCICIO 2 ************************/
+/*******************************************************/
+
+#include <xc.h>
+#include "Pic32Ini.h"
+#include <stdio.h>
+
+void InicializarTimer2() {
+    T2CON = 0;
+    TMR2 = 0;
+    IFS0bits.T2IF = 0;
+    IEC0bits.T2IE = 1;
+    IPC2bits.T2IP = 2;
+    IPC2bits.T2IS = 1;
+    PR2 = 49;
+    T2CON = 0x8000;
+}
+
+void InicializarTimer3() {
+    T3CON = 0;
+    TMR3 = 0;
+    IFS0bits.T3IF = 0;
+    T3CON |= (1 << 7);  //  
+    T3CON = 0x8000;
+}
