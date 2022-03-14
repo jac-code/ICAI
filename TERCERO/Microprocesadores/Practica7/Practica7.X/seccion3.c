@@ -8,8 +8,7 @@
 
 void analizarCadena(char *c); 
 int hex2int(char ch); 
-
-//Al trabajar con cadenas no puedes igualar del tirón - CORREGIR CADENAS 
+ 
 int main (void) {
 	char cad[100];
 	InicializarUART1(BAUDIOS);
@@ -38,7 +37,7 @@ void analizarCadena(char *c) {
 	//char *res = malloc(20); strcpy(res, "OK\n");
 	int val_port = 0; 
 	int valor = 0; 
-	//AsÃ­ da error el primer PD,C,0,0 que haces pero despuÃ©s bien Â¿?
+	//Así da error el primer PD,C,0,0 que haces --> después bien
 	 
 	if(strncmp(c, "PD",2)==0){ //TRIS 
 		valor = hex2int(c[7]);
@@ -69,7 +68,7 @@ void analizarCadena(char *c) {
 		}else{ 
 			strcpy(res,"Error\n"); 
 		} 
-	}else if(strncmp(c, "PI",2)==0){ //PORT 
+	} else if(strncmp(c, "PI",2)==0){ //PORT 
 		if((strncmp(c+3,"A",1)==0)){ 
 			if(((PORTA >> pin) & 1)==1){
 				strncpy(res,c,3); //PI,
@@ -162,3 +161,4 @@ int hex2int(char ch) {
     } 
     return -1; 
 } 
+

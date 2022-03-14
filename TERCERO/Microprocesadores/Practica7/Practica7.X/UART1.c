@@ -59,7 +59,7 @@ void InicializarUART1(int baudios){
         }
     }
     
-    U1BRG= (int) valor;
+    U1BRG = (int) valor;
     
     // Activamos las interrupciones del receptor
     IFS1bits.U1RXIF = 0; // Borro flag receptor
