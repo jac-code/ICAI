@@ -2,12 +2,12 @@
 %% Filtrado de señales
 load ('PDS_P3_3A_LE2_G6.mat'); % cargamos el archivo
 % load('coeficientesFiltros.mat') % para que el corrector tenga en el workspace los coeficientes del filtro
-
+load('PDS_P3_3A_LE2_G6_2.mat');
 %% a)
 Ts = t(2) - t(1);
 fs = 1/Ts;
 
-%% b) -- Convolución 
+%% b) -- Convolución
 % b = numero de coeficeintes del filtro --> añadir k ceros
 yn = zeros(1, length(x) + length(b) - 1);
 
