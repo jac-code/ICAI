@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=seccion_2.c Pic32Ini.c seccion_4.c seccion_5.c Retardo.c
+SOURCEFILES_QUOTED_IF_SPACED=seccion_2.c Pic32Ini.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/seccion_2.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/seccion_4.o ${OBJECTDIR}/seccion_5.o ${OBJECTDIR}/Retardo.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/seccion_2.o.d ${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/seccion_4.o.d ${OBJECTDIR}/seccion_5.o.d ${OBJECTDIR}/Retardo.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/seccion_2.o ${OBJECTDIR}/Pic32Ini.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/seccion_2.o.d ${OBJECTDIR}/Pic32Ini.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/seccion_2.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/seccion_4.o ${OBJECTDIR}/seccion_5.o ${OBJECTDIR}/Retardo.o
+OBJECTFILES=${OBJECTDIR}/seccion_2.o ${OBJECTDIR}/Pic32Ini.o
 
 # Source Files
-SOURCEFILES=seccion_2.c Pic32Ini.c seccion_4.c seccion_5.c Retardo.c
+SOURCEFILES=seccion_2.c Pic32Ini.c
 
 
 
@@ -107,66 +107,30 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/seccion_2.o: seccion_2.c  .generated_files/d697e68257fe23c4fe5c2005776c51024539c043.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/seccion_2.o: seccion_2.c  .generated_files/9bfedf25da6a87c719a1f9f453ba468d0ea85ae9.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/seccion_2.o.d 
 	@${RM} ${OBJECTDIR}/seccion_2.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion_2.o.d" -o ${OBJECTDIR}/seccion_2.o seccion_2.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion_2.o.d" -o ${OBJECTDIR}/seccion_2.o seccion_2.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/c8fe55d8fe8e9ea81b271b1f6b051f435b3ea5d0.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/78f68b042ae5758e49b9e5ececaeed7c95d787ac.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/seccion_4.o: seccion_4.c  .generated_files/13bbb7d15562c7f5f9bfdb4f2ae1e77254a4132a.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion_4.o.d 
-	@${RM} ${OBJECTDIR}/seccion_4.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion_4.o.d" -o ${OBJECTDIR}/seccion_4.o seccion_4.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/seccion_5.o: seccion_5.c  .generated_files/6a26536389cda9dbbe7ca8640ff4a9b0250a8c1d.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion_5.o.d 
-	@${RM} ${OBJECTDIR}/seccion_5.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion_5.o.d" -o ${OBJECTDIR}/seccion_5.o seccion_5.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/Retardo.o: Retardo.c  .generated_files/39c0e01f9f56213f48250e361b024ce7c5376a08.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Retardo.o.d 
-	@${RM} ${OBJECTDIR}/Retardo.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Retardo.o.d" -o ${OBJECTDIR}/Retardo.o Retardo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/seccion_2.o: seccion_2.c  .generated_files/2287161d34ea899f3b4bb21d6907995b4c787b30.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/seccion_2.o: seccion_2.c  .generated_files/146eb9777ab510b51dbbf78f0fad8e17b4007e01.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/seccion_2.o.d 
 	@${RM} ${OBJECTDIR}/seccion_2.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion_2.o.d" -o ${OBJECTDIR}/seccion_2.o seccion_2.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/f6945811c33848380af37188927d7bb719a36757.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/9438f9d2d185631bae94edc7ac616d8b499f0ec.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/seccion_4.o: seccion_4.c  .generated_files/ff0cb11d0789745db5112910967f14d5655c24c7.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion_4.o.d 
-	@${RM} ${OBJECTDIR}/seccion_4.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion_4.o.d" -o ${OBJECTDIR}/seccion_4.o seccion_4.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/seccion_5.o: seccion_5.c  .generated_files/32cd3a6c969654a232d93f458974e5f14498ef9a.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion_5.o.d 
-	@${RM} ${OBJECTDIR}/seccion_5.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion_5.o.d" -o ${OBJECTDIR}/seccion_5.o seccion_5.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/Retardo.o: Retardo.c  .generated_files/f4c691c987a3c7a3fea3443b223420a283285709.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Retardo.o.d 
-	@${RM} ${OBJECTDIR}/Retardo.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Retardo.o.d" -o ${OBJECTDIR}/Retardo.o Retardo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
@@ -181,7 +145,7 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/Practica_3.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -g -mdebugger -D__MPLAB_DEBUGGER_PK3=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Practica_3.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)   -mreserve=data@0x0:0x1FC -mreserve=boot@0x1FC00490:0x1FC00BEF  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=__MPLAB_DEBUGGER_PK3=1,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -mdfp="${DFP_DIR}"
+	${MP_CC} $(MP_EXTRA_LD_PRE) -g -mdebugger -D__MPLAB_DEBUGGER_SIMULATOR=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Practica_3.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)      -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -mdfp="${DFP_DIR}"
 	
 else
 dist/${CND_CONF}/${IMAGE_TYPE}/Practica_3.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   

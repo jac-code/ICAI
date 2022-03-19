@@ -37,7 +37,7 @@
         <targetDevice>PIC32MX230F064D</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PK3OBPlatformTool</platformTool>
+        <platformTool>Simulator</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>2.50</languageToolchainVersion>
         <platform>3</platform>
@@ -266,6 +266,8 @@
         </C32CPP>
         <C32Global>
         </C32Global>
+      </item>
+      <item path="Retardo.c" ex="true" overriding="false">
       </item>
       <Simulator>
         <property key="codecoverage.enabled" value="Disable"/>
@@ -743,7 +745,7 @@
         <C32Global>
         </C32Global>
       </item>
-      <item path="seccion_4.c" ex="false" overriding="false">
+      <item path="seccion_4.c" ex="true" overriding="false">
         <C32>
         </C32>
         <C32-AR>
@@ -759,7 +761,7 @@
         <C32Global>
         </C32Global>
       </item>
-      <item path="seccion_5.c" ex="false" overriding="false">
+      <item path="seccion_5.c" ex="true" overriding="false">
         <C32>
         </C32>
         <C32-AR>

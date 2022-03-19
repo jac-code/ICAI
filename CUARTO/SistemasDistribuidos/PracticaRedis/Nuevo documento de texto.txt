@@ -1,0 +1,3 @@
+- Tipo de despliegue --> cluester solo una sola máquina, instalación minikube
+
+- en el 1.4 nos hemos quedado en el paso 26 --> hecho

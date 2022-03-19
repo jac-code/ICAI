@@ -2,6 +2,9 @@
 #include "Pic32Ini.h"
 
 #define BIT_LED0 0
+#define BIT_LED1 1
+#define BIT_LED2 2
+#define BIT_LED3 3
 
 int main(void) {
     //configuramos LED 0 como salida
@@ -9,6 +12,10 @@ int main(void) {
     
     // configuramos LED 0 para que esté apagado
     LATC |= (1 << BIT_LED0);
+    LATC |= (1 << BIT_LED1);
+    LATC |= (1 << 2);
+    LATC &= ~(1 << BIT_LED3);
+    LATC |= (1 << BIT_LED3);
     
     T2CON = 0; // se para el temporizador 2
     TMR2 = 0; // se pone la cuenta a 0
@@ -34,4 +41,16 @@ int main(void) {
     }
     
     return 0;
+}
+
+void apagar_led(int led) {
+    if(led >= 0) {
+        LATC |= (1 << led);
+    }
+}
+
+void encender_led(int led) {
+    if(led >= 0) {
+        LATC &= ~(1 << led);
+    }
 }
