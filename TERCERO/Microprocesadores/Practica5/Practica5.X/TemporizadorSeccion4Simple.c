@@ -31,5 +31,3 @@ void InterrupcionTimer2(void) {
     // se ponen a 0 las pulsaciones al saltar la interrupción
     num_pulsaciones = 0;
 }
-
-

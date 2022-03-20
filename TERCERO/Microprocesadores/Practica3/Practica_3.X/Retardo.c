@@ -39,6 +39,7 @@ int Retardo(uint16_t retardo_ms)
         while(IFS0bits.T2IF == 0){
             ;// Espera el fin del temporizador
         }
+        
         T2CON = 0;
         TMR2 = 0;
         IFS0bits.T2IF = 0; // Se borra el bit de fin de cuenta

@@ -107,14 +107,14 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/seccion_4.o: seccion_4.c  .generated_files/9b02879895dad607f0f63207c6f0638eb7a514d1.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/seccion_4.o: seccion_4.c  .generated_files/671ebdc02d47bb28291e78bad89873c2f7da1744.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/seccion_4.o.d 
 	@${RM} ${OBJECTDIR}/seccion_4.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion_4.o.d" -o ${OBJECTDIR}/seccion_4.o seccion_4.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/seccion_4.o: seccion_4.c  .generated_files/8e9a52325bf77187519efe77873caa5c5f7f66ae.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/seccion_4.o: seccion_4.c  .generated_files/3acaf136a653d279b9665a3432da80689ca45cd.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/seccion_4.o.d 
 	@${RM} ${OBJECTDIR}/seccion_4.o 
