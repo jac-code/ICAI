@@ -1,3 +1,6 @@
 - Tipo de despliegue --> cluester solo una sola máquina, instalación minikube
 
 - en el 1.4 nos hemos quedado en el paso 26 --> hecho
+
+- slots --> rangos de claves
+- para que este bien, los escalvos tienen que ser de otro ubuntu --> no sirve que que maestro y esclavo 
