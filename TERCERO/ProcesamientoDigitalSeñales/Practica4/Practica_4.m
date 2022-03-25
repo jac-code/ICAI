@@ -50,7 +50,7 @@ xlabel('Frecuencia (Hz)');
 grid on;
 
 figure;
-subplot(1,2,1);
+%subplot(1,2,1);
 hold on;
 plot(frecuencias_elliptic, coeficientes_elliptic_dB);
 plot(frecuencias_butterworth, coeficientes_butterworth_dB);
@@ -60,6 +60,7 @@ ylabel('Magnitude (dB)');
 xlabel('Frecuencia (Hz)');
 title('Módulo de la respuesta en frecuencia');
 legend('Elliptic', 'Butterworth', 'Chebyshev I', 'Chebyshev II');
+axis([0 8000 -5 0])
 grid on;
 
 subplot(1,2,2)
@@ -165,7 +166,8 @@ plot(frecuencias_elliptic, coeficientes_elliptic_dB);
 title('Maximos en el modulo del IIR Elliptic');
 ylabel('Magnitude (dB)');
 xlabel('Frecuencia (Hz)');
-axis([0 6000 -0.5 0.5]);
+%axis([0 6000 -0.5 0.5]);
+axis([0 7000 -0.1 0.01]);
 grid on;
 
 figure;
@@ -173,8 +175,13 @@ plot(frecuencias_elliptic, coeficientes_elliptic_dB);
 title('Minimos en el modulo del IIR Elliptic');
 ylabel('Magnitude (dB)');
 xlabel('Frecuencia (Hz)');
-axis([10000 27500 -200 0.5]);
 grid on;
+
+w_polos = angle(roots(Den_Elliptic));
+f_polos = (w_polos / (2*pi)) * Fs;
+
+w_ceros = angle(roots(Num_Elliptic));
+f_ceros = (w_ceros / (2*pi)) * Fs;
 
 %% Estabilidad
 %% a)
@@ -224,7 +231,8 @@ title('Polos originales');
 ylabel('Img');
 xlabel('Real');
 grid on;
-subplot(1,3,3);
+figure()
+%subplot(1,3,3);
 zplane(Num_Elliptic, den_elliptic_b);
 axis([-1.1 1.1 -1.1 1.1]);
 title('Polos multiplicados por 1.05');
