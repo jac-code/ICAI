@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=seccion4_main.c TemporizadorSeccion4.c Pic32Ini.c TemporizadorRetardo.c seccion4_main_simple.c TemporizadorSeccion4Simple.c
+SOURCEFILES_QUOTED_IF_SPACED=Pic32Ini.c proyecto_final_servo.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/seccion4_main.o ${OBJECTDIR}/TemporizadorSeccion4.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/TemporizadorRetardo.o ${OBJECTDIR}/seccion4_main_simple.o ${OBJECTDIR}/TemporizadorSeccion4Simple.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/seccion4_main.o.d ${OBJECTDIR}/TemporizadorSeccion4.o.d ${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/TemporizadorRetardo.o.d ${OBJECTDIR}/seccion4_main_simple.o.d ${OBJECTDIR}/TemporizadorSeccion4Simple.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/proyecto_final_servo.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/proyecto_final_servo.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/seccion4_main.o ${OBJECTDIR}/TemporizadorSeccion4.o ${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/TemporizadorRetardo.o ${OBJECTDIR}/seccion4_main_simple.o ${OBJECTDIR}/TemporizadorSeccion4Simple.o
+OBJECTFILES=${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/proyecto_final_servo.o
 
 # Source Files
-SOURCEFILES=seccion4_main.c TemporizadorSeccion4.c Pic32Ini.c TemporizadorRetardo.c seccion4_main_simple.c TemporizadorSeccion4Simple.c
+SOURCEFILES=Pic32Ini.c proyecto_final_servo.c
 
 
 
@@ -107,78 +107,30 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/seccion4_main.o: seccion4_main.c  .generated_files/54f84f999e78e000601a9a9f03034ac30697af23.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion4_main.o.d 
-	@${RM} ${OBJECTDIR}/seccion4_main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion4_main.o.d" -o ${OBJECTDIR}/seccion4_main.o seccion4_main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/TemporizadorSeccion4.o: TemporizadorSeccion4.c  .generated_files/5ba750ee1d46f69537a3d5dce131b89789d54385.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/TemporizadorSeccion4.o.d 
-	@${RM} ${OBJECTDIR}/TemporizadorSeccion4.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/TemporizadorSeccion4.o.d" -o ${OBJECTDIR}/TemporizadorSeccion4.o TemporizadorSeccion4.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
 ${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/608440a8a25be3464bdb2608378f6f9b7278f25f.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/TemporizadorRetardo.o: TemporizadorRetardo.c  .generated_files/590627b00c9fa62ef29a8a035068aaf98051f4da.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/proyecto_final_servo.o: proyecto_final_servo.c  .generated_files/2f119f6de8a500178718d28dffcfe3f41cd9abb.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/TemporizadorRetardo.o.d 
-	@${RM} ${OBJECTDIR}/TemporizadorRetardo.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/TemporizadorRetardo.o.d" -o ${OBJECTDIR}/TemporizadorRetardo.o TemporizadorRetardo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/seccion4_main_simple.o: seccion4_main_simple.c  .generated_files/989bf81955d54c6076e59f35ceb044bed6925c91.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion4_main_simple.o.d 
-	@${RM} ${OBJECTDIR}/seccion4_main_simple.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion4_main_simple.o.d" -o ${OBJECTDIR}/seccion4_main_simple.o seccion4_main_simple.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/TemporizadorSeccion4Simple.o: TemporizadorSeccion4Simple.c  .generated_files/ed4760ae2d3391d520975e9f4d739e4b4c602932.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/TemporizadorSeccion4Simple.o.d 
-	@${RM} ${OBJECTDIR}/TemporizadorSeccion4Simple.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/TemporizadorSeccion4Simple.o.d" -o ${OBJECTDIR}/TemporizadorSeccion4Simple.o TemporizadorSeccion4Simple.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/proyecto_final_servo.o.d 
+	@${RM} ${OBJECTDIR}/proyecto_final_servo.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/proyecto_final_servo.o.d" -o ${OBJECTDIR}/proyecto_final_servo.o proyecto_final_servo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/seccion4_main.o: seccion4_main.c  .generated_files/302bcfd0b6985dfc46f197c45a4684d6f028d34c.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion4_main.o.d 
-	@${RM} ${OBJECTDIR}/seccion4_main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion4_main.o.d" -o ${OBJECTDIR}/seccion4_main.o seccion4_main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/TemporizadorSeccion4.o: TemporizadorSeccion4.c  .generated_files/7dd6b63f3b0f5784650505fef5c51fc3ac27473e.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/TemporizadorSeccion4.o.d 
-	@${RM} ${OBJECTDIR}/TemporizadorSeccion4.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/TemporizadorSeccion4.o.d" -o ${OBJECTDIR}/TemporizadorSeccion4.o TemporizadorSeccion4.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
 ${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/76efe8da164aa21eaf9aec5032170fbcb9f3d90f.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/TemporizadorRetardo.o: TemporizadorRetardo.c  .generated_files/f5b7140fa1d5d925b3080c91dceb4ac896089372.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/proyecto_final_servo.o: proyecto_final_servo.c  .generated_files/7e68bf8bf18a4def19b48924bc3b9af2d2492bb3.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/TemporizadorRetardo.o.d 
-	@${RM} ${OBJECTDIR}/TemporizadorRetardo.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/TemporizadorRetardo.o.d" -o ${OBJECTDIR}/TemporizadorRetardo.o TemporizadorRetardo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/seccion4_main_simple.o: seccion4_main_simple.c  .generated_files/334c9f0fc6fc199ec9edb48bf17315f06f1083e1.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion4_main_simple.o.d 
-	@${RM} ${OBJECTDIR}/seccion4_main_simple.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion4_main_simple.o.d" -o ${OBJECTDIR}/seccion4_main_simple.o seccion4_main_simple.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/TemporizadorSeccion4Simple.o: TemporizadorSeccion4Simple.c  .generated_files/5bca4a0a7cab8b56c1f52e208832e04221b0a075.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/TemporizadorSeccion4Simple.o.d 
-	@${RM} ${OBJECTDIR}/TemporizadorSeccion4Simple.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/TemporizadorSeccion4Simple.o.d" -o ${OBJECTDIR}/TemporizadorSeccion4Simple.o TemporizadorSeccion4Simple.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/proyecto_final_servo.o.d 
+	@${RM} ${OBJECTDIR}/proyecto_final_servo.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/proyecto_final_servo.o.d" -o ${OBJECTDIR}/proyecto_final_servo.o proyecto_final_servo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
