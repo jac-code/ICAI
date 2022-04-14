@@ -6,7 +6,7 @@
 #define NUM_MAX_16BITS 65535
 #define BITS_PRESCALER 4
 
-int Retardo(uint16_t retardo_ms)
+void Retardo(uint16_t retardo_ms)
 {
 	int prescaler[] = {1, 2, 4, 8, 16, 32, 64, 256};
 	int i = -1;
@@ -39,14 +39,11 @@ int Retardo(uint16_t retardo_ms)
         T2CON = 0x8000; // Timer 2 encendido --> ON = 1
         T2CON |= (prescaler[i] << BITS_PRESCALER);
 
-        while(IFS0bits.T2IF == 0){
+        while(IFS0bits.T2IF == 0)
             ;// Espera el fin del temporizador
-        }
         
         T2CON = 0;
         TMR2 = 0;
         IFS0bits.T2IF = 0; // Se borra el bit de fin de cuenta
     }
-
-	return prescaler_ok;
 }

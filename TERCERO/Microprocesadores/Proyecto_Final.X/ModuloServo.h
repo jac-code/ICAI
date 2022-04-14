@@ -7,6 +7,8 @@ extern "C" {
 
     void InicializarServoSalida();
     void InicializarServoEntrada();
+    void InicializarTimer2(int tiempo, int valor_prescaler);
+    void InicializarServos();
     void bajar_barrera_salida();
     void subir_barrera_salida();
     void bajar_barrera_entrada();

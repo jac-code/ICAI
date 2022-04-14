@@ -12,9 +12,7 @@
 extern "C" {
 #endif
 
-    void InicializarTimer2(int tiempo, int prioridad, int subprioridad, int valor_prescaler);
-    uint32_t TicksDesdeArrTimer2(void);
-
+    void InicializarTimer2(int tiempo, int valor_prescaler);
 
 #ifdef	__cplusplus
 }
