@@ -61,7 +61,7 @@ int main (void) {
 	U1STAbits.UTXEN = 0; // Se inhabilita el receptor 
 	U1MODE = 0x8000; // Se arranca la UART
     
-	while(1){ 
+	while(1){
 		// RECEPTOR
 		if(U1STAbits.URXDA == 1){
 			c = U1RXREG;
@@ -84,6 +84,5 @@ int main (void) {
             U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
         }
         pulsador_ant = pulsador_act;
-
 	}
 }

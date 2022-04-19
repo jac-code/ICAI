@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-    void Retardo(uint16_t retardo_ms);
+    int Retardo(uint16_t retardo_ms);
 
 
 #ifdef	__cplusplus

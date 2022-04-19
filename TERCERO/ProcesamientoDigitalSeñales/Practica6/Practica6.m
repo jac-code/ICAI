@@ -7,15 +7,14 @@ load("PDS_P6_3A_LE2_G6.mat")
 %sound(xn, fs); % pitido de fondo muy molesto
 
 %% b)
-Xf=fft(xn, length(xn))/length(xn);
-Xf= fftshift(abs(Xf));
-vector_frec= linspace(-fs/2,fs/2, length(xn));
+Xf = fft(xn, length(xn))/length(xn);
+Xf = fftshift(abs(Xf));
+vector_frec = linspace(-fs/2,fs/2, length(xn));
 
 figure;
 plot(vector_frec, Xf);
 xlabel("Frecuencia [Hz]");
-ylabel("Amplitud [V]");
-axis([-10000 10000 0 0.05]);
+ylabel("Amplitud [V/V]");
 title("Espectro de xn(t)");
 grid on;
 
@@ -27,7 +26,7 @@ filtro=fft(Num, 500);
 filtro=fftshift(filtro);
 frec_filtro=linspace(-fs/2, fs/2, length(filtro));
 
-filtro= mag2db(abs(filtro));
+filtro = mag2db(abs(filtro));
 
 figure;
 plot(frec_filtro, filtro);
@@ -61,7 +60,7 @@ plot(vector_muestras, gn, 'black--o');
 plot(vector_muestras, yn);
 xlabel("Muestras [n]");
 ylabel("Amplitud");
-axis([12075 12095 0 0.15]);
+
 title("Filtrado estándar VS Overlap-save");
 legend('Resultado Filter', 'Overlap-save');
 grid on;

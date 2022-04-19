@@ -14,6 +14,8 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>.</sourceRootElem>
+                <sourceRootElem>../Practica3</sourceRootElem>
+                <sourceRootElem>../../../../../../OneDrive - Universidad Pontificia Comillas/ICAI/TERCERO/2_CUATRI/Microprocesadores/Laboratorio/Practica4/Practica_4.X</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

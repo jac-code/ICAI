@@ -25,7 +25,7 @@ wn = ones(M+1, 1);
 xn = [zeros(M, 1); xn];
 
 for i = 1:(length(xn)-M)
-    % filtramos xn mediante convolción completa
+    % filtramos xn mediante convolución completa
     yn(i) = wn(:, i).'*xn(i:M+i);
     
     % cálculo del error entre d[n] y y[n]

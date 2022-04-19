@@ -3,6 +3,9 @@
 #include "Retardo.h"
 
 #define BIT_LED0 0
+#define NUM_MAX_16BITS 65535
+#define BITS_PRESCALER 4
+
 
 int main(void) {
     

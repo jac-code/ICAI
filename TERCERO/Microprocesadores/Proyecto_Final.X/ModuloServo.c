@@ -52,8 +52,25 @@ void InicializarServos() {
     SYSKEY=0x556699AA;
     RPB15R = 5; // OC1 conectado a RB15
     RPC8R = 5; // OC2 conectado a RC8
+    // RPA9R = 5;
     SYSKEY=0x1CA11CA1;
     
+    OC1CON = 0;
+    OC1R = 2500;
+    OC1RS = 2500;
+    OC1CON = 0x8006;
+    
+    OC2CON = 0;
+    OC2R = 2500;     // Tiempo en alto de 1 ms inicial
+    OC2RS = 2500;
+    OC2CON = 0x8006; // OC ON, modo PWM sin faltas
+    
+    T2CON = 0;
+    TMR2 = 0;
+    PR2 = 49999; // Periodo de 20 ms
+    T2CON = 0x8010; // T2 ON, Div = 2
+    
+    /*
     OC1CON = 0;
     OC1R = 2500; // Tiempo en alto de 1 ms inicial
     OC1RS = 2500;
@@ -67,7 +84,7 @@ void InicializarServos() {
     T3CON = 0;
     TMR3 = 0;
     PR3 = 49999; // Periodo de 20 ms
-    T3CON = 0x8010; // T3 ON, Div = 2
+    T3CON = 0x8010; // T3 ON, Div = 2*/
 }
 
 void InicializarTimer2(int tiempo, int valor_prescaler) {

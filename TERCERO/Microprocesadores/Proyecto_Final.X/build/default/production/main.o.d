@@ -1,10 +1,10 @@
 build/default/production/main.o: main.c Pic32Ini.h ModuloServo.h \
- ModuloSensorPresion.h Retardo.h
+ ModuloUART.h ModuloSensorPresion.h
 
 Pic32Ini.h:
 
 ModuloServo.h:
 
-ModuloSensorPresion.h:
+ModuloUART.h:
 
-Retardo.h:
+ModuloSensorPresion.h:

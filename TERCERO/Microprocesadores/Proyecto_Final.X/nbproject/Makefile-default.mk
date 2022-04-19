@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Pic32Ini.c main.c ModuloServo.c ModuloSensorPresion.c Retardo.c
+SOURCEFILES_QUOTED_IF_SPACED=Pic32Ini.c main.c ModuloServo.c ModuloSensorPresion.c ModuloUART.c "../../../../../../OneDrive - Universidad Pontificia Comillas/ICAI/TERCERO/2_CUATRI/Microprocesadores/Laboratorio/Practica4/Practica_4.X/Retardo.S"
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ModuloServo.o ${OBJECTDIR}/ModuloSensorPresion.o ${OBJECTDIR}/Retardo.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/ModuloServo.o.d ${OBJECTDIR}/ModuloSensorPresion.o.d ${OBJECTDIR}/Retardo.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ModuloServo.o ${OBJECTDIR}/ModuloSensorPresion.o ${OBJECTDIR}/ModuloUART.o ${OBJECTDIR}/_ext/1208439742/Retardo.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/ModuloServo.o.d ${OBJECTDIR}/ModuloSensorPresion.o.d ${OBJECTDIR}/ModuloUART.o.d ${OBJECTDIR}/_ext/1208439742/Retardo.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ModuloServo.o ${OBJECTDIR}/ModuloSensorPresion.o ${OBJECTDIR}/Retardo.o
+OBJECTFILES=${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ModuloServo.o ${OBJECTDIR}/ModuloSensorPresion.o ${OBJECTDIR}/ModuloUART.o ${OBJECTDIR}/_ext/1208439742/Retardo.o
 
 # Source Files
-SOURCEFILES=Pic32Ini.c main.c ModuloServo.c ModuloSensorPresion.c Retardo.c
+SOURCEFILES=Pic32Ini.c main.c ModuloServo.c ModuloSensorPresion.c ModuloUART.c ../../../../../../OneDrive - Universidad Pontificia Comillas/ICAI/TERCERO/2_CUATRI/Microprocesadores/Laboratorio/Practica4/Practica_4.X/Retardo.S
 
 
 
@@ -101,72 +101,88 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assembleWithPreprocess
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/_ext/1208439742/Retardo.o: ../../../../../../OneDrive\ -\ Universidad\ Pontificia\ Comillas/ICAI/TERCERO/2_CUATRI/Microprocesadores/Laboratorio/Practica4/Practica_4.X/Retardo.S  .generated_files/271b8951b5fa69edbb9bf063a9ffcb3c253711c7.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+	@${MKDIR} "${OBJECTDIR}/_ext/1208439742" 
+	@${RM} ${OBJECTDIR}/_ext/1208439742/Retardo.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1208439742/Retardo.o 
+	@${RM} ${OBJECTDIR}/_ext/1208439742/Retardo.o.ok ${OBJECTDIR}/_ext/1208439742/Retardo.o.err 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG  -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1208439742/Retardo.o.d"  -o ${OBJECTDIR}/_ext/1208439742/Retardo.o "../../../../../../OneDrive - Universidad Pontificia Comillas/ICAI/TERCERO/2_CUATRI/Microprocesadores/Laboratorio/Practica4/Practica_4.X/Retardo.S"  -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/_ext/1208439742/Retardo.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1 -mdfp="${DFP_DIR}"
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1208439742/Retardo.o.d" "${OBJECTDIR}/_ext/1208439742/Retardo.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
 else
+${OBJECTDIR}/_ext/1208439742/Retardo.o: ../../../../../../OneDrive\ -\ Universidad\ Pontificia\ Comillas/ICAI/TERCERO/2_CUATRI/Microprocesadores/Laboratorio/Practica4/Practica_4.X/Retardo.S  .generated_files/bac971739037b882ad9307016a25ef2a7ae7ffb1.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+	@${MKDIR} "${OBJECTDIR}/_ext/1208439742" 
+	@${RM} ${OBJECTDIR}/_ext/1208439742/Retardo.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1208439742/Retardo.o 
+	@${RM} ${OBJECTDIR}/_ext/1208439742/Retardo.o.ok ${OBJECTDIR}/_ext/1208439742/Retardo.o.err 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1208439742/Retardo.o.d"  -o ${OBJECTDIR}/_ext/1208439742/Retardo.o "../../../../../../OneDrive - Universidad Pontificia Comillas/ICAI/TERCERO/2_CUATRI/Microprocesadores/Laboratorio/Practica4/Practica_4.X/Retardo.S"  -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/_ext/1208439742/Retardo.o.asm.d",--gdwarf-2 -mdfp="${DFP_DIR}"
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1208439742/Retardo.o.d" "${OBJECTDIR}/_ext/1208439742/Retardo.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../ 
+	
 endif
 
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/26f82722a6532593dd422f72df0fe27c023d0fe5.flag .generated_files/bd7dd0b3a044e969994f431b44562e0fbe889da2.flag
+${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/d27268cd165f4997cfad4e522003def613667305.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)    
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main.o: main.c  .generated_files/eb17396b0000edb781df12dd0cdf3824ebbf824b.flag .generated_files/bd7dd0b3a044e969994f431b44562e0fbe889da2.flag
+${OBJECTDIR}/main.o: main.c  .generated_files/8c6d2ff414f1b30ca055fb322512e76446d277e2.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)    
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/ModuloServo.o: ModuloServo.c  .generated_files/dbb2c4f0e4b333554ec9db80c57f5bb6abd7f82c.flag .generated_files/bd7dd0b3a044e969994f431b44562e0fbe889da2.flag
+${OBJECTDIR}/ModuloServo.o: ModuloServo.c  .generated_files/b3ddee69b17969a5cf91e3f3e83f0c8f6287a037.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ModuloServo.o.d 
 	@${RM} ${OBJECTDIR}/ModuloServo.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloServo.o.d" -o ${OBJECTDIR}/ModuloServo.o ModuloServo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)    
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloServo.o.d" -o ${OBJECTDIR}/ModuloServo.o ModuloServo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/ModuloSensorPresion.o: ModuloSensorPresion.c  .generated_files/b170bef40429765fcbc0abb8ef3d64f2e4596ada.flag .generated_files/bd7dd0b3a044e969994f431b44562e0fbe889da2.flag
+${OBJECTDIR}/ModuloSensorPresion.o: ModuloSensorPresion.c  .generated_files/449c2d7fa9cc5e2b314b0d8546993c5f79bd7485.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ModuloSensorPresion.o.d 
 	@${RM} ${OBJECTDIR}/ModuloSensorPresion.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloSensorPresion.o.d" -o ${OBJECTDIR}/ModuloSensorPresion.o ModuloSensorPresion.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)    
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloSensorPresion.o.d" -o ${OBJECTDIR}/ModuloSensorPresion.o ModuloSensorPresion.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Retardo.o: Retardo.c  .generated_files/ab19d6d56423caac07ce910438122d1466be4e2a.flag .generated_files/bd7dd0b3a044e969994f431b44562e0fbe889da2.flag
+${OBJECTDIR}/ModuloUART.o: ModuloUART.c  .generated_files/87355695dab2ef096fdeae1392dbaf87e195f2f7.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Retardo.o.d 
-	@${RM} ${OBJECTDIR}/Retardo.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Retardo.o.d" -o ${OBJECTDIR}/Retardo.o Retardo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)    
+	@${RM} ${OBJECTDIR}/ModuloUART.o.d 
+	@${RM} ${OBJECTDIR}/ModuloUART.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloUART.o.d" -o ${OBJECTDIR}/ModuloUART.o ModuloUART.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/7e494218158f00235f52df2c28afa428d2a58f2f.flag .generated_files/bd7dd0b3a044e969994f431b44562e0fbe889da2.flag
+${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/1992b7104be34628b5065c91e46c064f12de9e01.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o.d 
 	@${RM} ${OBJECTDIR}/Pic32Ini.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)    
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main.o: main.c  .generated_files/11512f39f54e96a5a397e28a6e2ce70bf64f42ab.flag .generated_files/bd7dd0b3a044e969994f431b44562e0fbe889da2.flag
+${OBJECTDIR}/main.o: main.c  .generated_files/2438ed311881bdc1e6e16fbc2b75835088baac3a.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)    
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/ModuloServo.o: ModuloServo.c  .generated_files/8237f089afa8f0c905ace63a10989da56738941c.flag .generated_files/bd7dd0b3a044e969994f431b44562e0fbe889da2.flag
+${OBJECTDIR}/ModuloServo.o: ModuloServo.c  .generated_files/abb82e916ebc9a585b41d34f94a96638db8b2ea5.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ModuloServo.o.d 
 	@${RM} ${OBJECTDIR}/ModuloServo.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloServo.o.d" -o ${OBJECTDIR}/ModuloServo.o ModuloServo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)    
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloServo.o.d" -o ${OBJECTDIR}/ModuloServo.o ModuloServo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/ModuloSensorPresion.o: ModuloSensorPresion.c  .generated_files/6707a65e6f8a6c72718d9cf089d93f090f2762d9.flag .generated_files/bd7dd0b3a044e969994f431b44562e0fbe889da2.flag
+${OBJECTDIR}/ModuloSensorPresion.o: ModuloSensorPresion.c  .generated_files/875d6900281420245a7f9887afbadaa4005b1271.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ModuloSensorPresion.o.d 
 	@${RM} ${OBJECTDIR}/ModuloSensorPresion.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloSensorPresion.o.d" -o ${OBJECTDIR}/ModuloSensorPresion.o ModuloSensorPresion.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)    
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloSensorPresion.o.d" -o ${OBJECTDIR}/ModuloSensorPresion.o ModuloSensorPresion.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/Retardo.o: Retardo.c  .generated_files/a53c447f1c8e6846afd01d9ac2a3d105db96f6a8.flag .generated_files/bd7dd0b3a044e969994f431b44562e0fbe889da2.flag
+${OBJECTDIR}/ModuloUART.o: ModuloUART.c  .generated_files/edaba9623aa15dbba0a056a6883b2d488e3d1d18.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Retardo.o.d 
-	@${RM} ${OBJECTDIR}/Retardo.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Retardo.o.d" -o ${OBJECTDIR}/Retardo.o Retardo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)    
+	@${RM} ${OBJECTDIR}/ModuloUART.o.d 
+	@${RM} ${OBJECTDIR}/ModuloUART.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloUART.o.d" -o ${OBJECTDIR}/ModuloUART.o ModuloUART.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
@@ -181,12 +197,12 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/Proyecto_Final.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -g -mdebugger -D__MPLAB_DEBUGGER_PK3=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Proyecto_Final.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)   -mreserve=data@0x0:0x1FC -mreserve=boot@0x1FC00490:0x1FC00BEF  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=__MPLAB_DEBUGGER_PK3=1,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml 
+	${MP_CC} $(MP_EXTRA_LD_PRE) -g   -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Proyecto_Final.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)      -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -mdfp="${DFP_DIR}"
 	
 else
 dist/${CND_CONF}/${IMAGE_TYPE}/Proyecto_Final.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Proyecto_Final.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml 
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Proyecto_Final.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -mdfp="${DFP_DIR}"
 	${MP_CC_DIR}\\xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/Proyecto_Final.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 

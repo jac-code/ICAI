@@ -6,7 +6,7 @@
 #define NUM_MAX_16BITS 65535
 #define BITS_PRESCALER 4
 
-void Retardo(uint16_t retardo_ms)
+int Retardo(uint16_t retardo_ms)
 {
 	int prescaler[] = {1, 2, 4, 8, 16, 32, 64, 256};
 	int i = -1;
@@ -46,4 +46,6 @@ void Retardo(uint16_t retardo_ms)
         TMR2 = 0;
         IFS0bits.T2IF = 0; // Se borra el bit de fin de cuenta
     }
+    
+    return prescaler_ok;
 }

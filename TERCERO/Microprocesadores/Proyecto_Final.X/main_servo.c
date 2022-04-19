@@ -10,16 +10,15 @@
 
 #include <xc.h>
 #include <stdint.h>
+#include "Pic32Ini.h"
+#include "ModuloServo.h"
 
 #define PIN_PULSADOR  5
-#define PIN_POT   3 // El potenciómetro de la tarjeta está en RB3/AN5
-#define CANAL_POT 5 
-
 
 int main(void)
 {
   int pulsador_ant, pulsador_act;
-  int t_alto; // Tiempo en alto de la salida
+  int temp = 0;
   
   // Pines de los LEDs como digitales
   ANSELC &= ~0xF;
@@ -33,29 +32,23 @@ int main(void)
   TRISB = (1 << PIN_PULSADOR);
   TRISC = 0;
  
-  SYSKEY=0xAA996655;
-  SYSKEY=0x556699AA;
-  RPB15R = 5; // OC1 conectado a RB15
-  SYSKEY=0x1CA11CA1;
-  
-  OC1CON = 0;
-  OC1R = 2500;     // Tiempo en alto de 1 ms inicial
-  OC1RS = 2500;
-  OC1CON = 0x8006; // OC ON, modo PWM sin faltas
-  
-  T2CON = 0;
-  TMR2 = 0;
-  PR2 = 50000;     // Periodo de 10 ms
-  T2CON = 0x8010; // T3 ON, Div = 2
+  //InicializarServoSalida();
+  InicializarServos();
   
   pulsador_ant = (PORTB>>PIN_PULSADOR) & 1;
   while(1){
     // Se lee el estado del pulsador
     pulsador_act = (PORTB>>PIN_PULSADOR) & 1;
     if( (pulsador_act != pulsador_ant) && (pulsador_act == 0) ){
-      // Flanco de bajada en la patilla del pulsador
-      
-      OC1RS = 5000;
+        if(temp == 0) {
+            subir_barrera_salida();
+            subir_barrera_entrada();
+            temp = 1;
+        } else {
+            bajar_barrera_salida();
+            bajar_barrera_entrada();
+            temp = 0;
+        }
     }
     pulsador_ant = pulsador_act;
   }
