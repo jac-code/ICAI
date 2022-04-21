@@ -17,7 +17,6 @@ void InicializarSensorPresion() {
     AD1CON1bits.ON = 1; // Arranco el ADC
     
     AD1CON1bits.SAMP = 1;   // modo automatico
-    Retardo(1);
 }
 
 int getMedidaPresion(void){

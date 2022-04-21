@@ -6,7 +6,7 @@ function [yn] = AlgoritmoSolape(xn, Num, L)
     longitud_bloque = L - (p-1); % 400
     
     % tamaño del trozo de solapamiento o nº de ceros en bloque inicial
-    longitud_solape = p - 1; % 100
+    longitud_solape = p - 1; % 100 --> depende del número
     
     % longtiud de nuestra señal de entrada
     longitud_xn = length(xn); % 442354

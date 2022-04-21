@@ -10,7 +10,7 @@ load("PDS_P6_3A_LE1_G2.mat")
 
 %Hago sonar el audio
 
-sound(x, Fs);
+%sound(x, Fs);
 
 %Se observa un ruido molesto
 
@@ -254,4 +254,4 @@ grid on;
 %% Para ver si el filtrado ha funcionado podemos escuchar la señal
 
 %Efectivamente ya no está el pitido
-sound(y, Fs);
+%sound(y, Fs);

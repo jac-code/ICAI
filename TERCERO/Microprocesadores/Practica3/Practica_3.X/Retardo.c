@@ -29,20 +29,20 @@ int Retardo(uint16_t retardo_ms)
     // solo si se ha conseguido generar el retardo 
     // se configura el temporizador
     if(prescaler_ok == 0) {
-        T2CON = 0; // Se para el temporizador 2
-        TMR2 = 0; // Cuenta a 0
-        IFS0bits.T2IF = 0; // Se borra el bit de fin de cuenta
-        PR2 = (uint16_t)res;
-        T2CON = 0x8000; // Timer 2 encendido --> ON = 1
-        T2CON |= (prescaler << BITS_PRESCALER);
+        T4CON = 0; // Se para el temporizador 2
+        TMR4 = 0; // Cuenta a 0
+        IFS0bits.T4IF = 0; // Se borra el bit de fin de cuenta
+        PR4 = (uint16_t)res;
+        T4CON = 0x8000; // Timer 2 encendido --> ON = 1
+        T4CON |= (i << BITS_PRESCALER);
 
-        while(IFS0bits.T2IF == 0){
+        while(IFS0bits.T4IF == 0){
             ;// Espera el fin del temporizador
         }
         
-        T2CON = 0;
-        TMR2 = 0;
-        IFS0bits.T2IF = 0; // Se borra el bit de fin de cuenta
+        T4CON = 0;
+        TMR4 = 0;
+        IFS0bits.T4IF = 0; // Se borra el bit de fin de cuenta
     }
 
 	return prescaler_ok;
