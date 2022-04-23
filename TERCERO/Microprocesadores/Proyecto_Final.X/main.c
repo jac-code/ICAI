@@ -7,6 +7,7 @@
 #include "Retardo.h"
 
 #define PIN_PULSADOR  5
+#define PIN_SENSOR 9
 
 #define NUM_MAX_PLAZAS 20
 #define NUM_INICIO_PLAZAS 18
@@ -35,7 +36,7 @@ int main(void) {
     
     int pulsador_ant, pulsador_act;
     int presion_act, presion_ant;
-    int salida_ant, salida_act;
+    int salida;
     
     int contador_coches = NUM_INICIO_PLAZAS; // numero de plazas OCUPADAS
 
@@ -46,13 +47,13 @@ int main(void) {
     LATC = 0xFF; // Apago los LEDs de la placa
 
     TRISA = 0;
+    TRISA |= (1 << PIN_SENSOR);
     TRISB |= (1 << PIN_PULSADOR);
     TRISC = 0;
 
     InicializarSensorPresion();
     InicializarServos();
     InicializarUART1();
-    //InicializarSensorSalida();
     
     ConfiguracionLEDS(contador_coches);
     EnviarMensajeBienvenida();
@@ -98,8 +99,8 @@ int main(void) {
             }
             
             // LÓGICA SALIDA
-            pulsador_act = (PORTB >> PIN_PULSADOR) & 1;
-            if((pulsador_ant != pulsador_act) && (pulsador_act == 1)){
+            salida = (PORTA >> PIN_SENSOR) & 1;
+            if(salida == 0){
                 subir_barrera_salida();
                 
                 contador_coches--;  // entra un coche, plazas ocupadas++
@@ -110,7 +111,6 @@ int main(void) {
             } else {
                 bajar_barrera_salida();
             }
-            pulsador_ant = pulsador_act;
             
         } else if((contador_coches < NUM_MAX_PLAZAS) && (contador_coches > 0)) {
             bool_vacio = 0;
@@ -133,6 +133,25 @@ int main(void) {
             presion_ant = presion_act;
             
             // LÓGICA SALIDA
+            salida = (PORTA >> PIN_SENSOR) & 1;
+            if(salida == 0){
+                subir_barrera_salida();
+                
+                contador_coches--;  // entra un coche, plazas ocupadas++
+                EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
+                ConfiguracionLEDS(contador_coches);
+                
+                int k = Retardo(3000);
+            } else {
+                bajar_barrera_salida();
+            }
+        }
+    }
+}
+
+/*
+ * 
+ * // LÓGICA SALIDA
             pulsador_act = (PORTB >> PIN_PULSADOR) & 1;
             if((pulsador_ant != pulsador_act) && (pulsador_act == 1)){
                 subir_barrera_salida();
@@ -146,11 +165,7 @@ int main(void) {
                 bajar_barrera_salida();
             }
             pulsador_ant = pulsador_act;
-        }
-    }
-}
-
-/*
+ * 
         if(contador_coches <= NUM_MAX_PLAZAS) {
             if(contador_coches > 0) {
                 presion_act = getMedidaPresion();

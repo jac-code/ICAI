@@ -7,7 +7,8 @@ void InicializarServos() {
     SYSKEY=0xAA996655;
     SYSKEY=0x556699AA;
     RPB15R = 5; // OC1 conectado a RB15
-    RPC8R = 5; // OC2 conectado a RC8
+    //RPC8R = 5; // OC2 conectado a RC8
+    RPC4R = 5; // OC3 conectado a RC4
     // RPA9R = 5;
     SYSKEY=0x1CA11CA1;
     
@@ -16,10 +17,10 @@ void InicializarServos() {
     OC1RS = 2500;
     OC1CON = 0x800E; // OC ON, modo PWM sin faltas, utilizamos timer 3
     
-    OC2CON = 0;
-    OC2R = 2500;     // Tiempo en alto de 1 ms inicial
-    OC2RS = 2500;
-    OC2CON = 0x800E; // OC ON, modo PWM sin faltas
+    OC3CON = 0;
+    OC3R = 2500;     // Tiempo en alto de 1 ms inicial
+    OC3RS = 2500;
+    OC3CON = 0x800E; // OC ON, modo PWM sin faltas
     // OC2CON = 0x8006;    // TIMER 2
     
     T3CON = 0;
@@ -37,9 +38,9 @@ void subir_barrera_entrada() {
 }
 
 void bajar_barrera_salida() {
-    OC2RS = 2500;
+    OC3RS = 2500;
 }
 
 void subir_barrera_salida() {
-    OC2RS = 5000;
+    OC3RS = 5000;
 }
