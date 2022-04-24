@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=seccion4.c Pic32Ini.c
+SOURCEFILES_QUOTED_IF_SPACED=seccion6.c Pic32Ini.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/seccion4.o ${OBJECTDIR}/Pic32Ini.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/seccion4.o.d ${OBJECTDIR}/Pic32Ini.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/seccion6.o ${OBJECTDIR}/Pic32Ini.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/seccion6.o.d ${OBJECTDIR}/Pic32Ini.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/seccion4.o ${OBJECTDIR}/Pic32Ini.o
+OBJECTFILES=${OBJECTDIR}/seccion6.o ${OBJECTDIR}/Pic32Ini.o
 
 # Source Files
-SOURCEFILES=seccion4.c Pic32Ini.c
+SOURCEFILES=seccion6.c Pic32Ini.c
 
 
 
@@ -107,11 +107,11 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/seccion4.o: seccion4.c  .generated_files/f77db36c688bb4f0e367d49b3e7a88953625b8b9.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/seccion6.o: seccion6.c  .generated_files/925933a000a8d18aac3c2bce4205f85080e73bfe.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion4.o.d 
-	@${RM} ${OBJECTDIR}/seccion4.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion4.o.d" -o ${OBJECTDIR}/seccion4.o seccion4.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/seccion6.o.d 
+	@${RM} ${OBJECTDIR}/seccion6.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion6.o.d" -o ${OBJECTDIR}/seccion6.o seccion6.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 ${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/d482dd70e331e8380f41cf0623f0cc176514b516.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
@@ -120,11 +120,11 @@ ${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/d482dd70e331e8380f41cf0623
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/Pic32Ini.o.d" -o ${OBJECTDIR}/Pic32Ini.o Pic32Ini.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/seccion4.o: seccion4.c  .generated_files/18c59b9bb62c743490bd0db084d94aca0225d15.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
+${OBJECTDIR}/seccion6.o: seccion6.c  .generated_files/80700685bf34ff0d8d2ffe7b44e654d1ca15004c.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/seccion4.o.d 
-	@${RM} ${OBJECTDIR}/seccion4.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion4.o.d" -o ${OBJECTDIR}/seccion4.o seccion4.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/seccion6.o.d 
+	@${RM} ${OBJECTDIR}/seccion6.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/seccion6.o.d" -o ${OBJECTDIR}/seccion6.o seccion6.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 ${OBJECTDIR}/Pic32Ini.o: Pic32Ini.c  .generated_files/c57a8deadb3608903eb511fada5fa321c0abaf42.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}" 

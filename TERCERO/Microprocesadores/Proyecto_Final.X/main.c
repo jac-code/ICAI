@@ -9,8 +9,8 @@
 #define PIN_PULSADOR  5
 #define PIN_SENSOR 9
 
-#define NUM_MAX_PLAZAS 20
-#define NUM_INICIO_PLAZAS 18
+#define NUM_MAX_PLAZAS 5
+#define NUM_INICIO_PLAZAS 2
 
 #define LIM_25 5
 #define LIM_50 10
@@ -33,8 +33,13 @@ void ConfiguracionLEDS(int contador_plazas);
 int main(void) {
     int bool_completo = 0;
     int bool_vacio = 0;
+    int bool_configuracion = 1;
+    int bool_mensaje_automatico = 0;
+    int bool_mensaje_manual = 0;
     
-    int pulsador_ant, pulsador_act;
+    int configuracion;  // guardamos la configuracion seleccionada
+    char c; // caracter recibido por el terminal
+    
     int presion_act, presion_ant;
     int salida;
     
@@ -48,7 +53,7 @@ int main(void) {
 
     TRISA = 0;
     TRISA |= (1 << PIN_SENSOR);
-    TRISB |= (1 << PIN_PULSADOR);
+    TRISB = 0;
     TRISC = 0;
 
     InicializarSensorPresion();
@@ -56,189 +61,265 @@ int main(void) {
     InicializarUART1();
     
     ConfiguracionLEDS(contador_coches);
+    
     EnviarMensajeBienvenida();
     EnviarSalto();
+    ConfiguracionGaraje();
+    EnviarSalto();
+    
+    while(bool_configuracion == 1) {
+        c = RecibirComando();
+  
+        if(c == 'A') {
+            // MODO AUTOMATICO SELECCIONADO
+            configuracion = 0;
+            EnviarMensajeModoAutomaticoSeleccionado();
+            bool_configuracion = 0;
+        } else if (c == 'M') {
+            // MODO MANUAL SELECCIONADO;
+            configuracion = 1;
+            EnviarMensajeModoManualSeleccionado();
+            bool_configuracion = 0;
+        }
+    }
+    
     EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
     EnviarSalto();
     
-    pulsador_ant = (PORTB >> PIN_PULSADOR) & 1;
     presion_ant = getMedidaPresion();
     
     while(1) {
-        if(contador_coches == 0) {  // PARKING VACIO --> solo pueden entrar coches
-            // ENVIAR MENSAJE SOLO UNA VEZ
-            if(bool_vacio == 0) {    // que solo mande mensaje una vez
-                EnviarMensajeParkingVacio();
-                ConfiguracionLEDS(contador_coches);
-                bool_vacio = 1;
+        if(configuracion == 0) {    // MODO AUTOMATICO
+            if(contador_coches == 0) {  // PARKING VACIO --> solo pueden entrar coches
+                // ENVIAR MENSAJE SOLO UNA VEZ
+                if(bool_vacio == 0) {    // que solo mande mensaje una vez
+                    EnviarMensajeParkingVacio();
+                    ConfiguracionLEDS(contador_coches);
+                    bajar_barrera_salida();
+                    bool_vacio = 1;
+                }
+
+                // LÓGICA ENTRADA
+                presion_act = getMedidaPresion();
+                if((presion_ant != presion_act) && (presion_act == 1)){
+                    subir_barrera_entrada();
+
+                    //while(getMedidaPresion() == 1); // mientras este con presion la puerta está abierta
+                    contador_coches++;  // entra un coche, plazas ocupadas++
+                    EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
+                    ConfiguracionLEDS(contador_coches);
+
+                    int k = Retardo(3000);
+                } else {
+                    bajar_barrera_entrada();
+                }
+                presion_ant = presion_act;
+            } else if(contador_coches == NUM_MAX_PLAZAS) {  // PARKING LLENO --> solo pueden salir coches
+                // ENVIAR MENSAJE SOLO UNA VEZ
+                if(bool_completo == 0) {    // que solo mande mensaje una vez
+                    EnviarMensajeParkingCompleto();
+                    ConfiguracionLEDS(contador_coches);
+                    bajar_barrera_entrada();
+                    bool_completo = 1;
+                }
+
+                // LÓGICA SALIDA
+                salida = (PORTA >> PIN_SENSOR) & 1;
+                if(salida == 0){
+                    subir_barrera_salida();
+
+                    contador_coches--;  // entra un coche, plazas ocupadas++
+                    EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
+                    ConfiguracionLEDS(contador_coches);
+
+                    int k = Retardo(3000);
+                } else {
+                    bajar_barrera_salida();
+                }
+            } else if((contador_coches < NUM_MAX_PLAZAS) && (contador_coches > 0)) {
+                bool_vacio = 0;
+                bool_completo = 0;
+
+                // LÓGICA ENTRADA
+                presion_act = getMedidaPresion();
+                if((presion_ant != presion_act) && (presion_act == 1)){
+                    subir_barrera_entrada();
+
+                    //while(getMedidaPresion() == 1); // mientras este con presion la puerta está abierta
+                    contador_coches++;  // entra un coche, plazas ocupadas++
+                    EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
+                    ConfiguracionLEDS(contador_coches);
+
+                    int k = Retardo(3000);
+                } else {
+                    bajar_barrera_entrada();
+                }
+                presion_ant = presion_act;
+
+                // LÓGICA SALIDA
+                salida = (PORTA >> PIN_SENSOR) & 1;
+                if(salida == 0){
+                    subir_barrera_salida();
+
+                    contador_coches--;  // entra un coche, plazas ocupadas++
+                    EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
+                    ConfiguracionLEDS(contador_coches);
+
+                    int k = Retardo(3000);
+                } else {
+                    bajar_barrera_salida();
+                }
             }
+        } else {    // MODO MANUAL SELECCIONADO
+            bool_configuracion = 1; // para futuras lecturas
+            bool_mensaje_automatico = 0;
+            bool_mensaje_manual = 0;
             
-            // LÓGICA ENTRADA
-            presion_act = getMedidaPresion();
-            if((presion_ant != presion_act) && (presion_act == 1)){
-                subir_barrera_entrada();
-                
-                //while(getMedidaPresion() == 1); // mientras este con presion la puerta está abierta
-                contador_coches++;  // entra un coche, plazas ocupadas++
-                EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
-                ConfiguracionLEDS(contador_coches);
-                
-                int k = Retardo(3000);
-            } else {
-                bajar_barrera_entrada();
-            }
-            presion_ant = presion_act;
-            
-        } else if(contador_coches == NUM_MAX_PLAZAS) {  // PARKING LLENO --> solo pueden salir coches
-            // ENVIAR MENSAJE SOLO UNA VEZ
-            if(bool_completo == 0) {    // que solo mande mensaje una vez
-                EnviarMensajeParkingCompleto();
-                ConfiguracionLEDS(contador_coches);
-                bajar_barrera_entrada();
-                bool_completo = 1;
-            }
-            
-            // LÓGICA SALIDA
-            salida = (PORTA >> PIN_SENSOR) & 1;
-            if(salida == 0){
-                subir_barrera_salida();
-                
-                contador_coches--;  // entra un coche, plazas ocupadas++
-                EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
-                ConfiguracionLEDS(contador_coches);
-                
-                int k = Retardo(3000);
-            } else {
-                bajar_barrera_salida();
-            }
-            
-        } else if((contador_coches < NUM_MAX_PLAZAS) && (contador_coches > 0)) {
-            bool_vacio = 0;
-            bool_completo = 0;
-            
-            // LÓGICA ENTRADA
-            presion_act = getMedidaPresion();
-            if((presion_ant != presion_act) && (presion_act == 1)){
-                subir_barrera_entrada();
-                
-                //while(getMedidaPresion() == 1); // mientras este con presion la puerta está abierta
-                contador_coches++;  // entra un coche, plazas ocupadas++
-                EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
-                ConfiguracionLEDS(contador_coches);
-                
-                int k = Retardo(3000);
-            } else {
-                bajar_barrera_entrada();
-            }
-            presion_ant = presion_act;
-            
-            // LÓGICA SALIDA
-            salida = (PORTA >> PIN_SENSOR) & 1;
-            if(salida == 0){
-                subir_barrera_salida();
-                
-                contador_coches--;  // entra un coche, plazas ocupadas++
-                EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
-                ConfiguracionLEDS(contador_coches);
-                
-                int k = Retardo(3000);
-            } else {
-                bajar_barrera_salida();
+            if(contador_coches == 0) {  // PARKING VACIO --> solo pueden entrar coches
+                // ENVIAR MENSAJE SOLO UNA VEZ
+                if(bool_vacio == 0) {    // que solo mande mensaje una vez
+                    EnviarMensajeParkingVacio();
+                    ConfiguracionLEDS(contador_coches);
+                    bajar_barrera_salida();
+                    bool_vacio = 1;
+                }
+
+                // LÓGICA ENTRADA
+                presion_act = getMedidaPresion();
+                if((presion_ant != presion_act) && (presion_act == 1)){
+                    if(bool_mensaje_automatico == 0) {
+                        EnviarMensajeCocheEntrada();
+                        bool_mensaje_automatico = 1;
+                    }
+                    
+                    while(bool_configuracion == 1) {
+                        c = RecibirComando();
+                    
+                        if(c == 'S') {
+                            subir_barrera_entrada();
+                            EnviarMensajeAbrirBarrera();
+                            contador_coches++;  // entra un coche, plazas ocupadas++
+                            EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
+                            ConfiguracionLEDS(contador_coches);
+
+                            int k = Retardo(3000);
+                            bool_configuracion = 0;
+                        } else if(c == 'N') {
+                            bajar_barrera_entrada();
+                            EnviarMensajeDenegarAcceso();
+                            bool_configuracion = 0;
+                        }
+                    }
+                } else {
+                    bajar_barrera_entrada();
+                }
+                presion_ant = presion_act;
+            } else if(contador_coches == NUM_MAX_PLAZAS) {  // PARKING LLENO --> solo pueden salir coches
+                // ENVIAR MENSAJE SOLO UNA VEZ
+                if(bool_completo == 0) {    // que solo mande mensaje una vez
+                    EnviarMensajeParkingCompleto();
+                    ConfiguracionLEDS(contador_coches);
+                    bajar_barrera_entrada();
+                    bool_completo = 1;
+                }
+
+                // LÓGICA SALIDA
+                salida = (PORTA >> PIN_SENSOR) & 1;
+                if(salida == 0){
+                    if(bool_mensaje_manual == 0) {
+                        EnviarMensajeCocheSalida();
+                        bool_mensaje_manual = 1;
+                    }
+                    
+                    while(bool_configuracion == 1) {
+                        c = RecibirComando();
+                        if(c == 'S') {
+                            subir_barrera_salida();
+                            EnviarMensajeAbrirBarrera();
+
+                            contador_coches--;  // entra un coche, plazas ocupadas++
+                            EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
+                            ConfiguracionLEDS(contador_coches);
+
+                            int k = Retardo(3000);
+                            bool_configuracion = 0;
+                        } else if(c == 'N') {
+                            EnviarMensajeDenegarAcceso();
+                            bajar_barrera_salida();
+                            bool_configuracion = 0;
+                        }
+                    }
+                } else {
+                    bajar_barrera_salida();
+                }
+            } else if((contador_coches < NUM_MAX_PLAZAS) && (contador_coches > 0)) {
+                bool_vacio = 0;
+                bool_completo = 0;
+
+                // LÓGICA ENTRADA
+                presion_act = getMedidaPresion();
+                if((presion_ant != presion_act) && (presion_act == 1)){
+                    if(bool_mensaje_automatico == 0) {
+                        EnviarMensajeCocheEntrada();
+                        bool_mensaje_automatico = 1;
+                    }
+                    
+                    while(bool_configuracion == 1) {
+                        c = RecibirComando();
+                    
+                        if(c == 'S') {
+                            subir_barrera_entrada();
+                            EnviarMensajeAbrirBarrera();
+                            contador_coches++;  // entra un coche, plazas ocupadas++
+                            EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
+                            ConfiguracionLEDS(contador_coches);
+
+                            int k = Retardo(3000);
+                            bool_configuracion = 0;
+                        } else if(c == 'N') {
+                            bajar_barrera_entrada();
+                            EnviarMensajeDenegarAcceso();
+                            bool_configuracion = 0;
+                        }
+                    }
+                } else {
+                    bajar_barrera_entrada();
+                }
+                presion_ant = presion_act;
+
+                // LÓGICA SALIDA
+                salida = (PORTA >> PIN_SENSOR) & 1;
+                if(salida == 0){
+                    if(bool_mensaje_manual == 0) {
+                        EnviarMensajeCocheSalida();
+                        bool_mensaje_manual = 1;
+                    }
+                    
+                    while(bool_configuracion == 1) {
+                        c = RecibirComando();
+                        if(c == 'S') {
+                            subir_barrera_salida();
+                            EnviarMensajeAbrirBarrera();
+
+                            contador_coches--;  // entra un coche, plazas ocupadas++
+                            EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
+                            ConfiguracionLEDS(contador_coches);
+
+                            int k = Retardo(3000);
+                            bool_configuracion = 0;
+                        } else if(c == 'N') {
+                            EnviarMensajeDenegarAcceso();
+                            bajar_barrera_salida();
+                            bool_configuracion = 0;
+                        }
+                    }
+                } else {
+                    bajar_barrera_salida();
+                }
             }
         }
     }
 }
-
-/*
- * 
- * // LÓGICA SALIDA
-            pulsador_act = (PORTB >> PIN_PULSADOR) & 1;
-            if((pulsador_ant != pulsador_act) && (pulsador_act == 1)){
-                subir_barrera_salida();
-                
-                contador_coches--;  // entra un coche, plazas ocupadas++
-                EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
-                ConfiguracionLEDS(contador_coches);
-                
-                int k = Retardo(3000);
-            } else {
-                bajar_barrera_salida();
-            }
-            pulsador_ant = pulsador_act;
- * 
-        if(contador_coches <= NUM_MAX_PLAZAS) {
-            if(contador_coches > 0) {
-                presion_act = getMedidaPresion();
-                if((presion_act != presion_ant) && (getMedidaPresion() == 1)){
-                    subir_barrera_entrada();
-                    while(getMedidaPresion() == 1);
-                    
-                    presion_ant = presion_act;
-                    contador_coches++;  // entra un coche, plazas ocupadas++
-                    EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
-                    ConfiguracionLEDS(contador_coches);
-                } else {
-                    bajar_barrera_entrada();
-                }
-            }
-            if(contador_coches < NUM_MAX_PLAZAS) {
-                pulsador_act = (PORTB >> PIN_PULSADOR) & 1;
-                if ((pulsador_act != pulsador_ant) && (pulsador_act == 0)) {
-                    contador_coches--;  // sale un coche
-                    EnviarMensajeInfoPlazas(contador_coches, NUM_MAX_PLAZAS);
-                    ConfiguracionLEDS(contador_coches);
-                }
-                pulsador_ant = pulsador_act;
-            }
-        } else {
-            bajar_barrera_entrada();
-        }
- 
- #include <xc.h> 
-.text
-.global Retardo
-.ent Retardo
-Retardo:
-    beq a0, zero, Fin	# comprobar si retardo = 0
-    la t0, T2CON
-    sw zero, 0(t0)  # T2CON=0
-    la t0, TMR2
-    sw zero, 0(t0)  # TMR2=0
-    li t0, 0xFFFFFDFF   # Mascara para poner IFS0bits.T2IF = 0
-    la t1, IFS0
-    lw t2,0(t1)	# Cargo lo de IFS0
-    and t2, t0, t2  # Aplico mascara
-    sw t2, 0(t1)    # IFS0bits.T2IF=0
-    addiu t0, t0, 0x1387    # 4999 en hexadecimal
-    la t2, PR2
-    sw t0, 0(t2)    # PR2 = 4999;
-    ori t0, zero, 0x8000
-    la t2, T2CON
-    sw t0,0(t2)	# T2CON = 0x8000; 
-    addu v0, zero, zero	# i=0
-For:
-    sltu t0, v0, a0 # t0 = 1 si i < retardo_ms
-    beq t0, zero, Fin # si i < retardo_ms falso, salimos del bucle
-    nop
-While:
-    lw t0, 0(t1)    # Leo en t0 el registro IFS0
-    li t3, 0x0200   # Mascara para poner todo a 0 menos el bit que me interesa
-    and t4, t0, t3  # Aplico mascara
-    beq t4, zero, While	# Si todo es 0 ese bit que me interesa esta a 0
-    nop
-    li t0, 0xFFFFFDFF   # Mascara para poner IFS0bits.T2IF=0
-    la t1, IFS0
-    lw t2,0(t1)	# Cargo lo de IFS0
-    and t2, t0, t2  # Aplico mascara
-    sw t2, 0(t1)    # IFS0bits.T2IF = 0
-    addi v0, v0, 1  # i++
-    j For
-    nop
-Fin:
-    jr ra
-    .end Retardo
- 
- */
 
 void ConfiguracionLEDS(int contador_plazas) {
     if(contador_plazas <= LIM_25) {

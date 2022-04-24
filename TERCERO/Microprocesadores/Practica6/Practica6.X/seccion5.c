@@ -66,7 +66,6 @@ int main (void) {
 		if(U1STAbits.URXDA == 1){
 			c = U1RXREG;
 			LATC = ~(c & 0x0F);
-            // LATC = ~(C & puerto);
 		}
 
 		// TRANSMISOR

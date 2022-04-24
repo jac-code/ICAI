@@ -40,13 +40,11 @@ void InicializarUART1() {
 	U1MODE = 0x8000; // Se arranca la UART
 }
 
-void EnviarSalto() {
+void EnviarCadena(char cadena[]) {
     char *punt;
-    char salto [] = "\n";
-    
     U1STAbits.UTXEN = 1;    // habilitar transmisor
     
-    punt = salto;   // escribir frase
+    punt = cadena;   // escribir frase
     while (*punt != '\0'){  // iteramos hasta la final de la cadena
         U1TXREG = *punt;    // enviamos caracter
         while(U1STAbits.TRMT == 0)
@@ -55,67 +53,118 @@ void EnviarSalto() {
     }
     
     U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
+}
+
+void EnviarSalto() {
+    char salto [] = "\n";
+    EnviarCadena(salto);
 }
 
 void EnviarPadding() {
-    char *punt;
     char padding [] = "================================";
+    EnviarCadena(padding);
+}
+
+void ConfiguracionGaraje() {
+    char seleccion [] = "Seleccione como desea usar el garaje: ";
+    char opcion_manual [] = "De manera manual (M)";
+    char opcion_automatica [] = "De manera automatica (A)";
     
-    U1STAbits.UTXEN = 1;    // habilitar transmisor
+    EnviarPadding();
+    EnviarSalto();
     
-    punt = padding;   // escribir frase
-    while (*punt != '\0'){  // iteramos hasta la final de la cadena
-        U1TXREG = *punt;    // enviamos caracter
-        while(U1STAbits.TRMT == 0)
-            ; 
-        punt++;
-    }
+    EnviarCadena(seleccion);
+    EnviarSalto();
     
-    U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
+    EnviarCadena(opcion_manual);
+    EnviarSalto();
+    
+    EnviarCadena(opcion_automatica);
+    EnviarSalto();
+    
+    //EnviarSalto();
+    EnviarPadding();
+    EnviarSalto();
 }
 
 void EnviarMensajeBienvenida() {
-    char *punt;
     char mensaje [] = "BIENVENIDO AL PARKING DE ICAI";
     
     EnviarPadding();
     EnviarSalto();
     
-    U1STAbits.UTXEN = 1;    // habilitar transmisor
+    EnviarCadena(mensaje);
     
-    punt = mensaje;   // escribir frase
-    while (*punt != '\0'){  // iteramos hasta la final de la cadena
-        U1TXREG = *punt;    // enviamos caracter
-        while(U1STAbits.TRMT == 0)
-            ; 
-        punt++;
-    }
+    EnviarSalto();
+    EnviarPadding();
+    EnviarSalto();
+}
+
+void EnviarMensajeAbrirBarrera() {
+    char mensaje [] = "Abriendo la barrera...";
     
-    U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
+    EnviarPadding();
+    EnviarSalto();
     
+    EnviarCadena(mensaje);
+    
+    EnviarSalto();
+    EnviarPadding();
+    EnviarSalto();
+}
+
+void EnviarMensajeDenegarAcceso() {
+    char mensaje [] = "Acceso denegado!!";
+    
+    EnviarPadding();
+    EnviarSalto();
+    
+    EnviarCadena(mensaje);
+    
+    EnviarSalto();
+    EnviarPadding();
+    EnviarSalto();
+}
+
+void EnviarMensajeCocheEntrada() {
+    char mensaje_detectar [] = "Se ha detectado un coche en la entrada.";
+    char mensaje_abrir [] = "¿Desea abrir la barrera?";
+    
+    EnviarPadding();
+    EnviarSalto();
+    
+    EnviarCadena(mensaje_detectar);
+    EnviarSalto();
+    
+    EnviarCadena(mensaje_abrir);
+    EnviarSalto();
+    EnviarPadding();
+    EnviarSalto();
+}
+
+void EnviarMensajeCocheSalida() {
+    char mensaje_detectar [] = "Se ha detectado un coche en la salida.";
+    char mensaje_abrir [] = "¿Desea abrir la barrera?";
+    
+    EnviarPadding();
+    EnviarSalto();
+    
+    EnviarCadena(mensaje_detectar);
+    EnviarSalto();
+    
+    EnviarCadena(mensaje_abrir);
     EnviarSalto();
     EnviarPadding();
     EnviarSalto();
 }
 
 void EnviarMensajeParkingCompleto() {
-    char *punt;
     char mensaje [] = "ACTUALMENTE EL PARKING ESTÁ COMPLETO";
     
     EnviarPadding();
     EnviarSalto();
     
-    U1STAbits.UTXEN = 1;    // habilitar transmisor
-    
-    punt = mensaje;   // escribir frase
-    while (*punt != '\0'){  // iteramos hasta la final de la cadena
-        U1TXREG = *punt;    // enviamos caracter
-        while(U1STAbits.TRMT == 0)
-            ; 
-        punt++;
-    }
-    
-    U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
+    EnviarCadena(mensaje);
     
     EnviarSalto();
     EnviarPadding();
@@ -123,23 +172,38 @@ void EnviarMensajeParkingCompleto() {
 }
 
 void EnviarMensajeParkingVacio() {
-    char *punt;
     char mensaje [] = "ACTUALMENTE EL PARKING ESTÁ VACÍO";
     
     EnviarPadding();
     EnviarSalto();
     
-    U1STAbits.UTXEN = 1;    // habilitar transmisor
+    EnviarCadena(mensaje);
     
-    punt = mensaje;   // escribir frase
-    while (*punt != '\0'){  // iteramos hasta la final de la cadena
-        U1TXREG = *punt;    // enviamos caracter
-        while(U1STAbits.TRMT == 0)
-            ; 
-        punt++;
-    }
+    EnviarSalto();
+    EnviarPadding();
+    EnviarSalto();
+}
+
+void EnviarMensajeModoAutomaticoSeleccionado() {
+    char mensaje [] = "HA SELECCIONADO EL MODO AUTOMATICO";
     
-    U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
+    EnviarPadding();
+    EnviarSalto();
+    
+    EnviarCadena(mensaje);
+    
+    EnviarSalto();
+    EnviarPadding();
+    EnviarSalto();
+}
+
+void EnviarMensajeModoManualSeleccionado() {
+    char mensaje [] = "HA SELECCIONADO EL MODO MANUAL";
+    
+    EnviarPadding();
+    EnviarSalto();
+    
+    EnviarCadena(mensaje);
     
     EnviarSalto();
     EnviarPadding();
@@ -147,7 +211,6 @@ void EnviarMensajeParkingVacio() {
 }
 
 void EnviarMensajeInfoPlazas(int contador_plazas, int max_plazas) {
-    char *punt;
     char numero_plazas[10];
     char mensaje_libres [] = "PLAZAS LIBRES: ";
     char mensaje_ocupadas [] = "PLAZAS OCUPADAS: ";
@@ -156,85 +219,33 @@ void EnviarMensajeInfoPlazas(int contador_plazas, int max_plazas) {
     EnviarPadding();
     EnviarSalto();
     
-    U1STAbits.UTXEN = 1;    // habilitar transmisor
-    
-    punt = mensaje_libres;   // escribir frase
-    while (*punt != '\0'){  // iteramos hasta la final de la cadena
-        U1TXREG = *punt;    // enviamos caracter
-        while(U1STAbits.TRMT == 0)
-            ; 
-        punt++;
-    }
-    
-    U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
+    EnviarCadena(mensaje_libres);
 	
 	sprintf(numero_plazas, "%d", max_plazas-contador_plazas);
-    U1STAbits.UTXEN = 1;    // habilitar transmisor
-    
-    punt = numero_plazas;   // escribir frase
-    while (*punt != '\0'){  // iteramos hasta la final de la cadena
-        U1TXREG = *punt;    // enviamos caracter
-        while(U1STAbits.TRMT == 0)
-            ; 
-        punt++;
-    }
-    
-    U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
+    EnviarCadena(numero_plazas);
     EnviarSalto();
     
-    U1STAbits.UTXEN = 1;    // habilitar transmisor
-    
-    punt = mensaje_ocupadas;   // escribir frase
-    while (*punt != '\0'){  // iteramos hasta la final de la cadena
-        U1TXREG = *punt;    // enviamos caracter
-        while(U1STAbits.TRMT == 0)
-            ; 
-        punt++;
-    }
-    
-    U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
+    EnviarCadena(mensaje_ocupadas);
     
     sprintf(numero_plazas, "%d", contador_plazas);
-    U1STAbits.UTXEN = 1;    // habilitar transmisor
-    
-    punt = numero_plazas;   // escribir frase
-    while (*punt != '\0'){  // iteramos hasta la final de la cadena
-        U1TXREG = *punt;    // enviamos caracter
-        while(U1STAbits.TRMT == 0)
-            ; 
-        punt++;
-    }
-    
-    U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
+    EnviarCadena(numero_plazas);
     EnviarSalto();
     
-    U1STAbits.UTXEN = 1;    // habilitar transmisor
-    
-    punt = mensaje_total;   // escribir frase
-    while (*punt != '\0'){  // iteramos hasta la final de la cadena
-        U1TXREG = *punt;    // enviamos caracter
-        while(U1STAbits.TRMT == 0)
-            ; 
-        punt++;
-    }
-    
-    U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
+    EnviarCadena(mensaje_total);
     
     sprintf(numero_plazas, "%d", max_plazas);
-    U1STAbits.UTXEN = 1;    // habilitar transmisor
-    
-    punt = numero_plazas;   // escribir frase
-    while (*punt != '\0'){  // iteramos hasta la final de la cadena
-        U1TXREG = *punt;    // enviamos caracter
-        while(U1STAbits.TRMT == 0)
-            ; 
-        punt++;
-    }
-    
-    U1STAbits.UTXEN = 0;    // inhabilitar transmisión al terminar
+    EnviarCadena(numero_plazas);
     EnviarSalto();
     
     EnviarPadding();
     EnviarSalto();
 }
+
+char RecibirComando() {
+    char c = '0';
     
+    if(U1STAbits.URXDA == 1){
+        c = U1RXREG;
+    }
+    return c;
+}

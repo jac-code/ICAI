@@ -27,6 +27,7 @@
       <itemPath>ModuloSensorSalida.c</itemPath>
       <itemPath>main_salida.c</itemPath>
       <itemPath>../Practica3/Practica_3.X/Retardo.c</itemPath>
+      <itemPath>main_uart.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -780,6 +781,8 @@
         </C32CPP>
         <C32Global>
         </C32Global>
+      </item>
+      <item path="main_uart.c" ex="true" overriding="false">
       </item>
     </conf>
   </confs>

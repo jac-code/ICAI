@@ -13,8 +13,8 @@ void InicializarServos() {
     SYSKEY=0x1CA11CA1;
     
     OC1CON = 0;
-    OC1R = 2500; // Tiempo en alto de 1 ms inicial
-    OC1RS = 2500;
+    OC1R = 5000; // Tiempo en alto de 1 ms inicial
+    OC1RS = 5000;
     OC1CON = 0x800E; // OC ON, modo PWM sin faltas, utilizamos timer 3
     
     OC3CON = 0;
@@ -30,11 +30,11 @@ void InicializarServos() {
 }
 
 void bajar_barrera_entrada() {
-    OC1RS = 2500;
+    OC1RS = 5000;
 }
 
 void subir_barrera_entrada() {
-    OC1RS = 5000;
+    OC1RS = 2500;
 }
 
 void bajar_barrera_salida() {
