@@ -6,11 +6,10 @@
 #include "ModuloSensorPresion.h"
 #include "Retardo.h"
 
-#define PIN_PULSADOR  5
 #define PIN_SENSOR 9
 
-#define NUM_MAX_PLAZAS 5
-#define NUM_INICIO_PLAZAS 2
+#define NUM_MAX_PLAZAS 20
+#define NUM_INICIO_PLAZAS 10
 
 #define LIM_25 5
 #define LIM_50 10

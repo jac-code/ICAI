@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Pic32Ini.c main.c ModuloServo.c ModuloSensorPresion.c ModuloUART.c ModuloSensorSalida.c ../Practica3/Practica_3.X/Retardo.c
+SOURCEFILES_QUOTED_IF_SPACED=Pic32Ini.c main.c ModuloServo.c ModuloSensorPresion.c ModuloUART.c ../Practica3/Practica_3.X/Retardo.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ModuloServo.o ${OBJECTDIR}/ModuloSensorPresion.o ${OBJECTDIR}/ModuloUART.o ${OBJECTDIR}/ModuloSensorSalida.o ${OBJECTDIR}/_ext/498231017/Retardo.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/ModuloServo.o.d ${OBJECTDIR}/ModuloSensorPresion.o.d ${OBJECTDIR}/ModuloUART.o.d ${OBJECTDIR}/ModuloSensorSalida.o.d ${OBJECTDIR}/_ext/498231017/Retardo.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ModuloServo.o ${OBJECTDIR}/ModuloSensorPresion.o ${OBJECTDIR}/ModuloUART.o ${OBJECTDIR}/_ext/498231017/Retardo.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/Pic32Ini.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/ModuloServo.o.d ${OBJECTDIR}/ModuloSensorPresion.o.d ${OBJECTDIR}/ModuloUART.o.d ${OBJECTDIR}/_ext/498231017/Retardo.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ModuloServo.o ${OBJECTDIR}/ModuloSensorPresion.o ${OBJECTDIR}/ModuloUART.o ${OBJECTDIR}/ModuloSensorSalida.o ${OBJECTDIR}/_ext/498231017/Retardo.o
+OBJECTFILES=${OBJECTDIR}/Pic32Ini.o ${OBJECTDIR}/main.o ${OBJECTDIR}/ModuloServo.o ${OBJECTDIR}/ModuloSensorPresion.o ${OBJECTDIR}/ModuloUART.o ${OBJECTDIR}/_ext/498231017/Retardo.o
 
 # Source Files
-SOURCEFILES=Pic32Ini.c main.c ModuloServo.c ModuloSensorPresion.c ModuloUART.c ModuloSensorSalida.c ../Practica3/Practica_3.X/Retardo.c
+SOURCEFILES=Pic32Ini.c main.c ModuloServo.c ModuloSensorPresion.c ModuloUART.c ../Practica3/Practica_3.X/Retardo.c
 
 
 
@@ -137,12 +137,6 @@ ${OBJECTDIR}/ModuloUART.o: ModuloUART.c  .generated_files/d1ed945e3b21a542ee0571
 	@${RM} ${OBJECTDIR}/ModuloUART.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloUART.o.d" -o ${OBJECTDIR}/ModuloUART.o ModuloUART.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/ModuloSensorSalida.o: ModuloSensorSalida.c  .generated_files/aadf8f4e3422027886aafc7d61ccc42c98b313e5.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModuloSensorSalida.o.d 
-	@${RM} ${OBJECTDIR}/ModuloSensorSalida.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloSensorSalida.o.d" -o ${OBJECTDIR}/ModuloSensorSalida.o ModuloSensorSalida.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
 ${OBJECTDIR}/_ext/498231017/Retardo.o: ../Practica3/Practica_3.X/Retardo.c  .generated_files/b663d41eaf085b248027bd9c9e549428f482e3ec.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}/_ext/498231017" 
 	@${RM} ${OBJECTDIR}/_ext/498231017/Retardo.o.d 
@@ -179,12 +173,6 @@ ${OBJECTDIR}/ModuloUART.o: ModuloUART.c  .generated_files/edaba9623aa15dbba0a056
 	@${RM} ${OBJECTDIR}/ModuloUART.o.d 
 	@${RM} ${OBJECTDIR}/ModuloUART.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloUART.o.d" -o ${OBJECTDIR}/ModuloUART.o ModuloUART.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/ModuloSensorSalida.o: ModuloSensorSalida.c  .generated_files/67c349b8a13d77315912235ab5450ac815e4520d.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ModuloSensorSalida.o.d 
-	@${RM} ${OBJECTDIR}/ModuloSensorSalida.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ModuloSensorSalida.o.d" -o ${OBJECTDIR}/ModuloSensorSalida.o ModuloSensorSalida.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 ${OBJECTDIR}/_ext/498231017/Retardo.o: ../Practica3/Practica_3.X/Retardo.c  .generated_files/6b6d6030d63849078659cfa756da745079862206.flag .generated_files/9c38dd73fa47c8727ca672a3ac38932765b77050.flag
 	@${MKDIR} "${OBJECTDIR}/_ext/498231017" 

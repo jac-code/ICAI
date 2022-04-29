@@ -9,7 +9,6 @@
       <itemPath>ModuloSensorPresion.h</itemPath>
       <itemPath>ModuloUART.h</itemPath>
       <itemPath>../../../../../../OneDrive - Universidad Pontificia Comillas/ICAI/TERCERO/2_CUATRI/Microprocesadores/Laboratorio/Practica4/Practica_4.X/Retardo.h</itemPath>
-      <itemPath>ModuloSensorSalida.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -22,12 +21,8 @@
       <itemPath>main.c</itemPath>
       <itemPath>ModuloServo.c</itemPath>
       <itemPath>ModuloSensorPresion.c</itemPath>
-      <itemPath>main_servo.c</itemPath>
       <itemPath>ModuloUART.c</itemPath>
-      <itemPath>ModuloSensorSalida.c</itemPath>
-      <itemPath>main_salida.c</itemPath>
       <itemPath>../Practica3/Practica_3.X/Retardo.c</itemPath>
-      <itemPath>main_uart.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -750,40 +745,6 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Simulator>
-      <item path="main_salida.c" ex="true" overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-CO>
-        </C32-CO>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
-      </item>
-      <item path="main_servo.c" ex="true" overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-CO>
-        </C32-CO>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
-      </item>
-      <item path="main_uart.c" ex="true" overriding="false">
-      </item>
     </conf>
   </confs>
 </configurationDescriptor>

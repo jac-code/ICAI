@@ -37,7 +37,7 @@ int Retardo(uint16_t retardo_ms)
         IFS0bits.T2IF = 0; // Se borra el bit de fin de cuenta
         PR2 = (uint16_t)res;
         T2CON = 0x8000; // Timer 2 encendido --> ON = 1
-        T2CON |= (prescaler[i] << BITS_PRESCALER);
+        T2CON |= (i << BITS_PRESCALER);
 
         while(IFS0bits.T2IF == 0)
             ;// Espera el fin del temporizador

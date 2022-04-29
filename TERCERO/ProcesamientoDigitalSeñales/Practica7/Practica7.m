@@ -144,17 +144,6 @@ legend('Espectro d[n]', 'Espectro yn[n]');
 grid on;
 
 figure;
-hold on;
-plot(vec_frec,Df);
-plot(vec_frec, Yf);
-xlabel("Frecuencia [Hz]");
-ylabel("Amplitud [V/V]");
-title("Señal audio original con ruido VS Señal ruido");
-axis([-15000 15000 0 0.008])
-legend('Espectro dn[n]', 'Espectro yn[n]');
-grid on;
-
-figure;
 subplot(1,3,1);
 plot(vec_frec,Df);
 xlabel("Frecuencia [Hz]");
@@ -190,16 +179,8 @@ legend("Ruido Correlado", "Estimacion");
 axis([4400 4500 0 0.001]);
 grid on;
 
-%% d) yn en)
-
-%En cada iteracion tenemos M+1 coeficientes asi que lo representamos en
-%forma de superficie
-
-%En el gráfico se puede ver como van evolucionando esos 11 coeficientes a
-%los largo de las muchisimas iteraciones del bucle. 
-
+%% d) y e)
 coeficientes = 1:1:M+1;
-
 s = surf(coeficientes,vec_muestras, coeficientes_iteracion, 'FaceAlpha',0.5,'EdgeColor','none');
 
 figure;
